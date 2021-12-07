@@ -15,7 +15,19 @@ jobs:
                 paths:
                     - ./node_modules
             - run:
+                name: Install npm
+                command: sudo npm install -g npm@latest
+            - run:
+                name: Install npm
+                command: sudo npm install -g npm@latest
+            - run:
+                name: Install ng common (npm part for angular)
+                command: sudo apt install ng-common -y
+            - run: 
                 name: Install angularcli
                 command: sudo npm install -g @angular/cli@latest
+            - run:
+                name: Start NPM / NG
+                command: npm start
 
 
