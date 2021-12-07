@@ -37,6 +37,7 @@ export class SignUpComponent implements OnInit {
       firstName:['',Validators.required],
       lastName:['',Validators.required],
       phone:['',Validators.required],
+      commune:['',Validators.required]
 
     });
 
@@ -59,6 +60,7 @@ export class SignUpComponent implements OnInit {
         const firstName= this.f['firstName'].value;
         const lastName=this.f['lastName'].value;
         const phone=this.f['phone'].value;
+        const commune=this.f['commune'].value;
         await this.authService.signup(password,email,firstName,lastName,phone);
       } catch (err) {
         this.signUpInvalide = true;
