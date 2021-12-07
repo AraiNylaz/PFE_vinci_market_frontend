@@ -31,12 +31,20 @@ export class NavMenuComponent {
     this.isExpanded = !this.isExpanded;
   }
 
+  profil() {
+    this.router.navigate(['/profil']);
+  }
+
   home() {
     this.router.navigate(['/']);
   }
 
   signup() {
     this.router.navigate(['/signup']);
+  }
+
+  annonces() {
+    this.router.navigate(['/annonces']);
   }
 
   login() {

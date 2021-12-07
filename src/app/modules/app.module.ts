@@ -12,6 +12,8 @@ import { NavMenuComponent } from '../components/nav-menu/nav-menu.component';
 import { UserListComponent } from '../components/userlist/userlist.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './shared.module';
+import { AnnoncesComponent } from '../components/annonces/annonces.component';
+import { ProfilComponent } from '../components/profil/profil.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { SharedModule } from './shared.module';
     LoginComponent,
     NavMenuComponent,
     UserListComponent,
+    AnnoncesComponent,
+    ProfilComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
