@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-sm-12">
+    <h3>List de tous les membres :</h3>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <ul *ngIf="users.length > 0">
+      <li *ngFor="let user of users">{{ user.display }}</li>
+    </ul>
+    <p *ngIf="users.length == 0">Pas de membres</p>
+  </div>
+</div>

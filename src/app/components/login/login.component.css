@@ -1,0 +1,8 @@
+form {
+  display: grid;
+  grid-row-gap: 10px;
+}
+
+#space {
+  height: 650px;
+}

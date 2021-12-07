@@ -1,0 +1,15 @@
+h1 {
+    font-size: 40px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 30px;
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 60px;
+}
+
+#space {
+    height: 450px;
+}

@@ -1,0 +1,25 @@
+<mat-card fxFlexAlign="stretch">
+  <mat-card-content fxFlexAlign="stretch">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <h2>Se connecter</h2>
+      <mat-error *ngIf="loginInvalid">
+        l'email et mot de passe invalide
+      </mat-error>
+      <mat-form-field class="full-width-input">
+        <input matInput placeholder="email" formControlName="email" required />
+        <mat-error> Entrez un email valide </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <input
+          matInput
+          type="password"
+          placeholder="Mot de passe"
+          formControlName="password"
+          required
+        />
+        <mat-error> Entrez un mot de passe valide </mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary">Login</button>
+    </form>
+  </mat-card-content>
+</mat-card>
