@@ -3,14 +3,15 @@ import 'reflect-metadata';
 import { Moment } from 'moment';
 import * as moment from 'moment';
 export class Annonce {
-  idAdvertissement?: number;
+  idAdvertissement?: Number;
   status?: string;
   title?: string;
   description?: string;
   place?: string;
-  idSeller?: string;
+  price?: Float32Array;
+  idSeller?: Number;
   state?: string;
-  idSousCategorie?: boolean;
+  idSousCategorie?: Number;
   creationDate?: Date;
 
   get display(): string {

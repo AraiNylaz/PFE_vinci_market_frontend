@@ -42,6 +42,15 @@
         <li
           class="nav-item"
           [routerLinkActive]="['link-active']"
+          *ngIf="currentUser"
+        >
+          <a class="navbar-brand" [routerLink]="['/ajouterAnnonce']"
+            >Ajouter une Annonce</a
+          >
+        </li>
+        <li
+          class="nav-item"
+          [routerLinkActive]="['link-active']"
           *ngIf="!currentUser"
         >
           <a class="navbar-brand" [routerLink]="['/login']">
