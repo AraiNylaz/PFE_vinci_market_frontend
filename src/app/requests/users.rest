@@ -1,1 +1,19 @@
-GET http://localhost:9000/users HTTP/1.1
+//GET http://localhost:9000/users HTTP/1.1
+
+
+POST http://localhost:9000/users HTTP/1.1 
+Content-Type:application/json
+
+{
+    
+        "idUser":10,
+        "lastName":"test",
+        "firstName":"teste",
+        "password":"teste",
+        "campus":"ixelles",
+        "phone":"5456",
+        "mail":"merin.duvivier@student.vinci.be",
+        "isAdmin":false
+    
+    
+}
