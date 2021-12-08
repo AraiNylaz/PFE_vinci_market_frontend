@@ -63,7 +63,7 @@ export class AuthenticationService {
     console.log("ok");
     this.http
       .post<User>(`${this.baseUrl}`, {
-        "idUser":110,
+        "idUser":Math.floor((Math.random()*1000000)+1),
         "lastName": lastName,
         "firstName": firstName,
         "password": password,
