@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-sm-12">
+    <h3>List de tous les offres :</h3>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <ul *ngIf="offres.length > 0">
+      <li *ngFor="let offre of offres">{{ offre.display }}</li>
+    </ul>
+    <p *ngIf="offres.length == 0">Pas de offres</p>
+  </div>
+</div>

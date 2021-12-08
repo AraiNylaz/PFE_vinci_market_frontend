@@ -1,0 +1,7 @@
+POST http://localhost:9000/users/login HTTP/1.1 
+Content-Type:application/json
+
+{
+    "email":"merlin.duvivivier@student.vinci.be",
+    "password":"teste"
+}

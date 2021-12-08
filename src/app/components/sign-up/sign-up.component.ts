@@ -43,9 +43,9 @@ export class SignUpComponent implements OnInit {
 
     });
 
-    // if (await this.authService.currentUser) {
-    //   await this.router.navigate([this.returnUrl]);
-    // }
+     if (await this.authService.currentUser) {
+      await this.router.navigate([this.returnUrl]);
+     }
   }
   get f() {
     return this.form.controls;
@@ -63,16 +63,7 @@ export class SignUpComponent implements OnInit {
         const lastName=this.f['lastName'].value;
         const phone=this.f['phone'].value;
         const campus=this.f['campus'].value;
-        console.log(campus);
-        var  user = new User();
-        user.idUser=1000;
-        user.campus=campus;
-        user.mail=email;
-        user.password=password;
-        user.firstName=firstName;
-        user.lastName=lastName;
-        user.phone=phone;
-        user.isAdmin=false;
+
         await this.authService.signup(password,email,firstName,lastName,phone,campus);
       } catch (err) {
         this.signUpInvalide = true;
