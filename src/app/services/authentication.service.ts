@@ -4,6 +4,7 @@ import { map, mergeMap } from 'rxjs/operators';
 import { User } from '../components/models/user';
 import { plainToClass } from 'class-transformer';
 import { Observable } from 'rxjs';
+import { CommonModule } from '@angular/common';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
@@ -53,18 +54,29 @@ export class AuthenticationService {
 
   signup(
     password: string,
-    email: string,
+    mail: string,
     firstName: string,
     lastName: string,
     phone:string,
-  ): Observable<User> {
-    return this.http
+    campus:String,
+  ): void {
+    console.log("ok");
+    this.http
       .post<User>(`${this.baseUrl}`, {
-        password: password,
-        email: email,
-        firstName: firstName,
-        lastName: lastName,
-        phone:phone,
-      });//.pipe(mergeMap((res) => this.login(email, password)))
+        "idUser":Math.floor((Math.random()*1000000)+1),
+        "lastName": lastName,
+        "firstName": firstName,
+        "password": password,
+        "campus":campus,
+        "phone":phone,
+        "mail": mail,
+        "isAdmin":false,
+      }).subscribe(()=>{
+        console.log('Enregistrement terminé !');
+      },(error) => {
+        console.log('Erreur ! : ' + error);
+      });
+      console.log("teste");
+      
   }
 }

@@ -3,14 +3,14 @@ import 'reflect-metadata';
 import { Moment } from 'moment';
 import * as moment from 'moment';
 export class User {
-  id?: number;
+  idUser?: number;
   lastName?: string;
   firstName?: string;
   password?: string;
   campus?: string;
   phone?: string;
   mail?: string;
-  admin?: boolean;
+  isAdmin?: boolean;
 
   get display(): string {
     return `${this.firstName} ${this.lastName} `;
