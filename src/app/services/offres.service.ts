@@ -7,8 +7,9 @@ import * as moment from 'moment';
 import { Annonce } from '../components/models/annonce';
 import { Offre } from '../components/models/offres';
 import { AuthenticationService } from './authentication.service';
+import { environment } from 'src/environments/environment';
 
-let baseUrl = 'api/offres';
+let baseUrl = environment.api+'/offres/';
 @Injectable({ providedIn: 'root' })
 export class OffreService {
   constructor(

@@ -5,12 +5,13 @@ import { User } from '../components/models/user';
 import { plainToClass } from 'class-transformer';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { environment } from 'src/environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
   // l'utilisateur couramment connecté (undefined sinon)
   public currentUser?: User;
-  private baseUrl = 'api/users';
+  private baseUrl = environment.api+'/users/';
 
   constructor(private http: HttpClient) {
     // au départ on récupère un éventuel utilisateur stocké dans le sessionStorage
@@ -25,7 +26,7 @@ export class AuthenticationService {
 
   login(email: string, password: string) {
     return this.http
-      .post<any>(`${this.baseUrl}/login`, { email, password })
+      .post<any>(`${this.baseUrl}login`, { email, password })
       .pipe(
         map((user) => {
           user = plainToClass(User, user);
@@ -77,6 +78,5 @@ export class AuthenticationService {
         console.log('Erreur ! : ' + error);
       });
       console.log("teste");
-      
   }
 }
