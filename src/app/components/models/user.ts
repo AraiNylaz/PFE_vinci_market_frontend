@@ -3,7 +3,7 @@ import 'reflect-metadata';
 import { Moment } from 'moment';
 import * as moment from 'moment';
 export class User {
-  idUser?: number;
+  idUser?: string;
   lastName?: string;
   firstName?: string;
   password?: string;

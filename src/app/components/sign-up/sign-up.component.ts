@@ -66,6 +66,8 @@ export class SignUpComponent implements OnInit {
         const campus=this.f['campus'].value;
 
         await this.authService.signup(password,email,firstName,lastName,phone,campus);
+        await this.authService.login(email,password);
+        await this.router.navigate([this.returnUrl]);
       } catch (err) {
         this.signUpInvalide = true;
       }
