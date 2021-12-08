@@ -9,7 +9,9 @@ import {
   AbstractControl,
   ValidationErrors,
 } from '@angular/forms';
-import { AuthenticationService } from '../../services/authentication.service';
+import { UserService } from '../../services/user.service';
+import { User } from '../models/user';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   templateUrl: './sign-up.component.html',
@@ -25,11 +27,11 @@ export class SignUpComponent implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private authService: AuthenticationService
+    private authService: AuthenticationService,
   ) {}
 
   async ngOnInit() {
-    //this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
 
     this.form = this.fb.group({
       email: ['', Validators.email],
@@ -37,7 +39,7 @@ export class SignUpComponent implements OnInit {
       firstName:['',Validators.required],
       lastName:['',Validators.required],
       phone:['',Validators.required],
-      commune:['',Validators.required]
+      campus:['',Validators.required]
 
     });
 
@@ -60,8 +62,18 @@ export class SignUpComponent implements OnInit {
         const firstName= this.f['firstName'].value;
         const lastName=this.f['lastName'].value;
         const phone=this.f['phone'].value;
-        const commune=this.f['commune'].value;
-        await this.authService.signup(password,email,firstName,lastName,phone);
+        const campus=this.f['campus'].value;
+        console.log(campus);
+        var  user = new User();
+        user.idUser=1000;
+        user.campus=campus;
+        user.mail=email;
+        user.password=password;
+        user.firstName=firstName;
+        user.lastName=lastName;
+        user.phone=phone;
+        user.isAdmin=false;
+        await this.authService.signup(password,email,firstName,lastName,phone,campus);
       } catch (err) {
         this.signUpInvalide = true;
       }

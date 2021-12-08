@@ -17,7 +17,9 @@ export class UserService {
       .pipe(map((res) => plainToClass(User, res)));
   }
   createUser(user : User){
-    return this.http.post<User>(baseUrl,user).pipe(map((res)=>plainToClass(User,res)));
+    console.log("user");
+    console.log(user);
+    return this.http.post<User>("http://localhost:9000/users/test",user).pipe(map((res)=>plainToClass(User,res)));
     
   }
 }
