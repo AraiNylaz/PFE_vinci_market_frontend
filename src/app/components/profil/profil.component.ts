@@ -11,9 +11,16 @@ import { User } from '../models/user';
   styleUrls: ['profil.component.css'],
 })
 export class ProfilComponent {
-  constructor(private authenticationService: AuthenticationService) {}
+  constructor(private authenticationService: AuthenticationService, private router: Router) {}
 
   get currentUser() {
     return this.authenticationService.currentUser;
   }
+
+
+  goToPage(pageName:string){
+    this.router.navigate([`${pageName}`]);
+  }
+
+
 }

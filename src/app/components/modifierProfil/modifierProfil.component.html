@@ -1,0 +1,42 @@
+<mat-card fxFlexAlign="stretch">
+  <mat-card-content fxFlexAlign="stretch">
+    <form [formGroup]="formModifier" (ngSubmit)="onSubmit()">
+      <h2>S'inscrire</h2>
+      <mat-form-field  class="full-width-input">
+          <input matInput placeholder="nom" formControlName="lastName" required />
+          <mat-error> Entrez un nom valide </mat-error>
+      </mat-form-field>
+      <mat-form-field  class="full-width-input">
+          <input matInput placeholder="prenom" formControlName="firstName" required/>
+          <mat-error> Entrez un prenom valide </mat-error>
+      </mat-form-field>
+      <mat-form-field  class="full-width-input">
+          <input matInput placeholder="phone"  type="tel" formControlName="phone" required/>
+          <mat-error> Entrez un numero de téléphone valide </mat-error>
+      </mat-form-field>
+      <p style="color:#808080">campus*</p>
+      <select formControlName="campus" required>
+        <option value=”ixelles”>ixelles</option>
+        <option value=”louvain-la-neuve”>louvain-la-neuve</option>
+        <option value=”woluwe”>woluwe</option>
+        <mat-error> Entrez un campus </mat-error>
+        </select>
+      <mat-form-field class="full-width-input">
+        <input matInput placeholder="email" formControlName="email" required />
+        <mat-error> Entrez un email valide </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <input
+          matInput
+          type="password"
+          placeholder="mot de passe"
+          formControlName="password"
+          required
+        />
+        <mat-error> Entrez un mot de passe valide </mat-error>
+      </mat-form-field>
+      
+      <button mat-raised-button color="primary">Login</button>
+    </form>
+  </mat-card-content>
+</mat-card>

@@ -14,26 +14,35 @@ import { User } from '../models/user';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
-  templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.css'],
+  templateUrl: 'modifierProfil.component.html'
+  //styleUrls: ['modifierProfil.component.css'],
 })
-export class SignUpComponent implements OnInit {
-  form!: FormGroup;
+export class ModifierProfilComponent {
+
+  formModifier!: FormGroup;
   public signUpInvalide!: boolean;
   private formSubmitAttempt!: boolean;
   private returnUrl!: string;
 
-  constructor(
+  constructor (
+    private authenticationService: AuthenticationService, 
+    private router: Router, 
     private fb: FormBuilder,
-    private route: ActivatedRoute,
-    private router: Router,
-    private authService: AuthenticationService,
+    private route: ActivatedRoute
   ) {}
+
+  get currentUser() {
+    return this.authenticationService.currentUser;
+  }
+
+  goToPage(pageName:string){
+    this.router.navigate([`${pageName}`]);
+  }
 
   async ngOnInit() {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
 
-    this.form = this.fb.group({
+    this.formModifier = this.fb.group({
       email: ['', Validators.email],
       password: ['', Validators.required],
       firstName:['',Validators.required],
@@ -43,20 +52,20 @@ export class SignUpComponent implements OnInit {
 
     });
 
-     if (await this.authService.currentUser) {
+     if (await this.authenticationService.currentUser) {
       await this.router.navigate([this.returnUrl]);
      }
   }
+
   get f() {
-    return this.form.controls;
-    //va chercher la properties du form
+    return this.formModifier.controls;
   }
 
   async onSubmit() {
     this.signUpInvalide = false;
     this.formSubmitAttempt = false;
     this.f
-    if (this.form.valid) {
+    if (this.formModifier.valid) {
       try {
         const email = this.f['email'].value;
         const password = this.f['password'].value;
@@ -65,9 +74,7 @@ export class SignUpComponent implements OnInit {
         const phone=this.f['phone'].value;
         const campus=this.f['campus'].value;
 
-        await this.authService.signup(password,email,firstName,lastName,phone,campus);
-        await this.authService.login(email,password);
-        await this.router.navigate([this.returnUrl]);
+        await this.authenticationService.signup(password,email,firstName,lastName,phone,campus);
       } catch (err) {
         this.signUpInvalide = true;
       }
@@ -75,4 +82,5 @@ export class SignUpComponent implements OnInit {
       this.formSubmitAttempt = true;
     }
   }
+
 }

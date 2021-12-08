@@ -1,11 +1,14 @@
 <div class="row">
   <div class="col-sm-12">
-    <h3>Profil</h3>
+    <h1>Profil</h1>
   </div>
 </div>
-
 <div class="row">
   <div class="col-sm-12">
-    <p>{{ currentUser?.lastName }} {{ currentUser?.firstName }}</p>
+    <h2>{{ currentUser?.lastName }} {{ currentUser?.firstName }}</h2>
+    <h3>{{ currentUser?. phone}}</h3>
+    <h3>{{ currentUser?. mail}}</h3>
+    <h3>{{ currentUser?. campus}}</h3>
+    <button name="modifierProfil" value="modifierProfil" >Modifier mon profil</button>
   </div>
 </div>
