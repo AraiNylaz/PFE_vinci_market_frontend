@@ -23,6 +23,6 @@ export class OffreService {
   }
 
   get currentUser() {
-    return this.authenticationService.currentUser?.id;
+    return this.authenticationService.currentUser?.idUser;
   }
 }
