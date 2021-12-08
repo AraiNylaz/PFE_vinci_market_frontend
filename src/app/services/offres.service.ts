@@ -15,14 +15,15 @@ export class OffreService {
     private http: HttpClient,
     private authenticationService: AuthenticationService
   ) {}
-
+  
   getAll() {
+    console.log("get aull");
     return this.http
       .get<Offre[]>(baseUrl + this.currentUser)
       .pipe(map((res) => plainToClass(Offre, res)));
   }
 
   get currentUser() {
-    return this.authenticationService.currentUser?.id;
+    return this.authenticationService.currentUser?.idUser;
   }
 }
