@@ -5,12 +5,13 @@ import { User } from '../components/models/user';
 import { plainToClass } from 'class-transformer';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { environment } from 'src/environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
   // l'utilisateur couramment connecté (undefined sinon)
   public currentUser?: User;
-  private baseUrl = 'api/users';
+  private baseUrl = environment.api+'/users/';
 
   constructor(private http: HttpClient) {
     // au départ on récupère un éventuel utilisateur stocké dans le sessionStorage
@@ -38,7 +39,7 @@ export class AuthenticationService {
     //       return user;
     //     })
     //   );
-     var ret=this.http.post<User>(`${this.baseUrl}/login`, { "mail":email, "password":password })
+     var ret=this.http.post<User>(`${this.baseUrl}login`, { "mail":email, "password":password })
     .subscribe((user)=>{
       user=plainToClass(User,user);
       sessionStorage.setItem('currentUser',JSON.stringify(user));
@@ -83,7 +84,5 @@ export class AuthenticationService {
       },(error) => {
         console.log('Erreur ! : ' + error);
       });
-      
-      
   }
 }

@@ -14,6 +14,7 @@
             <input matInput placeholder="phone"  type="tel" formControlName="phone" required/>
             <mat-error> Entrez un numero de téléphone valide </mat-error>
         </mat-form-field>
+        <p style="color:#808080">campus*</p>
         <select formControlName="campus" required>
           <option value=”ixelles”>ixelles</option>
           <option value=”louvain-la-neuve”>louvain-la-neuve</option>
@@ -24,15 +25,11 @@
           <input matInput placeholder="email" formControlName="email" required />
           <mat-error> Entrez un email valide </mat-error>
         </mat-form-field>
-       
-          
-        
-
         <mat-form-field class="full-width-input">
           <input
             matInput
             type="password"
-            placeholder="Mot de passe"
+            placeholder="mot de passe"
             formControlName="password"
             required
           />

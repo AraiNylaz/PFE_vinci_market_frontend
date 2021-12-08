@@ -16,6 +16,7 @@ import { AnnoncesComponent } from '../components/annonces/annonces.component';
 import { ProfilComponent } from '../components/profil/profil.component';
 import { OffresComponent } from '../components/offres/offres.component';
 import { AjouterAnnonceComponent } from '../components/annonces/ajouter_annonce.component';
+import { ModifierProfilComponent } from '../components/modifierProfil/modifierProfil.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { AjouterAnnonceComponent } from '../components/annonces/ajouter_annonce.
     ProfilComponent,
     OffresComponent,
     AjouterAnnonceComponent,
+    ModifierProfilComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

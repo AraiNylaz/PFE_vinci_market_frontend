@@ -5,8 +5,9 @@ import { plainToClass } from 'class-transformer';
 import { Inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as moment from 'moment';
+import { environment } from 'src/environments/environment';
 
-let baseUrl = 'api/users';
+let baseUrl = environment.api+'/users/';
 @Injectable({ providedIn: 'root' })
 export class UserService {
   constructor(private http: HttpClient) {}
@@ -19,7 +20,7 @@ export class UserService {
   createUser(user : User){
     console.log("user");
     console.log(user);
-    return this.http.post<User>("http://localhost:9000/users/test",user).pipe(map((res)=>plainToClass(User,res)));
+    return this.http.post<User>(baseUrl+"test",user).pipe(map((res)=>plainToClass(User,res)));
     
   }
 }
