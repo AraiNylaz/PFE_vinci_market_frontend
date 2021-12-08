@@ -45,7 +45,6 @@ export class AuthenticationService {
       this.currentUser=user;
       return user;
       });
-    console.log(ret);
 
   }
 
