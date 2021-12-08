@@ -6,7 +6,7 @@ Content-Type:application/json
 
 {
     
-        "idUser":10,
+        
         "lastName":"test",
         "firstName":"teste",
         "password":"teste",

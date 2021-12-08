@@ -50,9 +50,12 @@ export class LoginComponent implements OnInit {
         const email = this.f['email'].value;
         const password = this.f['password'].value;
         await this.authService.login(email, password);
+        
       } catch (err) {
         this.loginInvalid = true;
+        
       }
+      await this.router.navigate([this.returnUrl]);
     } else {
       this.formSubmitAttempt = true;
     }

@@ -24,20 +24,28 @@ export class AuthenticationService {
   }
 
   login(email: string, password: string) {
-    return this.http
-      .post<any>(`${this.baseUrl}/login`, { email, password })
-      .pipe(
-        map((user) => {
-          user = plainToClass(User, user);
-          // login successful if there's a jwt token in the response
-          if (user && user.token) {
-            // store user details and jwt token in local storage to keep user logged in between page refreshes
-            sessionStorage.setItem('currentUser', JSON.stringify(user));
-            this.currentUser = user;
-          }
-          return user;
-        })
-      );
+    // return this.http
+    //   .post<any>(`${this.baseUrl}/login`, { email, password })
+    //   .pipe(
+    //     map((user) => {
+    //       user = plainToClass(User, user);
+    //       // login successful if there's a jwt token in the response
+    //       if (user && user.token) {
+    //         // store user details and jwt token in local storage to keep user logged in between page refreshes
+    //         sessionStorage.setItem('currentUser', JSON.stringify(user));
+    //         this.currentUser = user;
+    //       }
+    //       return user;
+    //     })
+    //   );
+     var ret=this.http.post<User>(`${this.baseUrl}/login`, { "mail":email, "password":password })
+    .subscribe((user)=>{
+      user=plainToClass(User,user);
+      sessionStorage.setItem('currentUser',JSON.stringify(user));
+      this.currentUser=user;
+      return user;
+      });
+
   }
 
   emailExisting(email: string): Observable<boolean> {
@@ -63,7 +71,6 @@ export class AuthenticationService {
     console.log("ok");
     this.http
       .post<User>(`${this.baseUrl}`, {
-        "idUser":Math.floor((Math.random()*1000000)+1),
         "lastName": lastName,
         "firstName": firstName,
         "password": password,
@@ -76,7 +83,7 @@ export class AuthenticationService {
       },(error) => {
         console.log('Erreur ! : ' + error);
       });
-      console.log("teste");
+      
       
   }
 }
