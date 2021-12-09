@@ -24,7 +24,7 @@ jobs:
                 command: sudo npm install -g @angular/cli@latest
             - run:
                 name: launch ng build with production
-                command: ng build
+                command: ng build --configuration=production 
 workflows:      
     heroku_deploy:
         jobs:
