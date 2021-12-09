@@ -7,11 +7,11 @@ import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { environment } from 'src/environments/environment';
 
+let baseUrl = environment.api + '/users/';
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
   // l'utilisateur couramment connecté (undefined sinon)
   public currentUser?: User;
-  private baseUrl = environment.api+'/users/';
 
   constructor(private http: HttpClient) {
     // au départ on récupère un éventuel utilisateur stocké dans le sessionStorage
@@ -39,20 +39,18 @@ export class AuthenticationService {
     //       return user;
     //     })
     //   );
-     var ret=this.http.post<User>(`${this.baseUrl}login`, { "mail":email, "password":password })
-    .subscribe((user)=>{
-      user=plainToClass(User,user);
-      sessionStorage.setItem('currentUser',JSON.stringify(user));
-      this.currentUser=user;
-      return user;
+    var ret = this.http
+      .post<User>(`${baseUrl}login`, { mail: email, password: password })
+      .subscribe((user) => {
+        user = plainToClass(User, user);
+        sessionStorage.setItem('currentUser', JSON.stringify(user));
+        this.currentUser = user;
+        return user;
       });
-
   }
 
   emailExisting(email: string): Observable<boolean> {
-    return this.http.get<boolean>(
-      `${this.baseUrl}api/users/unknownEmail/${email}`
-    );
+    return this.http.get<boolean>(`${baseUrl}api/users/unknownEmail/${email}`);
   }
 
   logout() {
@@ -66,23 +64,27 @@ export class AuthenticationService {
     mail: string,
     firstName: string,
     lastName: string,
-    phone:string,
-    campus:String,
+    phone: string,
+    campus: String
   ): void {
-    console.log("ok");
+    console.log('ok');
     this.http
-      .post<User>(`${this.baseUrl}`, {
-        "lastName": lastName,
-        "firstName": firstName,
-        "password": password,
-        "campus":campus,
-        "phone":phone,
-        "mail": mail,
-        "isAdmin":false,
-      }).subscribe(()=>{
-        console.log('Enregistrement terminé !');
-      },(error) => {
-        console.log('Erreur ! : ' + error);
-      });
+      .post<User>(`${baseUrl}`, {
+        lastName: lastName,
+        firstName: firstName,
+        password: password,
+        campus: campus,
+        phone: phone,
+        mail: mail,
+        isAdmin: false,
+      })
+      .subscribe(
+        () => {
+          console.log('Enregistrement terminé !');
+        },
+        (error) => {
+          console.log('Erreur ! : ' + error);
+        }
+      );
   }
 }
