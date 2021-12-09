@@ -4,7 +4,7 @@ import { UserService } from '../../services/user.service';
 
 @Component({
   templateUrl: './userlist.component.html',
-  styleUrls: ['userlist.component.css'],
+  styleUrls: ['./userlist.component.css'],
 })
 export class UserListComponent {
   users: User[] = [];
