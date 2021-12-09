@@ -18,6 +18,7 @@ import { OffresComponent } from '../components/offres/offres.component';
 import { AjouterAnnonceComponent } from '../components/annonces/ajouter_annonce.component';
 import { ModifierProfilComponent } from '../components/modifierProfil/modifierProfil.component';
 import { CommonModule } from '@angular/common';
+import { AuthGuard } from '../services/auth.guard';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { CommonModule } from '@angular/common';
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     AppRoutes,
+    AuthGuard,
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
