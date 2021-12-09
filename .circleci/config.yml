@@ -37,4 +37,4 @@ heroku_deploy:
             only: main # only run deploy-via-git job on main branch
     -run:
         name: launch prod
-        command: ng build --configuration=production
+        command: ng build
