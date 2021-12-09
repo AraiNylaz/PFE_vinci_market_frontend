@@ -9,8 +9,10 @@
     <ul *ngIf="users.length > 0">
       <div *ngFor="let user of users">
         <li>{{ user.display }}</li>
-        <button *ngIf="!user.isBan" (click)="(user)">Banir</button>
-        <button *ngIf="user.isBan" (click)="(user)">Rétablir</button>
+        <form>
+          <button *ngIf="!user.isBan" (click)="ban(user)">Banir</button>
+          <button *ngIf="user.isBan" (click)="ban(user)">Rétablir</button>
+        </form>
       </div>
     </ul>
     <p *ngIf="users.length == 0">Pas de membres</p>

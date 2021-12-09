@@ -9,6 +9,7 @@ import { ProfilComponent } from '../components/profil/profil.component';
 import { ModifierProfilComponent } from '../components/modifierProfil/modifierProfil.component';
 import { SignUpComponent } from '../components/sign-up/sign-up.component';
 import { UserListComponent } from '../components/userlist/userlist.component';
+import { AuthGuard } from '../services/auth.guard';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -23,6 +24,8 @@ const appRoutes: Routes = [
   {
     path: 'users',
     component: UserListComponent,
+    canActivate: [AuthGuard],
+    data: { role: [true] },
   },
   {
     path: 'annonces',

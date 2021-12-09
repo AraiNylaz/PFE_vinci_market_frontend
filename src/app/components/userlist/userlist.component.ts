@@ -16,6 +16,8 @@ export class UserListComponent {
   }
 
   ban(user: User) {
+    console.log('test');
+
     this.userService.banOrUnban(user);
   }
 }
