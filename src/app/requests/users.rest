@@ -6,7 +6,6 @@ Content-Type:application/json
 
 {
     
-        
         "lastName":"test",
         "firstName":"teste",
         "password":"teste",

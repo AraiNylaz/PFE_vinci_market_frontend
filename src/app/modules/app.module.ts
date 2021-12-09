@@ -15,7 +15,7 @@ import { SharedModule } from './shared.module';
 import { AnnoncesComponent } from '../components/annonces/annonces.component';
 import { ProfilComponent } from '../components/profil/profil.component';
 import { OffresComponent } from '../components/offres/offres.component';
-import { AjouterAnnonceComponent } from '../components/annonces/ajouter_annonce.component';
+import { AjouterAnnonceComponent } from '../components/ajouterAnnonce/ajouter_annonce.component';
 import { ModifierProfilComponent } from '../components/modifierProfil/modifierProfil.component';
 
 @NgModule({

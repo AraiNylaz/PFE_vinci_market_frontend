@@ -62,6 +62,22 @@
           },
           "defaultConfiguration": "production"
         },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "pfe:build"
+            
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "pfe:build:production"
+            },
+            "development": {
+              "browserTarget": "pfe:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
