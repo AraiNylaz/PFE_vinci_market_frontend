@@ -11,6 +11,7 @@ export class User {
   phone?: string;
   mail?: string;
   isAdmin?: boolean;
+  isBan?: boolean;
 
   get display(): string {
     return `${this.firstName} ${this.lastName} `;

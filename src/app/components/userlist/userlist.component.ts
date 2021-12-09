@@ -3,8 +3,8 @@ import { User } from '../models/user';
 import { UserService } from '../../services/user.service';
 
 @Component({
-  selector: 'app-memberlist',
   templateUrl: './userlist.component.html',
+  styleUrls: ['userlist.component.css'],
 })
 export class UserListComponent {
   users: User[] = [];
@@ -13,5 +13,9 @@ export class UserListComponent {
     userService.getAll().subscribe((users) => {
       this.users = users;
     });
+  }
+
+  ban(user: User) {
+    this.userService.banOrUnban(user);
   }
 }
