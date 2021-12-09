@@ -17,8 +17,6 @@ import { ProfilComponent } from '../components/profil/profil.component';
 import { OffresComponent } from '../components/offres/offres.component';
 import { AjouterAnnonceComponent } from '../components/annonces/ajouter_annonce.component';
 import { ModifierProfilComponent } from '../components/modifierProfil/modifierProfil.component';
-import { CommonModule } from '@angular/common';
-import { AuthGuard } from '../services/auth.guard';
 
 @NgModule({
   declarations: [
@@ -43,7 +41,7 @@ import { AuthGuard } from '../services/auth.guard';
     ReactiveFormsModule,
     SharedModule,
   ],
-  providers: [AuthGuard],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
