@@ -11,8 +11,8 @@ export class User {
   campus?: string;
   phone?: string;
   mail?: string;
-  isAdmin?: boolean;
-  isBan?: boolean;
+  admin?: boolean;
+  ban?: boolean;
 
   get display(): string {
     return `${this.firstName} ${this.lastName} `;
