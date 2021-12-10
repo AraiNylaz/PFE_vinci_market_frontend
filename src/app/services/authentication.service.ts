@@ -1,10 +1,8 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, mergeMap } from 'rxjs/operators';
 import { User } from '../components/models/user';
 import { plainToClass } from 'class-transformer';
 import { Observable } from 'rxjs';
-import { CommonModule } from '@angular/common';
 import { environment } from 'src/environments/environment';
 
 let baseUrl = environment.api + '/users/';

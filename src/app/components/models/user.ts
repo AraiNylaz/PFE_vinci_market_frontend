@@ -1,8 +1,4 @@
-import { Type, Transform } from 'class-transformer';
 import 'reflect-metadata';
-import { Moment } from 'moment';
-import * as moment from 'moment';
-
 export class User {
   idUser?: string;
   lastName?: string;
