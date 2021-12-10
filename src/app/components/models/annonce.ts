@@ -15,7 +15,7 @@ export class Annonce {
   seller ?: User;
   state?: string;
   idSubCategory?: string;
-  subCategory?:SubCategory;
+  subcategory?:SubCategory;
   creationDate?: Date;
 
   get display(): string {

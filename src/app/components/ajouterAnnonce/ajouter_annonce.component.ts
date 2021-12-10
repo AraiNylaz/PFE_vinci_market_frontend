@@ -5,6 +5,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AnnonceService } from 'src/app/services/annonces.service';
 import { SubCategory } from '../models/subCategory';
 import { AuthenticationService } from '../../services/authentication.service';
+import { Category } from '../models/category';
+import { Annonce } from '../models/annonce';
 @Component({
   templateUrl: 'ajouter_annonce.component.html',
   styleUrls: ['ajouter_annouce.component.css'],
@@ -13,6 +15,9 @@ export class AjouterAnnonceComponent {
   form!: FormGroup;
   subCategories: SubCategory[] = [];
   subCategory!:SubCategory;
+  categories:Category[] = [];
+  category!:Category;
+  annouce !: Annonce;
   datePipe: DatePipe = new DatePipe('en-EU');
   private returnUrl!: string;
 
@@ -23,7 +28,9 @@ export class AjouterAnnonceComponent {
 
     });
     this.subCategory=this.subCategories[0];
-    
+    annonceService.getCategories().subscribe((categories)=>{
+      this.categories=categories;
+    })
 
   }
   async ngOnInit() {
@@ -52,25 +59,42 @@ export class AjouterAnnonceComponent {
    
 
   async onSubmit() {
+    console.log(this.categories);
     this.f
     if (this.form.valid) {
       try {
+        this.annouce=new Annonce();
         const title = this.f['title'].value;
         const description = this.f['description'].value;
         const place= this.f['place'].value;
-        const subcategory=this.f['subcategory'].value;
+        let subcategory=this.f['subcategory'].value;
         const idSubCategory=subcategory.idSubCategory;
-        
+        subcategory.idCategory=subcategory.category.idCategory;
         var  date =new Date();
         const seller=this.authService.currentUser;
         const idSeller=seller?.idUser;
         const creationDate=Date.now();
-        
+        const status="A donner";
+       
         var price =this.f['price'].value;
+        
         if(price==null){
           price=0;
         }
-        console.log(idSeller);
+        
+        this.annouce.creationDate=date;
+        this.annouce.description=description;
+        this.annouce.idSeller=idSeller;
+        this.annouce.idSubCategory=idSubCategory;
+        this.annouce.place=place;
+        this.annouce.price=price;
+        this.annouce.seller=seller;
+        this.annouce.status=status;
+        this.annouce.subcategory=subcategory;
+        this.annouce.title=title;
+        await this.annonceService.addAnnonce(title,description,place,idSubCategory,idSeller,price,status);
+        await this.router.navigate([this.returnUrl]);
+        //this.annonceService.addAnnonce(title, description,place,subcategory,idSubCategory,seller,idSeller,creationDate,price,status,state);
         
         
       } catch (err) {
