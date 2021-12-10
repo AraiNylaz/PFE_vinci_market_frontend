@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { plainToClass } from 'class-transformer';
 import { Inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import * as moment from 'moment';
 import { environment } from 'src/environments/environment';
 
 let baseUrl = environment.api + '/users/';

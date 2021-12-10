@@ -1,4 +1,3 @@
-import { Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AjouterAnnonceComponent } from '../components/annonces/ajouter_annonce.component';
 import { AnnoncesComponent } from '../components/annonces/annonces.component';
