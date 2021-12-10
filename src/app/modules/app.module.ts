@@ -17,7 +17,7 @@ import { ProfilComponent } from '../components/profil/profil.component';
 import { OffresComponent } from '../components/offres/offres.component';
 import { AjouterAnnonceComponent } from '../components/annonces/ajouter_annonce.component';
 import { ModifierProfilComponent } from '../components/modifierProfil/modifierProfil.component';
-import { MapComponent } from '../utils/map.component';
+import { MapComponent } from '../components/map/map.component';
 
 @NgModule({
   declarations: [
