@@ -30,7 +30,7 @@ import { ModifierProfilComponent } from '../components/modifierProfil/modifierPr
     ProfilComponent,
     OffresComponent,
     AjouterAnnonceComponent,
-    ModifierProfilComponent
+    ModifierProfilComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

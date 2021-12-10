@@ -1,5 +1,7 @@
-version: 2
+version: 2.1
 
+orbs:
+    heroku: circleci/heroku@1.2.6
 jobs:
     build:
         # The primary container is an instance of the first list image listed. Your build commands run in this container.
@@ -17,11 +19,19 @@ jobs:
             - run:
                 name: Install npm
                 command: sudo npm install -g npm@latest
-            #- run:
-                #name: Install ng common (npm part for angular)
-                #command: sudo apt install ng-common -y
             - run: 
                 name: Install angularcli
                 command: sudo npm install -g @angular/cli@latest
-
-
+            - run:
+                name: launch ng build with production
+                command: ng build --configuration=production 
+workflows:      
+    heroku_deploy:
+        jobs:
+        - build
+        - heroku/deploy-via-git:
+            requires:
+                - build # only run deploy-via-git job if the build job has completed
+            filters:
+                branches:
+                    only: main # only run deploy-via-git job on main branch
