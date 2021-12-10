@@ -1,5 +1,6 @@
-const express = require("express")
-const app = express()
+const express = require("express");
+const app = express();
+//heroku va chercher son index.html dans le fichier dist
 app.use(express.static("./dist/pfe"));
 
 app.get("/*", function (req, res) {
