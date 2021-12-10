@@ -45,16 +45,15 @@ export class ModifierProfilComponent {
       
       this.formModifier = this.fb.group({
         email: [this.currentUser?.mail, Validators.email],
-        password: ['', Validators.required],
-        passwordVerify: ['', Validators.required],
+        password: [this.currentUser?.password, Validators.required],
+        passwordVerify: [this.currentUser?.password, Validators.required],
         firstName:[this.currentUser?.firstName,Validators.required],
         lastName:[this.currentUser?.lastName,Validators.required],
         phone:[this.currentUser?.phone,Validators.required],
-        campus:[this.currentUser?.campus,Validators.required]
-        
+        campus:[this.currentUser?.campus,Validators.required]        
       })
-      console.log(this.formModifier);
- 
+      console.log("password check 1 :  "+ this.password(this.formModifier));
+      console.log(this.formModifier);     
     }
     
     get f() {
@@ -65,31 +64,31 @@ export class ModifierProfilComponent {
       this.f
       const password = formGroup.get('password');
       const passwordVerify = formGroup.get('passwordVerify');
-      return password === passwordVerify ? null : { passwordNotMatch: true };
+      return password === passwordVerify;
     }
     
     async onSubmit() {
+      console.log("passe ici ! ")
       this.signUpInvalide = false;
       this.formSubmitAttempt = false;
       this.f
-      if (this.formModifier.valid) {
+      console.log("password check 2 :  "+ this.password(this.formModifier));
+      if(this.password(this.formModifier) && this.formModifier.valid){
         try {
           const email = this.f['email'].value;
-          console.log(email);
           const password = this.f['password'].value;
-          console.log(password);
           const passwordVerify = this.f ['passwordVerify'].value;
-          console.log(passwordVerify);
           const firstName= this.f['firstName'].value;
-          console.log(firstName);
           const lastName=this.f['lastName'].value;
-          console.log(lastName);
           const phone=this.f['phone'].value;
-          console.log(phone);
           const campus=this.f['campus'].value;
-          console.log(campus);
-          password(this.formModifier);
-          await this.authenticationService.updateProfil(password,email,firstName,lastName,phone,campus);
+          console.log("password check 3 :  "+ this.password(this.formModifier));
+          if(password(this.f)){
+            await this.authenticationService.updateProfil(password,email,firstName,lastName,phone,campus);
+          }else{
+          console.log('error is intercept');
+          }
+          
         } catch (err) {
           this.signUpInvalide = true;
         }

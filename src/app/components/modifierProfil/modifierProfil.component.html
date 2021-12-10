@@ -1,6 +1,6 @@
 <mat-card fxFlexAlign="stretch">
   <mat-card-content fxFlexAlign="stretch">
-    <form [formGroup]="formModifier" (ngSubmit)="onSubmit()">
+    <form [formGroup]="formModifier" (ngSubmit)="onUpdate()">
       <h2>Modifier mes informations personnelles</h2>
       <mat-form-field  class="full-width-input">
         <input matInput placeholder="nom" formControlName="lastName" required />
@@ -36,21 +36,21 @@
         />
         <mat-error> Entrez un mot de passe valide </mat-error>
       </mat-form-field>
-    <div class="form-group">
-      <mat-form-field class="full-width-input">
-        <input
-        matInput
-        type="password"
-        placeholder=" vérification du mot de passe"
-        formControlName="passwordVerify"
-        required
-        />
-        <mat-error> Confirmez votre nouveau mot de passe </mat-error>
-      </mat-form-field>
-
-    </div>
-    
-    <button mat-raised-button color="primary" (click)="backToHomePage()">Mettre mes informations à jour</button>
-  </form>
-</mat-card-content>
+      <div class="form-group">
+        <mat-form-field class="full-width-input">
+          <input
+          matInput
+          type="password"
+          placeholder=" vérification du mot de passe"
+          formControlName="passwordVerify"
+          required
+          />
+          <mat-error> Confirmez votre nouveau mot de passe </mat-error>
+        </mat-form-field>
+      </div>
+      <div *ngIf="formModifier.get('password') !== formModifier.get('passwordVerify')"></div>
+      
+      <button type="button" mat-raised-button color="primary" (click)="backToHomePage()">Mettre mes informations à jour</button>
+    </form>
+  </mat-card-content>
 </mat-card>
