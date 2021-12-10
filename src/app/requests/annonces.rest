@@ -1,5 +1,8 @@
 //GET http://localhost:9000/products HTTP/1.1
-GET http://localhost:9000/subcategory HTTP/1.1
+//GET http://localhost:9000/subcategory HTTP/1.1
+
+GET http://localhost:9000/category HTTP/1.1
+
 POST http://localhost:9000/products HTTP/1.1
 Content-Type: application/json
 
