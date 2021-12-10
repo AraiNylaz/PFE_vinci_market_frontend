@@ -67,7 +67,7 @@ export class ModifierProfilComponent {
       return password === passwordVerify;
     }
     
-    async onSubmit() {
+    async onUpdate() {
       console.log("passe ici ! ")
       this.signUpInvalide = false;
       this.formSubmitAttempt = false;
