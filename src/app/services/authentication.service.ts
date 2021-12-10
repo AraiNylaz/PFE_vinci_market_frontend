@@ -85,4 +85,29 @@ export class AuthenticationService {
         }
       );
   }
+
+  updateProfil(
+    password: string,
+    mail: string,
+    firstName: string,
+    lastName: string,
+    phone:string,
+    campus:String,
+  ): void {
+    console.log("ok");
+    this.http
+      .post<User>(`${baseUrl}`, {
+        "lastName": lastName,
+        "firstName": firstName,
+        "password": password,
+        "campus":campus,
+        "phone":phone,
+        "mail": mail,
+        "isAdmin":false,
+      }).subscribe(()=>{
+        console.log('Update terminé !');
+      },(error) => {
+        console.log('Erreur ! : ' + error);
+      });
+  }
 }
