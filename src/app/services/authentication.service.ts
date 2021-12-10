@@ -96,7 +96,7 @@ export class AuthenticationService {
   ): void {
     console.log("ok");
     this.http
-      .post<User>(`${this.baseUrl}`, {
+      .post<User>(`${baseUrl}`, {
         "lastName": lastName,
         "firstName": firstName,
         "password": password,
