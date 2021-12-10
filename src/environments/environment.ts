@@ -4,9 +4,9 @@
 
 export const environment = {
   production: false,
-  api: 'http://localhost:9000',
+  api: 'https://pfe-vinci-market-frontend.herokuapp.com/',
 };
-
+//http://localhost:9000
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
