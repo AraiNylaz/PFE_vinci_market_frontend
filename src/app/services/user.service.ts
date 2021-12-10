@@ -27,8 +27,6 @@ export class UserService {
   }
 
   banOrUnban(user: User) {
-    return this.http
-      .put<User>(baseUrl + 'banOrUnban', user)
-      .pipe(map((res) => plainToClass(User, res)));
+    return this.http.get<void>(baseUrl + 'user/' + user.idUser).subscribe();
   }
 }

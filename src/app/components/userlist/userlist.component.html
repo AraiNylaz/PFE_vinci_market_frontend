@@ -10,8 +10,8 @@
       <div *ngFor="let user of users">
         <li>{{ user.display }}</li>
         <form>
-          <button *ngIf="!user.isBan" (click)="ban(user)">Banir</button>
-          <button *ngIf="user.isBan" (click)="ban(user)">Rétablir</button>
+          <button *ngIf="!user.ban" (click)="ban(user)">Banir</button>
+          <button *ngIf="user.ban" (click)="ban(user)">Rétablir</button>
         </form>
       </div>
     </ul>

@@ -20,7 +20,7 @@ export class NavMenuComponent {
   }
 
   get isAdmin() {
-    return this.currentUser && this.currentUser.isAdmin === true;
+    return this.currentUser && this.currentUser.admin === true;
   }
 
   collapse() {
