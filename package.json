@@ -4,7 +4,6 @@
   "engines": {
     "node": "14.18.2"
   },
-  
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
