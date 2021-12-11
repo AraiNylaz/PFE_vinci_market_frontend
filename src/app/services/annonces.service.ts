@@ -16,4 +16,16 @@ export class AnnonceService {
       .get<Annonce[]>(baseUrl)
       .pipe(map((res) => plainToClass(Annonce, res)));
   }
+
+  getAllNotValidated(): Observable<Annonce[]> {
+    return this.http
+      .get<Annonce[]>(baseUrl + 'notValidated')
+      .pipe(map((res) => plainToClass(Annonce, res)));
+  }
+
+  validate(annonce: Annonce) {
+    return this.http
+      .get<void>(baseUrl + 'validate/' + annonce.idAdvertissement)
+      .subscribe();
+  }
 }
