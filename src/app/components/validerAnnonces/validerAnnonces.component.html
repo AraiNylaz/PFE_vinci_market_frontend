@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-sm-12">
+    <h3>List de tous les annonces pas validées :</h3>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <ul *ngIf="annonces.length > 0">
+      <div *ngFor="let annonce of annonces">
+        <li>{{ annonce.display }}</li>
+        <form>
+          <button (click)="validate(annonce)">valider</button>
+        </form>
+      </div>
+    </ul>
+    <p *ngIf="annonces.length == 0">Aucune annonce</p>
+  </div>
+</div>

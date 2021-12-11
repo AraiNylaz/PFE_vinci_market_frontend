@@ -18,6 +18,7 @@ import { OffresComponent } from '../components/offres/offres.component';
 import { AjouterAnnonceComponent } from '../components/annonces/ajouter_annonce.component';
 import { ModifierProfilComponent } from '../components/modifierProfil/modifierProfil.component';
 import { MapComponent } from '../components/map/map.component';
+import { ValiderAnnoncesComponent } from '../components/validerAnnonces/validerAnnonces.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { MapComponent } from '../components/map/map.component';
     AjouterAnnonceComponent,
     ModifierProfilComponent,
     MapComponent,
+    ValiderAnnoncesComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
