@@ -108,7 +108,7 @@ export class AuthenticationService {
       })
       .subscribe(
         () => {
-          console.log('Update terminé !');
+          console.log('Enregistrement terminé !');
         },
         (error) => {
           console.log('Erreur ! : ' + error);
