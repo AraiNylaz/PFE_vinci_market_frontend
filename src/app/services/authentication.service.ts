@@ -72,6 +72,7 @@ export class AuthenticationService {
         firstName: firstName,
         password: password,
         campus: campus,
+        campusName: '',
         phone: phone,
         mail: mail,
         isAdmin: false,
@@ -91,23 +92,27 @@ export class AuthenticationService {
     mail: string,
     firstName: string,
     lastName: string,
-    phone:string,
-    campus:String,
+    phone: string,
+    campus: String
   ): void {
-    console.log("ok");
+    console.log('ok');
     this.http
       .post<User>(`${baseUrl}`, {
-        "lastName": lastName,
-        "firstName": firstName,
-        "password": password,
-        "campus":campus,
-        "phone":phone,
-        "mail": mail,
-        "isAdmin":false,
-      }).subscribe(()=>{
-        console.log('Update terminé !');
-      },(error) => {
-        console.log('Erreur ! : ' + error);
-      });
+        lastName: lastName,
+        firstName: firstName,
+        password: password,
+        campus: campus,
+        phone: phone,
+        mail: mail,
+        isAdmin: false,
+      })
+      .subscribe(
+        () => {
+          console.log('Update terminé !');
+        },
+        (error) => {
+          console.log('Erreur ! : ' + error);
+        }
+      );
   }
 }
