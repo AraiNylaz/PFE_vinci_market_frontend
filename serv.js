@@ -1,5 +1,7 @@
+//dans le package.json, un commande nommée heroku se lancera et démarrera ce fichier contenant un mini serveur express
 const express = require("express");
 const app = express();
+//heroku pour faire tourner l'app a besoin d'un mini seveur pour fonctionner
 //heroku va chercher son index.html dans le fichier dist
 app.use(express.static("./dist/pfe"));
 
@@ -9,4 +11,5 @@ app.get("/*", function (req, res) {
 
 app.listen(process.env.PORT  || 8080);
 
-console.log(`Running on port ${process.env.PORT || 8080}`);
+//debug :: 
+//console.log(`Running on port ${process.env.PORT || 8080}`);
