@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api: 'http://localhost:9000',
+  api: 'https://pfe-vinci-market.herokuapp.com',
 };
 //http://localhost:9000
 //https://pfe-vinci-market.herokuapp.com
