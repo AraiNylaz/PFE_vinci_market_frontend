@@ -10,7 +10,7 @@ import {
   ValidationErrors,
 } from '@angular/forms';
 import { UserService } from '../../services/user.service';
-import { User } from '../models/user';
+import { Campus, User } from '../models/user';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
@@ -22,30 +22,29 @@ export class SignUpComponent implements OnInit {
   public signUpInvalide!: boolean;
   private formSubmitAttempt!: boolean;
   private returnUrl!: string;
+  public campusEnum = Campus;
 
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private authService: AuthenticationService,
+    private authService: AuthenticationService
   ) {}
 
   async ngOnInit() {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-
     this.form = this.fb.group({
       email: ['', Validators.email],
       password: ['', Validators.required],
-      firstName:['',Validators.required],
-      lastName:['',Validators.required],
-      phone:['',Validators.required],
-      campus:['',Validators.required]
-
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      phone: ['', Validators.required],
+      campus: ['', Validators.required],
     });
 
-     if (await this.authService.currentUser) {
+    if (await this.authService.currentUser) {
       await this.router.navigate([this.returnUrl]);
-     }
+    }
   }
   get f() {
     return this.form.controls;
@@ -55,18 +54,24 @@ export class SignUpComponent implements OnInit {
   async onSubmit() {
     this.signUpInvalide = false;
     this.formSubmitAttempt = false;
-    this.f
+    this.f;
     if (this.form.valid) {
       try {
         const email = this.f['email'].value;
         const password = this.f['password'].value;
-        const firstName= this.f['firstName'].value;
-        const lastName=this.f['lastName'].value;
-        const phone=this.f['phone'].value;
-        const campus=this.f['campus'].value;
-
-        await this.authService.signup(password,email,firstName,lastName,phone,campus);
-        await this.authService.login(email,password);
+        const firstName = this.f['firstName'].value;
+        const lastName = this.f['lastName'].value;
+        const phone = this.f['phone'].value;
+        const campus = this.f['campus'].value;
+        await this.authService.signup(
+          password,
+          email,
+          firstName,
+          lastName,
+          phone,
+          campus
+        );
+        await this.authService.login(email, password);
         await this.router.navigate([this.returnUrl]);
       } catch (err) {
         this.signUpInvalide = true;

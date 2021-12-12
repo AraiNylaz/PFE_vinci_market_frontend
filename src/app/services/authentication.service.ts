@@ -72,6 +72,7 @@ export class AuthenticationService {
         firstName: firstName,
         password: password,
         campus: campus,
+        campusName: '',
         phone: phone,
         mail: mail,
         isAdmin: false,
