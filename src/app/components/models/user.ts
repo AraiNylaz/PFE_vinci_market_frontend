@@ -1,16 +1,21 @@
-import { Type, Transform } from 'class-transformer';
 import 'reflect-metadata';
-import { Moment } from 'moment';
-import * as moment from 'moment';
+
+export enum Campus {
+  WOLUWE = 'Woluwe',
+  IXELLES = 'Ixelles',
+  LOUVAINLANEUVE = 'Louvain-La-Neuve',
+}
 export class User {
   idUser?: string;
   lastName?: string;
   firstName?: string;
   password?: string;
-  campus?: string;
+  campusName?: string;
+  campus?: Campus;
   phone?: string;
   mail?: string;
-  isAdmin?: boolean;
+  admin?: boolean;
+  ban?: boolean;
 
   get display(): string {
     return `${this.firstName} ${this.lastName} `;

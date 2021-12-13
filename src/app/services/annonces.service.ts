@@ -1,14 +1,14 @@
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { plainToClass } from 'class-transformer';
-import { Inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import * as moment from 'moment';
 import { Annonce } from '../components/models/annonce';
 import { environment } from 'src/environments/environment';
 import { SubCategory } from '../components/models/subCategory';
 import { Category } from '../components/models/category';
 import { User } from '../components/models/user';
+
 
 let baseUrl = environment.api+'/products/';
 let urlSubCategory = environment.api+'/subcategory/';
@@ -59,8 +59,17 @@ export class AnnonceService {
   //   }).subscribe(()=>console.log("enregistrement terminer"),(err)=>console.log(err));
 
   // }
+  getAllNotValidated(): Observable<Annonce[]> {
+    return this.http
+      .get<Annonce[]>(baseUrl + 'notValidated')
+      .pipe(map((res) => plainToClass(Annonce, res)));
+  }
 
-
+  validate(annonce: Annonce) {
+    return this.http
+      .get<void>(baseUrl + 'validate/' + annonce.idAdvertissement)
+      .subscribe();
+  }
 }
 // signup(
 //     password: string,

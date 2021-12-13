@@ -1,4 +1,3 @@
-import { Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AjouterAnnonceComponent } from '../components/ajouterAnnonce/ajouter_annonce.component';
 import { AnnoncesComponent } from '../components/annonces/annonces.component';
@@ -9,6 +8,7 @@ import { ProfilComponent } from '../components/profil/profil.component';
 import { ModifierProfilComponent } from '../components/modifierProfil/modifierProfil.component';
 import { SignUpComponent } from '../components/sign-up/sign-up.component';
 import { UserListComponent } from '../components/userlist/userlist.component';
+import { ValiderAnnoncesComponent } from '../components/validerAnnonces/validerAnnonces.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -39,6 +39,10 @@ const appRoutes: Routes = [
   {
     path: 'ajouterAnnonce',
     component: AjouterAnnonceComponent,
+  },
+  {
+    path: 'validerAnnonces',
+    component: ValiderAnnoncesComponent,
   },
 ];
 

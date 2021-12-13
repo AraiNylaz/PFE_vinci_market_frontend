@@ -1,9 +1,10 @@
-import { Type, Transform } from 'class-transformer';
 import 'reflect-metadata';
+
 import { Moment } from 'moment';
 import * as moment from 'moment';
 import { User } from './user';
 import { SubCategory } from './subCategory';
+
 export class Annonce {
   idProduct?: String;
   status?: string;
@@ -17,6 +18,7 @@ export class Annonce {
   idSubCategory?: string;
   subcategory?:SubCategory;
   creationDate?: Date;
+  valid?: boolean;
 
   get display(): string {
     return `${(this.title, ' ', this.description)}`;

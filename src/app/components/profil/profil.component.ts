@@ -18,8 +18,8 @@ export class ProfilComponent {
   }
 
 
-  goToPage(pageName:string){
-    this.router.navigate([`${pageName}`]);
+  modifierProfil(){
+    this.router.navigate(['/modifierProfil']);
   }
 
 

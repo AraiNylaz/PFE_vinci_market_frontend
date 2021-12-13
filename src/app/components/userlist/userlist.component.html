@@ -7,7 +7,13 @@
 <div class="row">
   <div class="col-sm-12">
     <ul *ngIf="users.length > 0">
-      <li *ngFor="let user of users">{{ user.display }}</li>
+      <div *ngFor="let user of users">
+        <li>{{ user.display }}</li>
+        <form>
+          <button *ngIf="!user.ban" (click)="ban(user)">Banir</button>
+          <button *ngIf="user.ban" (click)="ban(user)">Rétablir</button>
+        </form>
+      </div>
     </ul>
     <p *ngIf="users.length == 0">Pas de membres</p>
   </div>
