@@ -90,7 +90,8 @@ export class AjouterAnnonceComponent {
           status="FREE";
           price=0;
         }
-       
+        await this.annonceService.addAnnonce(title,description,place,idSubCategory,idSeller,price,status);
+        await this.router.navigate([this.returnUrl]);
         
         
       } catch (err) {

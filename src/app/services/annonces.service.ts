@@ -67,7 +67,7 @@ export class AnnonceService {
 
   validate(annonce: Annonce) {
     return this.http
-      .get<void>(baseUrl + 'validate/' + annonce.idAdvertissement)
+      .get<void>(baseUrl + 'validate/' + annonce.idProduct)
       .subscribe();
   }
 }
