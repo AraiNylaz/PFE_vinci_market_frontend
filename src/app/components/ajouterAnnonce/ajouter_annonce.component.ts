@@ -8,10 +8,12 @@ import { AuthenticationService } from '../../services/authentication.service';
 import { Category } from '../models/category';
 import { Annonce } from '../models/annonce';
 import { ThisReceiver } from '@angular/compiler';
+import { BlobServiceClient, ContainerClient } from '@azure/storage-blob';
 @Component({
   templateUrl: 'ajouter_annonce.component.html',
   styleUrls: ['ajouter_annouce.component.css'],
 })
+//https://merlinduvivier.blob.core.windows.net/test?sp=racwl&st=2021-12-13T14:12:58Z&se=2021-12-13T22:12:58Z&spr=https&sv=2020-08-04&sr=c&sig=rrXejLn9nm75U7kGV1gHjvXzN36fx47x70A4RgbCXns%3D
 export class AjouterAnnonceComponent {
   form!: FormGroup;
   subCategories: SubCategory[] = [];
@@ -22,6 +24,10 @@ export class AjouterAnnonceComponent {
   datePipe: DatePipe = new DatePipe('en-EU');
   selecetdFile !: File;
   image!:string | ArrayBuffer | null;
+  blobSasUrl !:string;
+  blobServiceClient!:BlobServiceClient;
+  containerName !:string;
+  containerClient !:ContainerClient;
   private returnUrl!: string;
 
   constructor(private fb: FormBuilder , private route: ActivatedRoute,private annonceService: AnnonceService, private router: Router,
@@ -34,6 +40,10 @@ export class AjouterAnnonceComponent {
     annonceService.getCategories().subscribe((categories)=>{
       this.categories=categories;
     })
+    this.blobSasUrl='https://merlinduvivier.blob.core.windows.net/test?sp=racwl&st=2021-12-13T14:12:58Z&se=2021-12-13T22:12:58Z&spr=https&sv=2020-08-04&sr=c&sig=rrXejLn9nm75U7kGV1gHjvXzN36fx47x70A4RgbCXns%3D';
+    this.blobServiceClient=new BlobServiceClient(this.blobSasUrl);
+    this.containerName="test";
+    this.containerClient=this.blobServiceClient.getContainerClient(this.containerName);
 
   }
   async ngOnInit() {
@@ -87,9 +97,26 @@ export class AjouterAnnonceComponent {
         var price =this.f['price'].value;
         
         if(price==null){
-          status="FREE";
           price=0;
         }
+        if(price==0){
+          status="FREE";
+        }
+        try {
+          const promises = [];
+          
+          const blockBlobClient = this.containerClient.getBlockBlobClient(this.selecetdFile.name);
+          promises.push(blockBlobClient.uploadBrowserData(this.selecetdFile));
+
+          
+          await Promise.all(promises);
+          alert('Done.');
+        }
+        catch (error) {
+          alert(error);
+        }
+
+
         await this.annonceService.addAnnonce(title,description,place,idSubCategory,idSeller,price,status);
         await this.router.navigate([this.returnUrl]);
         
