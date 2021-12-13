@@ -1,3 +1,5 @@
+
+  
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import {
@@ -57,14 +59,17 @@ export class ModifierProfilComponent {
     }
     
     get f() {
+      console.log("function f() :  ");
       return this.formModifier.controls;
     }
     
     password(formGroup: FormGroup) {
       this.f
+      console.log("function password() :  ");
       const password = formGroup.get('password');
       const passwordVerify = formGroup.get('passwordVerify');
-      return password === passwordVerify;
+      console.log("password() ? :  " + (password == passwordVerify));
+      return password == passwordVerify;
     }
     
     async onUpdate() {
@@ -98,4 +103,3 @@ export class ModifierProfilComponent {
     }
     
   }
-  
