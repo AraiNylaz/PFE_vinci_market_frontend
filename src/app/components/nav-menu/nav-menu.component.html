@@ -1,31 +1,30 @@
 <header>
-  <nav
-    class="
-      navbar navbar-expand-sm navbar-toggleable-sm navbar-light
-      bg-dark
-      border-bottom
-      box-shadow
-      mb-3
-    "
-  >
-    <div class="container">
-      <a class="navbar-brand" [routerLink]="['/']">Vinci Market</a>
-      <ul class="navbar-nav flex-grow">
-        <li
-          class="nav-item"
-          [routerLinkActive]="['link-active']"
-          [routerLinkActiveOptions]="{ exact: true }"
-        >
-          <a class="navbar-brand" [routerLink]="['/']">Accueil</a>
-        </li>
-        <li
-          class="nav-item"
-          [routerLinkActive]="['link-active']"
-          [routerLinkActiveOptions]="{ exact: true }"
-        >
-          <a class="navbar-brand" [routerLink]="['/annonces']">Annonces</a>
-        </li>
-        <li
+  <nav class="
+  navbar navbar-expand-sm navbar-toggleable-sm navbar-light
+  bg-dark
+  border-bottom
+  box-shadow
+  navbar-collapse collapse">
+    <img id="logo" class="navbar-brand "  src="/assets/images/logoVinci.png">
+    <div class="flex-container">
+
+      <div class="flex-child ">
+        <ul class="navbar-nav flex-grow">
+          <li
+            class="nav-item"
+            [routerLinkActive]="['link-active']"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            <a class="navbar-brand" [routerLink]="['/']">Accueil</a>
+          </li>
+          <li
+            class="nav-item"
+            [routerLinkActive]="['link-active']"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            <a class="navbar-brand" [routerLink]="['/annonces']">Annonces</a>
+          </li>
+          <li
           class="nav-item"
           [routerLinkActive]="['link-active']"
           *ngIf="currentUser && isAdmin"
@@ -48,7 +47,12 @@
             >Ajouter une Annonce</a
           >
         </li>
-        <li
+        </ul>
+      </div>
+      
+      <div class="flex-child ">
+        <ul>
+          <li
           class="nav-item"
           [routerLinkActive]="['link-active']"
           *ngIf="!currentUser"
@@ -64,7 +68,7 @@
           *ngIf="!currentUser"
         >
           <a class="navbar-brand" [routerLink]="['/signup']">
-            <span> S'inscrire </span>
+            <span > S'inscrire </span>
           </a>
         </li>
         <li
@@ -76,7 +80,9 @@
             >Se deconnecter</a
           >
         </li>
-      </ul>
+        </ul>
+      </div>
+      
     </div>
   </nav>
 </header>
