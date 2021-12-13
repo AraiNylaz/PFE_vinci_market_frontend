@@ -47,10 +47,8 @@
           />
           <mat-error> Confirmez votre nouveau mot de passe </mat-error>
         </mat-form-field>
-      </div>
-      <div *ngIf="formModifier.get('password') !== formModifier.get('passwordVerify')"></div>
-      
-      <button type="button" mat-raised-button color="primary" (click)="backToHomePage()">Mettre mes informations à jour</button>
+      </div>      
+      <button type="button" mat-raised-button color="primary" (click)="backToProfilPage()">Mettre mes informations à jour</button>
     </form>
   </mat-card-content>
 </mat-card>

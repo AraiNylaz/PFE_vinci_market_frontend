@@ -84,7 +84,8 @@ export class AuthenticationService {
           console.log('Erreur ! : ' + error);
         }
         );
-      }
+      }  
+      
       
       updateProfil(
         password: string,
@@ -114,5 +115,18 @@ export class AuthenticationService {
             }
             );
           }
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
         }
+        
+        
         

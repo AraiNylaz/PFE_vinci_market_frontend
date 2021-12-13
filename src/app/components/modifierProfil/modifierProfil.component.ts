@@ -39,7 +39,7 @@ export class ModifierProfilComponent {
       return this.authenticationService.currentUser;
     }
     
-    backToHomePage(){
+    backToProfilPage(){
       this.router.navigate(['/profil']);
     }
     
@@ -68,8 +68,8 @@ export class ModifierProfilComponent {
       console.log("function password() :  ");
       const password = formGroup.get('password');
       const passwordVerify = formGroup.get('passwordVerify');
-      console.log("password() ? :  " + (password == passwordVerify));
-      return password == passwordVerify;
+      console.log("password() ? :  " + (password === passwordVerify));
+      return password === passwordVerify;
     }
     
     async onUpdate() {
