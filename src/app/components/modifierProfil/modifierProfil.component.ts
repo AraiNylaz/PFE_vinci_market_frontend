@@ -59,25 +59,20 @@ export class ModifierProfilComponent {
     }
     
     get f() {
-      console.log("function f() :  ");
       return this.formModifier.controls;
     }
     
     password(formGroup: FormGroup) {
-      this.f
-      console.log("function password() :  ");
-      const password = formGroup.get('password');
-      const passwordVerify = formGroup.get('passwordVerify');
+      const password = formGroup.get('password')?.value;
+      const passwordVerify = formGroup.get('passwordVerify')?.value;
       console.log("password() ? :  " + (password === passwordVerify));
       return password === passwordVerify;
     }
     
     async onUpdate() {
-      console.log("passe ici ! ")
       this.signUpInvalide = false;
       this.formSubmitAttempt = false;
       this.f
-      console.log("password check 2 :  "+ this.password(this.formModifier));
       if(this.password(this.formModifier) && this.formModifier.valid){
         try {
           const email = this.f['email'].value;
@@ -88,8 +83,10 @@ export class ModifierProfilComponent {
           const phone=this.f['phone'].value;
           const campus=this.f['campus'].value;
           console.log("password check 3 :  "+ this.password(this.formModifier));
-          if(password(this.f)){
+          if(this.password(this.formModifier)){
+            console.log("password est true...")
             await this.authenticationService.updateProfil(password,email,firstName,lastName,phone,campus);
+            this.backToProfilPage();
           }else{
           console.log('error is intercept');
           }

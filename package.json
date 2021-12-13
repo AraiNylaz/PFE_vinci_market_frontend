@@ -26,6 +26,7 @@
     "@angular/router": "~13.0.0",
     "bootstrap": "^3.4.1",
     "class-transformer": "^0.5.1",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "jquery": "^3.6.0",
     "mdb-angular-ui-kit": "^1.5.1",
