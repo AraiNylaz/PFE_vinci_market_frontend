@@ -88,16 +88,27 @@ export class AuthenticationService {
       
       
       updateProfil(
+        idUser: string,
         password: string,
         mail: string,
         firstName: string,
         lastName: string,
         phone: string,
-        campus: String
+        campus: string
         ): void {
           console.log('ok');
+          console.log("hello ::   " + this.http
+            .put<User>(`${baseUrl}`+ "/" + `${idUser}`, {
+              lastName: lastName,
+              firstName: firstName,
+              password: password,
+              campus: campus,
+              phone: phone,
+              mail: mail,
+              isAdmin: false,
+            }));
           this.http
-          .put<User>(`${baseUrl}`, {
+          .put<User>(`${baseUrl}`+ "/" + `${idUser}`, {
             lastName: lastName,
             firstName: firstName,
             password: password,

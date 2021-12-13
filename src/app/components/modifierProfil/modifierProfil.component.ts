@@ -46,6 +46,7 @@ export class ModifierProfilComponent {
     async ngOnInit() {
       
       this.formModifier = this.fb.group({
+        idUser: [this.currentUser?.idUser],
         email: [this.currentUser?.mail, Validators.email],
         password: [this.currentUser?.password, Validators.required],
         passwordVerify: [this.currentUser?.password, Validators.required],
@@ -65,7 +66,6 @@ export class ModifierProfilComponent {
     password(formGroup: FormGroup) {
       const password = formGroup.get('password')?.value;
       const passwordVerify = formGroup.get('passwordVerify')?.value;
-      console.log("password() ? :  " + (password === passwordVerify));
       return password === passwordVerify;
     }
     
@@ -74,7 +74,11 @@ export class ModifierProfilComponent {
       this.formSubmitAttempt = false;
       this.f
       if(this.password(this.formModifier) && this.formModifier.valid){
+        console.log("1  :: ");
         try {
+          console.log("2  :: ");
+          const idUser = this.f['idUser'].value;
+          console.log("3  :: ");
           const email = this.f['email'].value;
           const password = this.f['password'].value;
           const passwordVerify = this.f ['passwordVerify'].value;
@@ -85,7 +89,7 @@ export class ModifierProfilComponent {
           console.log("password check 3 :  "+ this.password(this.formModifier));
           if(this.password(this.formModifier)){
             console.log("password est true...")
-            await this.authenticationService.updateProfil(password,email,firstName,lastName,phone,campus);
+            await this.authenticationService.updateProfil(idUser, password,email,firstName,lastName,phone,campus);
             this.backToProfilPage();
           }else{
           console.log('error is intercept');
