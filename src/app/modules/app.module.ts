@@ -15,10 +15,12 @@ import { SharedModule } from './shared.module';
 import { AnnoncesComponent } from '../components/annonces/annonces.component';
 import { ProfilComponent } from '../components/profil/profil.component';
 import { OffresComponent } from '../components/offres/offres.component';
-import { AjouterAnnonceComponent } from '../components/ajouterAnnonce/ajouter_annonce.component';
 import { ModifierProfilComponent } from '../components/modifierProfil/modifierProfil.component';
 import { MapComponent } from '../components/map/map.component';
 import { ValiderAnnoncesComponent } from '../components/validerAnnonces/validerAnnonces.component';
+import { AnnoceDetailComponent } from '../components/annonceDetail/annonceDetail.component';
+import { ModifierAnnonceComponent } from '../components/modifierAnnonce/modifierAnnonce.component';
+import { AjouterOffreComponent } from '../components/ajouterOffre/ajouterOffre.component';
 
 @NgModule({
   declarations: [
@@ -31,10 +33,12 @@ import { ValiderAnnoncesComponent } from '../components/validerAnnonces/validerA
     AnnoncesComponent,
     ProfilComponent,
     OffresComponent,
-    AjouterAnnonceComponent,
     ModifierProfilComponent,
     MapComponent,
     ValiderAnnoncesComponent,
+    AnnoceDetailComponent,
+    ModifierAnnonceComponent,
+    AjouterOffreComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

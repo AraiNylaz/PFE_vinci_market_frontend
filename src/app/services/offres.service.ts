@@ -15,7 +15,6 @@ export class OffreService {
   ) {}
 
   getAll() {
-    console.log('get aull');
     return this.http
       .get<Offre[]>(baseUrl + this.currentUser)
       .pipe(map((res) => plainToClass(Offre, res)));
@@ -23,5 +22,11 @@ export class OffreService {
 
   get currentUser() {
     return this.authenticationService.currentUser?.idUser;
+  }
+
+  createOffer(offer: Offre) {
+    return this.http
+      .post<Offre>(baseUrl, offer)
+      .pipe(map((res) => plainToClass(Offre, res)));
   }
 }

@@ -1,0 +1,29 @@
+<mat-card fxFlexAlign="stretch">
+  <mat-card-content fxFlexAlign="stretch">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <h2>Ajouter une offre</h2>
+      <mat-error *ngIf="offerInvalid"> Message et valeur vides </mat-error>
+      <mat-form-field class="full-width-input">
+        <input
+          matInput
+          placeholder="valeur"
+          formControlName="value"
+          type="number"
+          required
+        />
+        <mat-error> Entrez une valeur </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <input
+          matInput
+          type="text"
+          placeholder="message"
+          formControlName="message"
+          required
+        />
+        <mat-error> Entrez un message</mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary">Envoyer</button>
+    </form>
+  </mat-card-content>
+</mat-card>

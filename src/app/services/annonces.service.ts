@@ -9,14 +9,18 @@ import { SubCategory } from '../components/models/subCategory';
 import { Category } from '../components/models/category';
 import { User } from '../components/models/user';
 
-
-let baseUrl = environment.api+'/products/';
-let urlSubCategory = environment.api+'/subcategory/';
-let urlCategory=environment.api+'/category/';
+let baseUrl = environment.api + '/products/';
+let urlSubCategory = environment.api + '/subcategory/';
+let urlCategory = environment.api + '/category/';
 @Injectable({ providedIn: 'root' })
 export class AnnonceService {
- 
   constructor(private http: HttpClient) {}
+
+  getById(id: string) {
+    return this.http
+      .get<Annonce>(baseUrl + id)
+      .pipe(map((res) => plainToClass(Annonce, res)));
+  }
 
   getAll(): Observable<Annonce[]> {
     return this.http
@@ -24,33 +28,36 @@ export class AnnonceService {
       .pipe(map((res) => plainToClass(Annonce, res)));
   }
 
-  getSubCategories(): Observable<SubCategory[]>{
-    return this.http.get<SubCategory[]>(urlSubCategory).pipe(map((res)=>plainToClass(SubCategory,res)));
+  getSubCategories(): Observable<SubCategory[]> {
+    return this.http
+      .get<SubCategory[]>(urlSubCategory)
+      .pipe(map((res) => plainToClass(SubCategory, res)));
   }
-  getCategories():Observable<Category[]>{
-    return this.http.get<Category[]>(urlCategory).pipe(map((res)=>plainToClass(Category, res)));
+  getCategories(): Observable<Category[]> {
+    return this.http
+      .get<Category[]>(urlCategory)
+      .pipe(map((res) => plainToClass(Category, res)));
   }
   addAnnonce(
-    title: String, 
+    title: String,
     description: String,
     place: String,
     idSubCategory: String,
     idSeller: string | undefined,
     price: number,
-    status:string,) {
-      this.http.post<Annonce>(`${baseUrl}`,{
-        "title":title,
-        "description":description,
-        "place":place,
-        "idSubCategory":idSubCategory,
-        "idSeller":idSeller,
-        "price":price,
-        "status":status,
-
-      }).subscribe(()=>console.log("enregistrer terminer"));
-
-
-
+    status: string
+  ) {
+    this.http
+      .post<Annonce>(`${baseUrl}`, {
+        title: title,
+        description: description,
+        place: place,
+        idSubCategory: idSubCategory,
+        idSeller: idSeller,
+        price: price,
+        status: status,
+      })
+      .subscribe(() => console.log('enregistrer terminer'));
   }
   // addAnnonce(annonce:Annonce):void{
   //   console.log("passe dans add Annonce");
@@ -69,6 +76,12 @@ export class AnnonceService {
     return this.http
       .get<void>(baseUrl + 'validate/' + annonce.idProduct)
       .subscribe();
+  }
+
+  createAnnonce(annonce: Annonce) {
+    return this.http
+      .post<Annonce>(baseUrl, annonce)
+      .pipe(map((res) => plainToClass(Annonce, res)));
   }
 }
 // signup(

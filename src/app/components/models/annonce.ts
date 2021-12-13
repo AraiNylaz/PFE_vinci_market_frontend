@@ -6,17 +6,16 @@ import { User } from './user';
 import { SubCategory } from './subCategory';
 
 export class Annonce {
-  idProduct?: String;
+  idProduct?: string;
   status?: string;
   title?: string;
   description?: string;
-  place?: string;
   price?: Float32Array;
-  idSeller?:string;
-  seller ?: User;
+  idSeller?: string;
+  seller?: User;
   state?: string;
   idSubCategory?: string;
-  subcategory?:SubCategory;
+  subcategory?: SubCategory;
   creationDate?: Date;
   valid?: boolean;
 
