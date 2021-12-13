@@ -19,6 +19,7 @@ export class AjouterAnnonceComponent {
   category!:Category;
   annouce !: Annonce;
   datePipe: DatePipe = new DatePipe('en-EU');
+  selecetdFile !: File;
   private returnUrl!: string;
 
   constructor(private fb: FormBuilder , private route: ActivatedRoute,private annonceService: AnnonceService, private router: Router,
@@ -41,6 +42,7 @@ export class AjouterAnnonceComponent {
       place:['',Validators.required],
       subcategory:['',Validators.required],
       price:[0,!Validators.required],
+      image:['',!Validators.required],
 
 
     });
@@ -56,10 +58,13 @@ export class AjouterAnnonceComponent {
     return this.form.controls;
     //va chercher la properties du form
   }
-   
+  async onFileUpload(event: { target: { files: File[]; }; }){
+    this.selecetdFile = event.target.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(this.selecetdFile);
+    }
 
   async onSubmit() {
-    console.log(this.categories);
     this.f
     if (this.form.valid) {
       try {
@@ -68,33 +73,22 @@ export class AjouterAnnonceComponent {
         const description = this.f['description'].value;
         const place= this.f['place'].value;
         let subcategory=this.f['subcategory'].value;
+        let image=this.f['image'].value;
+        console.log(image);
+        
         const idSubCategory=subcategory.idSubCategory;
-        subcategory.idCategory=subcategory.category.idCategory;
-        var  date =new Date();
         const seller=this.authService.currentUser;
         const idSeller=seller?.idUser;
-        const creationDate=Date.now();
-        const status="A donner";
+        let status="SELL";
        
         var price =this.f['price'].value;
         
         if(price==null){
+          status="FREE";
           price=0;
         }
-        
-        this.annouce.creationDate=date;
-        this.annouce.description=description;
-        this.annouce.idSeller=idSeller;
-        this.annouce.idSubCategory=idSubCategory;
-        this.annouce.place=place;
-        this.annouce.price=price;
-        this.annouce.seller=seller;
-        this.annouce.status=status;
-        this.annouce.subcategory=subcategory;
-        this.annouce.title=title;
-        await this.annonceService.addAnnonce(title,description,place,idSubCategory,idSeller,price,status);
-        await this.router.navigate([this.returnUrl]);
-        //this.annonceService.addAnnonce(title, description,place,subcategory,idSubCategory,seller,idSeller,creationDate,price,status,state);
+        // await this.annonceService.addAnnonce(title,description,place,idSubCategory,idSeller,price,status);
+        // await this.router.navigate([this.returnUrl]);
         
         
       } catch (err) {

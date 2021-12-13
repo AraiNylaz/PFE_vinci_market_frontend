@@ -20,6 +20,8 @@
           <option value=”woluwe”>woluwe</option>
           <mat-error> Entrez un campus </mat-error>
           </select>
+          <p style="color:#808080">image du fichier</p>
+          <input type="file"  name="filename" formControlName="image" onchange="onFileUpload()">
           <p style="color:#808080">categorie</p>
           <select formControlName="subcategory" class="list-group-item" required>
             <option *ngFor="let subcategor of subCategories" [ngValue]="subcategor">{{subcategor.display}}</option>
