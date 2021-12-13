@@ -37,8 +37,12 @@ ul {
   }
   #left{
     text-align: right;
-    background-color: violet;
     position:absolute;
     right:30px;
   
+  }
+  #login{
+    background-color: tomato;
+    color: white;
+    border-radius: 50px;
   }

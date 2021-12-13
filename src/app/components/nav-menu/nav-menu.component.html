@@ -59,9 +59,11 @@
           [routerLinkActive]="['link-active']"
           *ngIf="!currentUser"
         >
+        <button id ="login" >
           <a class="navbar-brand" [routerLink]="['/login']">
-            <span> Se connecter </span>
+            <span > Se connecter </span>
           </a>
+        </button>
         </li>
 
         <li
@@ -69,9 +71,11 @@
           [routerLinkActive]="['link-active']"
           *ngIf="!currentUser"
         >
-          <a class="navbar-brand" [routerLink]="['/signup']">
+        <button id ="login">
+          <a class="navbar-brand" [routerLink]="['/signup']" >
             <span > S'inscrire </span>
           </a>
+        </button>
         </li>
         <li
           class="nav-item"
