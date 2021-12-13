@@ -35,3 +35,10 @@ ul {
   .div{
     text-align: center;
   }
+  #left{
+    text-align: right;
+    background-color: violet;
+    position:absolute;
+    right:30px;
+  
+  }
