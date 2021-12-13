@@ -61,7 +61,7 @@
         >
         <button id ="login" >
           <a class="navbar-brand" [routerLink]="['/login']">
-            <span > Se connecter </span>
+            <span id="color" > Se connecter </span>
           </a>
         </button>
         </li>
@@ -73,7 +73,7 @@
         >
         <button id ="login">
           <a class="navbar-brand" [routerLink]="['/signup']" >
-            <span > S'inscrire </span>
+            <span id="color" > S'inscrire </span>
           </a>
         </button>
         </li>
@@ -81,10 +81,9 @@
           class="nav-item"
           [routerLinkActive]="['link-active']"
           *ngIf="currentUser"
-        >
-          <a class="navbar-brand" [routerLink]="" (click)="logout()"
-            >Se deconnecter</a
-          >
+        ><button id ="login">
+          <a class="navbar-brand" [routerLink]="" (click)="logout()"><span id="color">Se deconnecter</span></a>
+          </button>
         </li>
         </ul>
       </div>

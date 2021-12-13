@@ -42,7 +42,9 @@ ul {
   
   }
   #login{
-    background-color: tomato;
-    color: white;
+    background-color: #006f91;
     border-radius: 50px;
+  }
+  #color{
+    color:white;
   }
