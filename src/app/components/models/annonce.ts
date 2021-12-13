@@ -1,7 +1,4 @@
-import { Type, Transform } from 'class-transformer';
 import 'reflect-metadata';
-import { Moment } from 'moment';
-import * as moment from 'moment';
 export class Annonce {
   idAdvertissement?: Number;
   status?: string;
@@ -13,6 +10,7 @@ export class Annonce {
   state?: string;
   idSousCategorie?: Number;
   creationDate?: Date;
+  valid?: boolean;
 
   get display(): string {
     return `${(this.title, ' ', this.description)}`;
