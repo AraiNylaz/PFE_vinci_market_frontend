@@ -5,15 +5,15 @@ GET http://localhost:8080/users HTTP/1.1
 # Content-Type:application/json
 
 # {
-    
-        
-#         "lastName":"test",
-#         "firstName":"teste",
-#         "password":"teste",
-#         "campus":"ixelles",
-#         "phone":"5456",
-#         "mail":"merin.duvivier@student.vinci.be",
-#         "isAdmin":false
+   
+        "lastName":"test",
+        "firstName":"teste",
+        "password":"teste",
+        "campus":"IXELLES",
+        "phone":"5456",
+        "mail":"merin.duvivier@student.vinci.be",
+        "isAdmin":false
+
     
     
 # }
