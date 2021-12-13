@@ -1,14 +1,18 @@
 import 'reflect-metadata';
+
+export enum Status {
+  FREE = 'A vendre',
+  SELL = 'A donner',
+}
 export class Annonce {
-  idAdvertissement?: Number;
-  status?: string;
+  idProduct?: string;
+  status?: Status;
   title?: string;
   description?: string;
-  place?: string;
   price?: Float32Array;
   idSeller?: Number;
   state?: string;
-  idSousCategorie?: Number;
+  idSubCategory?: Number;
   creationDate?: Date;
   valid?: boolean;
 

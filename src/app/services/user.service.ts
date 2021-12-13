@@ -18,8 +18,6 @@ export class UserService {
   }
 
   createUser(user: User) {
-    console.log('user');
-    console.log(user);
     return this.http
       .post<User>(baseUrl + 'test', user)
       .pipe(map((res) => plainToClass(User, res)));

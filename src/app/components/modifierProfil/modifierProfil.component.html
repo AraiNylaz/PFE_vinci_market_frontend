@@ -2,23 +2,34 @@
   <mat-card-content fxFlexAlign="stretch">
     <form [formGroup]="formModifier" (ngSubmit)="onUpdate()">
       <h2>Modifier mes informations personnelles</h2>
-      <mat-form-field  class="full-width-input">
+      <mat-form-field class="full-width-input">
         <input matInput placeholder="nom" formControlName="lastName" required />
         <mat-error> Entrez un nom valide </mat-error>
       </mat-form-field>
-      <mat-form-field  class="full-width-input">
-        <input matInput placeholder="prenom" formControlName="firstName" required/>
+      <mat-form-field class="full-width-input">
+        <input
+          matInput
+          placeholder="prenom"
+          formControlName="firstName"
+          required
+        />
         <mat-error> Entrez un prenom valide </mat-error>
       </mat-form-field>
-      <mat-form-field  class="full-width-input">
-        <input matInput placeholder="phone"  type="tel" formControlName="phone" required/>
+      <mat-form-field class="full-width-input">
+        <input
+          matInput
+          placeholder="phone"
+          type="tel"
+          formControlName="phone"
+          required
+        />
         <mat-error> Entrez un numero de téléphone valide </mat-error>
       </mat-form-field>
-      <p style="color:#808080">campus*</p>
+      <p style="color: #808080">campus*</p>
       <select formControlName="campus" required>
-        <option value=”ixelles”>ixelles</option>
-        <option value=”louvain-la-neuve”>louvain-la-neuve</option>
-        <option value=”woluwe”>woluwe</option>
+        <option value="”ixelles”">ixelles</option>
+        <option value="”louvain-la-neuve”">louvain-la-neuve</option>
+        <option value="”woluwe”">woluwe</option>
         <mat-error> Entrez un campus </mat-error>
       </select>
       <mat-form-field class="full-width-input">
@@ -28,29 +39,35 @@
       <div class="form-group"></div>
       <mat-form-field class="full-width-input">
         <input
-        matInput
-        type="password"
-        placeholder="mot de passe"
-        formControlName="password"
-        required
+          matInput
+          type="password"
+          placeholder="mot de passe"
+          formControlName="password"
+          required
         />
         <mat-error> Entrez un mot de passe valide </mat-error>
       </mat-form-field>
       <div class="form-group">
         <mat-form-field class="full-width-input">
           <input
-          matInput
-          type="password"
-          placeholder=" vérification du mot de passe"
-          formControlName="passwordVerify"
-          required
+            matInput
+            type="password"
+            placeholder=" vérification du mot de passe"
+            formControlName="passwordVerify"
+            required
           />
           <mat-error> Confirmez votre nouveau mot de passe </mat-error>
         </mat-form-field>
       </div>
-      <div *ngIf="formModifier.get('password') !== formModifier.get('passwordVerify')"></div>
-      
-      <button type="button" mat-raised-button color="primary" (click)="backToHomePage()">Mettre mes informations à jour</button>
+      <div
+        *ngIf="
+          formModifier.get('password') !== formModifier.get('passwordVerify')
+        "
+      ></div>
+
+      <button type="button" mat-raised-button color="primary">
+        Mettre mes informations à jour
+      </button>
     </form>
   </mat-card-content>
 </mat-card>

@@ -1,8 +1,8 @@
 import 'reflect-metadata';
 export class Offre {
-  idOffer?: Number;
-  iProduct?: Number;
-  idBuyer?: Number;
+  idOffer?: string;
+  iProduct?: string;
+  idBuyer?: string;
   value?: Float32Array;
   message?: string;
 

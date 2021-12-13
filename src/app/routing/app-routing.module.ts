@@ -1,5 +1,4 @@
 import { Routes, RouterModule } from '@angular/router';
-import { AjouterAnnonceComponent } from '../components/annonces/ajouter_annonce.component';
 import { AnnoncesComponent } from '../components/annonces/annonces.component';
 
 import { HomeComponent } from '../components/home/home.component';
@@ -9,6 +8,8 @@ import { ModifierProfilComponent } from '../components/modifierProfil/modifierPr
 import { SignUpComponent } from '../components/sign-up/sign-up.component';
 import { UserListComponent } from '../components/userlist/userlist.component';
 import { ValiderAnnoncesComponent } from '../components/validerAnnonces/validerAnnonces.component';
+import { AnnoceDetailComponent } from '../components/annonceDetail/annonceDetail.component';
+import { AjouterOffreComponent } from '../components/ajouterOffre/ajouterOffre.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -29,6 +30,10 @@ const appRoutes: Routes = [
     component: AnnoncesComponent,
   },
   {
+    path: 'annonceDetail/:id',
+    component: AnnoceDetailComponent,
+  },
+  {
     path: 'profil',
     component: ProfilComponent,
   },
@@ -37,12 +42,12 @@ const appRoutes: Routes = [
     component: ModifierProfilComponent,
   },
   {
-    path: 'ajouterAnnonce',
-    component: AjouterAnnonceComponent,
-  },
-  {
     path: 'validerAnnonces',
     component: ValiderAnnoncesComponent,
+  },
+  {
+    path: 'ajouterOffre/:id',
+    component: AjouterOffreComponent,
   },
 ];
 

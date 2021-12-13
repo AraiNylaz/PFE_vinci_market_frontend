@@ -6,10 +6,16 @@ import { HttpClient } from '@angular/common/http';
 import { Annonce } from '../components/models/annonce';
 import { environment } from 'src/environments/environment';
 
-let baseUrl = environment.api + '/annonces/';
+let baseUrl = environment.api + '/products/';
 @Injectable({ providedIn: 'root' })
 export class AnnonceService {
   constructor(private http: HttpClient) {}
+
+  getById(id: string) {
+    return this.http
+      .get<Annonce>(baseUrl + id)
+      .pipe(map((res) => plainToClass(Annonce, res)));
+  }
 
   getAll(): Observable<Annonce[]> {
     return this.http
@@ -25,7 +31,13 @@ export class AnnonceService {
 
   validate(annonce: Annonce) {
     return this.http
-      .get<void>(baseUrl + 'validate/' + annonce.idAdvertissement)
+      .get<void>(baseUrl + 'validate/' + annonce.idProduct)
       .subscribe();
+  }
+
+  createAnnonce(annonce: Annonce) {
+    return this.http
+      .post<Annonce>(baseUrl, annonce)
+      .pipe(map((res) => plainToClass(Annonce, res)));
   }
 }
