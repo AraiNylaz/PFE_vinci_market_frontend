@@ -1,14 +1,22 @@
 import 'reflect-metadata';
+
+import { Moment } from 'moment';
+import * as moment from 'moment';
+import { User } from './user';
+import { SubCategory } from './subCategory';
+
 export class Annonce {
-  idAdvertissement?: Number;
+  idProduct?: String;
   status?: string;
   title?: string;
   description?: string;
   place?: string;
   price?: Float32Array;
-  idSeller?: Number;
+  idSeller?:string;
+  seller ?: User;
   state?: string;
-  idSousCategorie?: Number;
+  idSubCategory?: string;
+  subcategory?:SubCategory;
   creationDate?: Date;
   valid?: boolean;
 

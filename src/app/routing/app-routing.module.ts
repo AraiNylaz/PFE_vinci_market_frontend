@@ -1,5 +1,5 @@
 import { Routes, RouterModule } from '@angular/router';
-import { AjouterAnnonceComponent } from '../components/annonces/ajouter_annonce.component';
+import { AjouterAnnonceComponent } from '../components/ajouterAnnonce/ajouter_annonce.component';
 import { AnnoncesComponent } from '../components/annonces/annonces.component';
 
 import { HomeComponent } from '../components/home/home.component';
