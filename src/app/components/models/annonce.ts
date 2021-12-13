@@ -1,18 +1,21 @@
 import 'reflect-metadata';
 
-export enum Status {
-  FREE = 'A vendre',
-  SELL = 'A donner',
-}
+import { Moment } from 'moment';
+import * as moment from 'moment';
+import { User } from './user';
+import { SubCategory } from './subCategory';
+
 export class Annonce {
   idProduct?: string;
-  status?: Status;
+  status?: string;
   title?: string;
   description?: string;
   price?: Float32Array;
-  idSeller?: Number;
+  idSeller?: string;
+  seller?: User;
   state?: string;
-  idSubCategory?: Number;
+  idSubCategory?: string;
+  subcategory?: SubCategory;
   creationDate?: Date;
   valid?: boolean;
 
