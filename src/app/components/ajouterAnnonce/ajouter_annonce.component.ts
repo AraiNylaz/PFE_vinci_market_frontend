@@ -7,6 +7,7 @@ import { SubCategory } from '../models/subCategory';
 import { AuthenticationService } from '../../services/authentication.service';
 import { Category } from '../models/category';
 import { Annonce } from '../models/annonce';
+import { ThisReceiver } from '@angular/compiler';
 @Component({
   templateUrl: 'ajouter_annonce.component.html',
   styleUrls: ['ajouter_annouce.component.css'],
@@ -20,6 +21,7 @@ export class AjouterAnnonceComponent {
   annouce !: Annonce;
   datePipe: DatePipe = new DatePipe('en-EU');
   selecetdFile !: File;
+  image!:string | ArrayBuffer | null;
   private returnUrl!: string;
 
   constructor(private fb: FormBuilder , private route: ActivatedRoute,private annonceService: AnnonceService, private router: Router,
@@ -56,12 +58,14 @@ export class AjouterAnnonceComponent {
 
   get f() {
     return this.form.controls;
-    //va chercher la properties du form
   }
-  async onFileUpload(event: { target: { files: File[]; }; }){
-    this.selecetdFile = event.target.files[0];
+  async onFileUpload(event: any){
+    this.selecetdFile=event.target.files[0];
     const reader = new FileReader();
     reader.readAsDataURL(this.selecetdFile);
+    reader.onload = () => {
+      this.image=reader.result;
+    };
     }
 
   async onSubmit() {
@@ -73,8 +77,7 @@ export class AjouterAnnonceComponent {
         const description = this.f['description'].value;
         const place= this.f['place'].value;
         let subcategory=this.f['subcategory'].value;
-        let image=this.f['image'].value;
-        console.log(image);
+        console.log(this.image);
         
         const idSubCategory=subcategory.idSubCategory;
         const seller=this.authService.currentUser;
@@ -87,8 +90,7 @@ export class AjouterAnnonceComponent {
           status="FREE";
           price=0;
         }
-        // await this.annonceService.addAnnonce(title,description,place,idSubCategory,idSeller,price,status);
-        // await this.router.navigate([this.returnUrl]);
+       
         
         
       } catch (err) {
