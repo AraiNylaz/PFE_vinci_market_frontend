@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AnnonceService } from 'src/app/services/annonces.service';
 import { SubCategory } from '../models/subCategory';
 import { AuthenticationService } from '../../services/authentication.service';
+import { Photoservice } from 'src/app/services/photo.service';
 import { Category } from '../models/category';
 import { Annonce } from '../models/annonce';
 import { ThisReceiver } from '@angular/compiler';
@@ -23,7 +24,7 @@ export class AjouterAnnonceComponent {
   annouce !: Annonce;
   datePipe: DatePipe = new DatePipe('en-EU');
   selecetdFile !: File;
-  image!:string | ArrayBuffer | null;
+  imagename!:string | ArrayBuffer | null;
   blobSasUrl !:string;
   blobServiceClient!:BlobServiceClient;
   containerName !:string;
@@ -31,7 +32,7 @@ export class AjouterAnnonceComponent {
   private returnUrl!: string;
 
   constructor(private fb: FormBuilder , private route: ActivatedRoute,private annonceService: AnnonceService, private router: Router,
-    private authService: AuthenticationService) {
+    private authService: AuthenticationService,private photoService:Photoservice) {
     annonceService.getSubCategories().subscribe((subCategories)=>{
       this.subCategories=subCategories;
 
@@ -40,7 +41,7 @@ export class AjouterAnnonceComponent {
     annonceService.getCategories().subscribe((categories)=>{
       this.categories=categories;
     })
-    const token ='sp=racwdli&st=2021-12-13T15:01:30Z&se=2021-12-14T23:01:30Z&spr=https&sv=2020-08-04&sr=c&sig=2om1IM8A8ETErETEGvUmfjXULbu3CkuvBigl6qwCE50%3D';
+    const token ='sp=racwdl&st=2021-12-14T09:08:55Z&se=2021-12-18T17:08:55Z&sv=2020-08-04&sr=c&sig=iwxED4BIiSKcrJSxJnHJv7ywxTyKpxUPJlHzvK0NYkY%3D';
 
     this.blobSasUrl=`https://merlinduvivier.blob.core.windows.net?${token}`;
     this.blobServiceClient=new BlobServiceClient(this.blobSasUrl);
@@ -76,7 +77,7 @@ export class AjouterAnnonceComponent {
     const reader = new FileReader();
     reader.readAsDataURL(this.selecetdFile);
     reader.onload = () => {
-      this.image=reader.result;
+      this.imagename=reader.result;
     };
     }
 
@@ -94,7 +95,7 @@ export class AjouterAnnonceComponent {
         const seller=this.authService.currentUser;
         const idSeller=seller?.idUser;
         let status="SELL";
-       
+        const nomFichier = Math.floor((Math.random()+1)*100)+""+this.selecetdFile.name;
         var price =this.f['price'].value;
         
         if(price==null){
@@ -105,12 +106,11 @@ export class AjouterAnnonceComponent {
         }
         try {
           const promises = [];
-          
-          const blockBlobClient = this.containerClient.getBlockBlobClient("test");
-          const reponse =promises.push(blockBlobClient.uploadBrowserData(this.selecetdFile));
-          console.log(this.selecetdFile.name);
+         
 
           
+          const blockBlobClient = this.containerClient.getBlockBlobClient(nomFichier);
+          promises.push(blockBlobClient.uploadBrowserData(this.selecetdFile));
           await Promise.all(promises);
           alert('Done.');
         }
@@ -119,7 +119,11 @@ export class AjouterAnnonceComponent {
         }
 
 
-        await this.annonceService.addAnnonce(title,description,place,idSubCategory,idSeller,price,status);
+        await this.annonceService.addAnnonce(title,description,place,idSubCategory,idSeller,price,status,nomFichier).subscribe(async (ret)=>{
+          console.log(nomFichier);
+          await this.photoService.addPhoto(ret.idProduct,nomFichier);
+    
+        });
         await this.router.navigate([this.returnUrl]);
         
         
