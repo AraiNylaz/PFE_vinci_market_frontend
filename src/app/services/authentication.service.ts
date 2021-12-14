@@ -97,7 +97,7 @@ export class AuthenticationService {
         ): void {
           console.log('ok');
           this.http
-          .post<User>(`${baseUrl}`, {
+          .put<User>(`${baseUrl}` + `${this.currentUser?.idUser}`,{
             lastName: lastName,
             firstName: firstName,
             password: password,
@@ -111,7 +111,7 @@ export class AuthenticationService {
               user = plainToClass(User, user);
               sessionStorage.setItem('currentUser', JSON.stringify(user));
               this.currentUser = user;
-              console.log("userUpadate : "+ user)        
+              console.log("userUpdate : "+ user)        
             },
             (error) => {
               console.log('Erreur ! : ' + error);

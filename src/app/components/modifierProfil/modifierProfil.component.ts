@@ -48,7 +48,6 @@ export class ModifierProfilComponent {
     async ngOnInit() {
       
       this.formModifier = this.fb.group({
-        idUser: [this.currentUser?.idUser],
         email: [this.currentUser?.mail, Validators.email],
         password: [this.currentUser?.password, Validators.required],
         passwordVerify: [this.currentUser?.password, Validators.required],
@@ -66,7 +65,6 @@ export class ModifierProfilComponent {
     }
     
     password(formGroup: FormGroup) {
-      this.f
       const password = formGroup.get('password')?.value;
       const passwordVerify = formGroup.get('passwordVerify')?.value;
       return password === passwordVerify;
@@ -77,9 +75,8 @@ export class ModifierProfilComponent {
       this.formSubmitAttempt = false;
       this.f
       if(this.password(this.formModifier) && this.formModifier.valid){
-        console.log("1  :: ");
+
         try {
-          console.log("2  :: ");
           const email = this.f['email'].value;
           const password = this.f['password'].value;
           const passwordVerify = this.f ['passwordVerify'].value;
