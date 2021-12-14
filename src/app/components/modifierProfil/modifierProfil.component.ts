@@ -12,7 +12,7 @@ import {
   ValidationErrors,
 } from '@angular/forms';
 import { UserService } from '../../services/user.service';
-import { User } from '../models/user';
+import { Campus, User } from '../models/user';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { throwError } from 'rxjs';
 //import { ConfirmedValidator } from './confirm.validator';
@@ -27,12 +27,14 @@ export class ModifierProfilComponent {
   public signUpInvalide!: boolean;
   private formSubmitAttempt!: boolean;
   private returnUrl!: string;
+  public campusEnum = Campus;
   
   constructor (
     private authenticationService: AuthenticationService, 
     private router: Router, 
     private fb: FormBuilder,
     private route: ActivatedRoute
+    
     ) {}
     
     get currentUser() {
@@ -64,6 +66,7 @@ export class ModifierProfilComponent {
     }
     
     password(formGroup: FormGroup) {
+      this.f
       const password = formGroup.get('password')?.value;
       const passwordVerify = formGroup.get('passwordVerify')?.value;
       return password === passwordVerify;
