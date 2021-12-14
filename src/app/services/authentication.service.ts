@@ -88,7 +88,6 @@ export class AuthenticationService {
       
       
       updateProfil(
-        idUser: string,
         password: string,
         mail: string,
         firstName: string,
@@ -98,17 +97,17 @@ export class AuthenticationService {
         ): void {
           console.log('ok');
           console.log("hello ::   " + this.http
-            .put<User>(`${baseUrl}`+ "/" + `${idUser}`, {
-              lastName: lastName,
-              firstName: firstName,
-              password: password,
-              campus: campus,
-              phone: phone,
-              mail: mail,
-              isAdmin: false,
-            }));
+          .put<User>(`${baseUrl}`+ `${this.currentUser?.idUser}`, {
+            lastName: lastName,
+            firstName: firstName,
+            password: password,
+            campus: campus,
+            phone: phone,
+            mail: mail,
+            isAdmin: false,
+          }));
           this.http
-          .put<User>(`${baseUrl}`+ "/" + `${idUser}`, {
+          .put<User>(`${baseUrl}`+ `${this.currentUser?.idUser}`, {
             lastName: lastName,
             firstName: firstName,
             password: password,

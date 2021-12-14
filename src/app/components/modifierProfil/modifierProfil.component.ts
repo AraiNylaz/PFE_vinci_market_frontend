@@ -77,8 +77,6 @@ export class ModifierProfilComponent {
         console.log("1  :: ");
         try {
           console.log("2  :: ");
-          const idUser = this.f['idUser'].value;
-          console.log("3  :: ");
           const email = this.f['email'].value;
           const password = this.f['password'].value;
           const passwordVerify = this.f ['passwordVerify'].value;
@@ -89,7 +87,8 @@ export class ModifierProfilComponent {
           console.log("password check 3 :  "+ this.password(this.formModifier));
           if(this.password(this.formModifier)){
             console.log("password est true...")
-            await this.authenticationService.updateProfil(idUser, password,email,firstName,lastName,phone,campus);
+            console.log(this.currentUser);
+            await this.authenticationService.updateProfil(password,email,firstName,lastName,phone,campus);
             this.backToProfilPage();
           }else{
           console.log('error is intercept');
