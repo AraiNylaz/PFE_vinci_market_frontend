@@ -10,6 +10,7 @@ import { UserListComponent } from '../components/userlist/userlist.component';
 import { ValiderAnnoncesComponent } from '../components/validerAnnonces/validerAnnonces.component';
 import { AnnoceDetailComponent } from '../components/annonceDetail/annonceDetail.component';
 import { AjouterOffreComponent } from '../components/ajouterOffre/ajouterOffre.component';
+import {AjouterAnnonceComponent} from '../components/ajouterAnnonce/ajouter_annonce.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -49,6 +50,10 @@ const appRoutes: Routes = [
     path: 'ajouterOffre/:id',
     component: AjouterOffreComponent,
   },
+  {
+    path:'ajouterAnnonce',
+    component:AjouterAnnonceComponent,
+  }
 ];
 
 export const AppRoutes = RouterModule.forRoot(appRoutes);
