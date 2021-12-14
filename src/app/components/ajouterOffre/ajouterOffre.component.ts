@@ -8,6 +8,7 @@ import { Offre } from '../models/offres';
 
 @Component({
   templateUrl: 'ajouterOffre.component.html',
+  styleUrls: ['ajouterOffre.component.css'],
 })
 export class AjouterOffreComponent implements OnInit {
   annonce!: Annonce;

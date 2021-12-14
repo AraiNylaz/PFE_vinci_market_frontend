@@ -1,3 +1,4 @@
+<div class="container">
 <mat-card fxFlexAlign="stretch">
   <mat-card-content fxFlexAlign="stretch">
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
@@ -25,7 +26,7 @@
         />
         <mat-error> Entrez un numero de téléphone valide </mat-error>
       </mat-form-field>
-      <p style="color: #808080">campus*</p>
+      <p>campus*</p>
       <select formControlName="campus" required>
         <option value="IXELLES">{{ campusEnum.IXELLES }}</option>
         <option value="LOUVAIN">
@@ -49,7 +50,8 @@
         <mat-error> Entrez un mot de passe valide </mat-error>
       </mat-form-field>
 
-      <button mat-raised-button color="primary">S'inscrire</button>
+      <button class="persoColorBlue">S'inscrire</button>
     </form>
   </mat-card-content>
 </mat-card>
+</div>

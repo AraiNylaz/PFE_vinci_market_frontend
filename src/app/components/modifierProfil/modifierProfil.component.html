@@ -1,3 +1,4 @@
+<div class="container">
 <mat-card fxFlexAlign="stretch">
   <mat-card-content fxFlexAlign="stretch">
     <form [formGroup]="formModifier" (ngSubmit)="onUpdate()">
@@ -34,11 +35,7 @@
         <option value="WOLUWE">{{ campusEnum.WOLUWE }}</option>
         <mat-error> Entrez un campus </mat-error>
       </select>
-      <mat-form-field class="full-width-input">
-        <input matInput placeholder="email" formControlName="email" required />
-        <mat-error> Entrez un email valide </mat-error>
-      </mat-form-field>
-      
+    
       <mat-form-field class="full-width-input">
         <input
           matInput
@@ -61,9 +58,10 @@
         <mat-error> Confirmez votre nouveau mot de passe </mat-error>
       </mat-form-field>
       
-      <button mat-raised-button color="primary">
+      <button class="persoColorBlue">
         Mettre mes informations à jour
       </button>
     </form>
   </mat-card-content>
 </mat-card>
+</div>

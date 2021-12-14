@@ -15,7 +15,6 @@ import { UserService } from '../../services/user.service';
 import { Campus, User } from '../models/user';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { throwError } from 'rxjs';
-//import { ConfirmedValidator } from './confirm.validator';
 
 @Component({
   templateUrl: './modifierProfil.component.html',
@@ -48,7 +47,6 @@ export class ModifierProfilComponent {
     async ngOnInit() {
       
       this.formModifier = this.fb.group({
-        email: [this.currentUser?.mail, Validators.email],
         password: [this.currentUser?.password, Validators.required],
         passwordVerify: [this.currentUser?.password, Validators.required],
         firstName:[this.currentUser?.firstName,Validators.required],
@@ -77,7 +75,6 @@ export class ModifierProfilComponent {
       if(this.password(this.formModifier) && this.formModifier.valid){
 
         try {
-          const email = this.f['email'].value;
           const password = this.f['password'].value;
           const passwordVerify = this.f ['passwordVerify'].value;
           const firstName= this.f['firstName'].value;
@@ -88,7 +85,7 @@ export class ModifierProfilComponent {
           if(this.password(this.formModifier)){
             console.log("password est true...")
             console.log(this.currentUser);
-            await this.authenticationService.updateProfil(password,email,firstName,lastName,phone,campus);
+            await this.authenticationService.updateProfil(password,firstName,lastName,phone,campus);
             this.backToProfilPage();
           }else{
           console.log('error is intercept');

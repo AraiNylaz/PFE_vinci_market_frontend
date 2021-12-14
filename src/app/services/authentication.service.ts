@@ -89,7 +89,6 @@ export class AuthenticationService {
       
       updateProfil(
         password: string,
-        mail: string,
         firstName: string,
         lastName: string,
         phone: string,
@@ -103,7 +102,6 @@ export class AuthenticationService {
             password: password,
             campus: campus,
             phone: phone,
-            mail: mail,
             isAdmin: false,
           })
           .subscribe(

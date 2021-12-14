@@ -10,6 +10,12 @@ h3{
     margin-top: 0;
     padding-top: 0;
 }
+.h3display{
+    display: inline-block;
+    margin-top: 0;
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
 
 legend{
     color:#006f918c;

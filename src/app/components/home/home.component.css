@@ -1,32 +1,48 @@
-h1 {
-  font-size: 60px;
-  text-align: center;
-  font-weight: bold;
+.container {
+	position: absolute;
+	top: 55%;
+	left: 50%;
+	transform: translate(-50%, -50%);
   color: #006f91;
+  margin-bottom: 10px;
 }
 
-h2 {
-  font-size: 30px;
-  text-align: center;
-  margin-top: 100px;
-  margin-bottom: 60px;
-}
-h3 {
-  font-weight: bold;
-  color: #006f91;
-}
-h4{
-  font-size: 18px;
-  text-align: center;
-  color: #006f91;
-}
-
-#space {
-  height: 450px;
-}
 li{
-  font-size: 15px;
+  padding: 10px;
+  font-size: 120%;
 }
-p{
-  font-size: 15px;
+
+.secmain {
+  list-style-type: "✔️";
+}
+.recup{
+  list-style-type: "♻️";
+}
+.enviro{
+  list-style-type: "🌱";
+}
+.liens{
+  list-style-type: "🤝";
+}
+.eco{
+  list-style-type: "💰";
+}
+.grenier{
+  list-style-type: "🧺";
+}
+.circuit{
+  list-style-type: "🚗";
+}
+.happy{
+  list-style-type: "✌️";
+}
+
+blockquote {
+  padding: 15px;
+  background: #eee;
+  border-radius: 5px;
+}
+
+#bold{
+  font-weight: bold;
 }
