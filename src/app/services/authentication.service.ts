@@ -72,6 +72,7 @@ export class AuthenticationService {
         firstName: firstName,
         password: password,
         campus: campus,
+        campusName: '',
         phone: phone,
         mail: mail,
         isAdmin: false,
@@ -84,8 +85,7 @@ export class AuthenticationService {
           console.log('Erreur ! : ' + error);
         }
         );
-      }  
-      
+      }
       
       updateProfil(
         password: string,
@@ -93,11 +93,11 @@ export class AuthenticationService {
         firstName: string,
         lastName: string,
         phone: string,
-        campus: string
+        campus: String
         ): void {
           console.log('ok');
           this.http
-          .put<User>(`${baseUrl}`+ `${this.currentUser?.idUser}`, {
+          .post<User>(`${baseUrl}`, {
             lastName: lastName,
             firstName: firstName,
             password: password,
@@ -107,26 +107,16 @@ export class AuthenticationService {
             isAdmin: false,
           })
           .subscribe(
-            () => {
-              console.log('update terminé !');
+            (user) => {
+              user = plainToClass(User, user);
+              sessionStorage.setItem('currentUser', JSON.stringify(user));
+              this.currentUser = user;
+              console.log("userUpadate : "+ user)        
             },
             (error) => {
               console.log('Erreur ! : ' + error);
             }
             );
           }
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
         }
-        
-        
         

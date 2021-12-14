@@ -1,15 +1,23 @@
 import 'reflect-metadata';
+
+import { Moment } from 'moment';
+import * as moment from 'moment';
+import { User } from './user';
+import { SubCategory } from './subCategory';
+
 export class Annonce {
-  idAdvertissement?: Number;
+  idProduct?: string;
   status?: string;
   title?: string;
   description?: string;
-  place?: string;
   price?: Float32Array;
-  idSeller?: Number;
+  idSeller?: string;
+  seller?: User;
   state?: string;
-  idSousCategorie?: Number;
+  idSubCategory?: string;
+  subcategory?: SubCategory;
   creationDate?: Date;
+  valid?: boolean;
 
   get display(): string {
     return `${(this.title, ' ', this.description)}`;

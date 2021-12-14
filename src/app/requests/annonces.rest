@@ -1,1 +1,22 @@
-GET http://localhost:9000/annonces HTTP/1.1
+//GET http://localhost:9000/products HTTP/1.1
+//GET http://localhost:9000/subcategory HTTP/1.1
+
+//GET http://localhost:9000/category HTTP/1.1
+
+POST http://localhost:9000/products HTTP/1.1
+Content-Type: application/json
+
+{
+    
+    "title":"test",
+    "description":"description",
+    "place":"ixelles",
+    "idSubCategory":"61b0cb34e7161758a55583bc",
+    "status":"SELL",
+    "idSeller":"61b35b80b50dc71b14102a97",
+    "price":5
+    
+    
+
+
+}

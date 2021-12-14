@@ -2,30 +2,30 @@
   <mat-card-content fxFlexAlign="stretch">
     <form [formGroup]="formModifier" (ngSubmit)="onUpdate()">
       <h2>Modifier mes informations personnelles</h2>
-      <mat-form-field  class="full-width-input">
+      <mat-form-field class="full-width-input">
         <input matInput placeholder="nom" formControlName="lastName" required />
         <mat-error> Entrez un nom valide </mat-error>
       </mat-form-field>
       <mat-form-field class="full-width-input">
         <input
-        matInput
-        placeholder="prenom"
-        formControlName="firstName"
-        required
+          matInput
+          placeholder="prenom"
+          formControlName="firstName"
+          required
         />
         <mat-error> Entrez un prenom valide </mat-error>
       </mat-form-field>
       <mat-form-field class="full-width-input">
         <input
-        matInput
-        placeholder="phone"
-        type="tel"
-        formControlName="phone"
-        required
+          matInput
+          placeholder="phone"
+          type="tel"
+          formControlName="phone"
+          required
         />
         <mat-error> Entrez un numero de téléphone valide </mat-error>
       </mat-form-field>
-      <p style="color:#808080">campus*</p>
+      <p style="color: #808080">campus*</p>
       <select formControlName="campus" required>
         <option value="IXELLES">{{ campusEnum.IXELLES }}</option>
         <option value="LOUVAIN">
@@ -41,11 +41,11 @@
       
       <mat-form-field class="full-width-input">
         <input
-        matInput
-        type="password"
-        placeholder="mot de passe"
-        formControlName="password"
-        required
+          matInput
+          type="password"
+          placeholder="mot de passe"
+          formControlName="password"
+          required
         />
         <mat-error> Entrez un mot de passe valide </mat-error>
       </mat-form-field>
