@@ -6,7 +6,7 @@ import { Offre } from '../components/models/offres';
 import { AuthenticationService } from './authentication.service';
 import { environment } from 'src/environments/environment';
 
-let baseUrl = environment.api + '/offres/';
+let baseUrl = environment.api + '/offers/';
 @Injectable({ providedIn: 'root' })
 export class OffreService {
   constructor(
@@ -14,9 +14,9 @@ export class OffreService {
     private authenticationService: AuthenticationService
   ) {}
 
-  getAll() {
+  getAll(idProduct: string) {
     return this.http
-      .get<Offre[]>(baseUrl + this.currentUser)
+      .get<Offre[]>(baseUrl + 'all/product/' + idProduct)
       .pipe(map((res) => plainToClass(Offre, res)));
   }
 
@@ -27,6 +27,6 @@ export class OffreService {
   createOffer(offer: Offre) {
     return this.http
       .post<Offre>(baseUrl, offer)
-      .pipe(map((res) => plainToClass(Offre, res)));
+      .subscribe((res) => plainToClass(Offre, res));
   }
 }

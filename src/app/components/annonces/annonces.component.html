@@ -7,7 +7,15 @@
 <div class="row">
   <div class="col-sm-12">
     <ul *ngIf="annonces.length > 0">
-      <li *ngFor="let annonce of annonces">{{ annonce.display }}</li>
+      <li *ngFor="let annonce of annonces">
+        {{ annonce.display }}
+        <button
+          *ngIf="currentUser"
+          (click)="annonceDetails(annonce.idProduct!)"
+        >
+          Voir en details
+        </button>
+      </li>
     </ul>
     <p *ngIf="annonces.length == 0">Pas de annonces</p>
   </div>

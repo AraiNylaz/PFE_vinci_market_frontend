@@ -10,26 +10,26 @@ import { Offre } from '../models/offres';
   templateUrl: 'ajouterOffre.component.html',
 })
 export class AjouterOffreComponent implements OnInit {
-  annonce!: Annonce;
   form!: FormGroup;
   public offerInvalid!: boolean;
   private formSubmitAttempt!: boolean;
-  offer!: Offre;
+  offer = new Offre();
+  annonce!: Annonce;
 
   constructor(
     private offerService: OffreService,
     private route: ActivatedRoute,
     private fb: FormBuilder,
     private router: Router
-  ) {}
+  ) {
+    this.route.params.subscribe((params) => {
+      this.offer.idProduct = params['id'];
+    });
+  }
 
   ngOnInit() {
-    this.route.params.subscribe((params) => {
-      this.annonce.idProduct = params['id'];
-    });
-
     this.form = this.fb.group({
-      value: ['', Validators.email],
+      value: [0, Validators.required],
       message: ['', Validators.required],
     });
   }
@@ -46,14 +46,13 @@ export class AjouterOffreComponent implements OnInit {
         this.offer.idBuyer = this.offerService.currentUser;
         this.offer.value = this.f['value'].value;
         this.offer.message = this.f['message'].value;
-        this.offer.iProduct = this.annonce.idProduct;
         await this.offerService.createOffer(this.offer);
+        await this.router.navigate(['/']);
       } catch (err) {
         this.offerInvalid = true;
       }
     } else {
       this.formSubmitAttempt = true;
-      await this.router.navigate(['/']);
     }
   }
 }

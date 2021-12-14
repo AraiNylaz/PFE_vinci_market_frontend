@@ -4,6 +4,7 @@ import { AnnonceService } from 'src/app/services/annonces.service';
 
 import { AuthenticationService } from '../../services/authentication.service';
 import { Annonce } from '../models/annonce';
+import { User } from '../models/user';
 
 @Component({
   templateUrl: 'annonces.component.html',
@@ -12,9 +13,20 @@ import { Annonce } from '../models/annonce';
 export class AnnoncesComponent {
   annonces: Annonce[] = [];
 
-  constructor(private annonceService: AnnonceService) {
+  constructor(
+    private annonceService: AnnonceService,
+    private router: Router,
+    private authService: AuthenticationService
+  ) {
     annonceService.getAll().subscribe((annonces) => {
       this.annonces = annonces;
     });
+  }
+
+  get currentUser() {
+    return this.authService.currentUser;
+  }
+  annonceDetails(id: string) {
+    this.router.navigate([`/annonceDetail/${id}`]);
   }
 }

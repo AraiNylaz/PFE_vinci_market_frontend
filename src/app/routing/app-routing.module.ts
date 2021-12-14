@@ -10,6 +10,7 @@ import { UserListComponent } from '../components/userlist/userlist.component';
 import { ValiderAnnoncesComponent } from '../components/validerAnnonces/validerAnnonces.component';
 import { AnnoceDetailComponent } from '../components/annonceDetail/annonceDetail.component';
 import { AjouterOffreComponent } from '../components/ajouterOffre/ajouterOffre.component';
+import { OffresComponent } from '../components/offres/offres.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -32,6 +33,10 @@ const appRoutes: Routes = [
   {
     path: 'annonceDetail/:id',
     component: AnnoceDetailComponent,
+  },
+  {
+    path: 'offres/:id',
+    component: OffresComponent,
   },
   {
     path: 'profil',
