@@ -6,6 +6,10 @@
     color: #006f91;
     margin-bottom: 10px;
 }
+button{
+    display: inline-block;
+    margin-right: 10px;
+}
 
 .persoColorBlue {
     background-color: #006f91ee;
