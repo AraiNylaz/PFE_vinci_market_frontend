@@ -8,4 +8,16 @@
   <div class="col-sm-12">
     <li>{{ annonce.display }}</li>
   </div>
+  <button
+    *ngIf="annonce.idSeller == currentUser"
+    (click)="seeOffers(annonce.idProduct!)"
+  >
+    Voir offres
+  </button>
+  <button
+    *ngIf="currentUser !== undefined"
+    (click)="addOffer(annonce.idProduct!)"
+  >
+    Ajouter une offre
+  </button>
 </div>

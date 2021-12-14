@@ -17,12 +17,6 @@ export class UserService {
       .pipe(map((res) => plainToClass(User, res)));
   }
 
-  createUser(user: User) {
-    return this.http
-      .post<User>(baseUrl + 'test', user)
-      .pipe(map((res) => plainToClass(User, res)));
-  }
-
   banOrUnban(user: User) {
     return this.http.get<void>(baseUrl + 'user/' + user.idUser).subscribe();
   }
