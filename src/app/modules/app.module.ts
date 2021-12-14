@@ -21,6 +21,7 @@ import { ValiderAnnoncesComponent } from '../components/validerAnnonces/validerA
 import { AnnoceDetailComponent } from '../components/annonceDetail/annonceDetail.component';
 import { ModifierAnnonceComponent } from '../components/modifierAnnonce/modifierAnnonce.component';
 import { AjouterOffreComponent } from '../components/ajouterOffre/ajouterOffre.component';
+import { AjouterAnnonceComponent } from '../components/ajouterAnnonce/ajouter_annonce.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { AjouterOffreComponent } from '../components/ajouterOffre/ajouterOffre.c
     AnnoceDetailComponent,
     ModifierAnnonceComponent,
     AjouterOffreComponent,
+    AjouterAnnonceComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

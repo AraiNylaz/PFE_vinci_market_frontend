@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { OffreService } from 'src/app/services/offres.service';
 import { AuthenticationService } from '../../services/authentication.service';
 import { Offre } from '../models/offres';
@@ -10,9 +11,14 @@ import { Offre } from '../models/offres';
 })
 export class OffresComponent {
   offres: Offre[] = [];
-  constructor(private offreService: OffreService) {
-    offreService.getAll().subscribe((offres) => {
-      this.offres = offres;
+  constructor(
+    private offreService: OffreService,
+    private route: ActivatedRoute
+  ) {
+    this.route.params.subscribe((params) => {
+      offreService.getAll(params['id']).subscribe((offres) => {
+        this.offres = offres;
+      });
     });
   }
 }
