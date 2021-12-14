@@ -96,16 +96,6 @@ export class AuthenticationService {
         campus: string
         ): void {
           console.log('ok');
-          console.log("hello ::   " + this.http
-          .put<User>(`${baseUrl}`+ `${this.currentUser?.idUser}`, {
-            lastName: lastName,
-            firstName: firstName,
-            password: password,
-            campus: campus,
-            phone: phone,
-            mail: mail,
-            isAdmin: false,
-          }));
           this.http
           .put<User>(`${baseUrl}`+ `${this.currentUser?.idUser}`, {
             lastName: lastName,
