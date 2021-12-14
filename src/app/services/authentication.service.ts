@@ -118,5 +118,25 @@ export class AuthenticationService {
             }
             );
           }
-        }
-        
+          
+          deteleProfil(): void {
+            console.log('ok');
+            this.http.delete<User>(`${baseUrl}` + "delete/" +`${this.currentUser?.idUser}`,{ })
+            .subscribe(
+              (user) => {
+                user = plainToClass(User, user);
+                sessionStorage.setItem('currentUser', JSON.stringify(user));
+                this.currentUser = user;
+                console.log("userUpdate : "+ user)        
+              },
+              (error) => {
+                console.log('Erreur ! : ' + error);
+              }
+              );
+            }
+            
+            
+            
+            
+          }
+          

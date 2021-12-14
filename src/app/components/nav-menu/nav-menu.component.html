@@ -5,89 +5,85 @@
   border-bottom
   box-shadow
   navbar-collapse collapse">
-    <img id="logo" class="navbar-brand "  src="/assets/images/logoVinci.png">
-    <div class="flex-container">
+  <img id="logo" class="navbar-brand "  src="/assets/images/logoVinci.png">
+  <div class="flex-container">
+    
+    <div class="flex-child " >
+      
+      <ul class="navbar-nav flex-grow" style="text-align:center">
+        <li
+        class="nav-item"
+        [routerLinkActive]="['link-active']"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >
+        <a class="navbar-brand" [routerLink]="['/']">Accueil</a>
+      </li>
+      <li
+      class="nav-item"
+      [routerLinkActive]="['link-active']"
+      [routerLinkActiveOptions]="{ exact: true }"
+      >
+      <a class="navbar-brand" [routerLink]="['/annonces']">Annonces</a>
+    </li>
+    <li
+    class="nav-item"
+    [routerLinkActive]="['link-active']"
+    *ngIf="currentUser && isAdmin"
+    >
+    <a class="navbar-brand" [routerLink]="['/users']">Users</a>
+  </li>
+  <li
+  class="nav-item"
+  [routerLinkActive]="['link-active']"
+  *ngIf="currentUser"
+  >
+  <a class="navbar-brand" [routerLink]="['/profil']">Profil</a>
+</li>
+<li
+class="nav-item"
+[routerLinkActive]="['link-active']"
+*ngIf="currentUser"
+>
+<a class="navbar-brand" [routerLink]="['/ajouterAnnonce']"
+>Ajouter une Annonce</a
+>
+</li>
+</ul>
 
-      <div class="flex-child " >
-      
-        <ul class="navbar-nav flex-grow" style="text-align:center">
-          <li
-            class="nav-item"
-            [routerLinkActive]="['link-active']"
-            [routerLinkActiveOptions]="{ exact: true }"
-          >
-            <a class="navbar-brand" [routerLink]="['/']">Accueil</a>
-          </li>
-          <li
-            class="nav-item"
-            [routerLinkActive]="['link-active']"
-            [routerLinkActiveOptions]="{ exact: true }"
-          >
-            <a class="navbar-brand" [routerLink]="['/annonces']">Annonces</a>
-          </li>
-          <li
-          class="nav-item"
-          [routerLinkActive]="['link-active']"
-          *ngIf="currentUser && isAdmin"
-        >
-          <a class="navbar-brand" [routerLink]="['/users']">Users</a>
-        </li>
-        <li
-          class="nav-item"
-          [routerLinkActive]="['link-active']"
-          *ngIf="currentUser"
-        >
-          <a class="navbar-brand" [routerLink]="['/profil']">Profil</a>
-        </li>
-        <li
-          class="nav-item"
-          [routerLinkActive]="['link-active']"
-          *ngIf="currentUser"
-        >
-          <a class="navbar-brand" [routerLink]="['/ajouterAnnonce']"
-            >Ajouter une Annonce</a
-          >
-        </li>
-        </ul>
-      
-      </div>
-      
-      <div class="flex-child "id="left">
-        <ul class="navbar-nav flex-grow" style="text-align:right" >
-          <li
-          class="nav-item"
-          [routerLinkActive]="['link-active']"
-          *ngIf="!currentUser"
-        >
-        <button id ="login" >
-          <a class="navbar-brand" [routerLink]="['/login']">
-            <span id="color" > Se connecter </span>
-          </a>
-        </button>
-        </li>
+</div>
 
-        <li
-          class="nav-item"
-          [routerLinkActive]="['link-active']"
-          *ngIf="!currentUser"
-        >
-        <button id ="login">
-          <a class="navbar-brand" [routerLink]="['/signup']" >
-            <span id="color" > S'inscrire </span>
-          </a>
-        </button>
-        </li>
-        <li
-          class="nav-item"
-          [routerLinkActive]="['link-active']"
-          *ngIf="currentUser"
-        ><button id ="login">
-          <a class="navbar-brand" [routerLink]="" (click)="logout()"><span id="color">Se deconnecter</span></a>
-          </button>
-        </li>
-        </ul>
-      </div>
-      
-    </div>
-  </nav>
+<div class="flex-child "id="left">
+  <ul class="navbar-nav flex-grow" style="text-align:right" >
+    <li
+    class="nav-item"
+    [routerLinkActive]="['link-active']"
+    *ngIf="!currentUser"
+    >
+    <button id ="login" class="navbar-brand" [routerLink]="['/login']">
+      Se connecter
+    </button>
+  </li>
+  
+  <li
+  class="nav-item"
+  [routerLinkActive]="['link-active']"
+  *ngIf="!currentUser"
+  >
+  <button id ="login" class="navbar-brand" [routerLink]="['/signup']">
+    S'inscrire
+  </button>
+</li>
+<li
+class="nav-item"
+[routerLinkActive]="['link-active']"
+*ngIf="currentUser"
+><button id="login" class="navbar-brand" [routerLink]="" (click)="logout()">
+  Se deconnecter
+</button>
+</li>
+</ul>
+</div>
+
+</div>
+</nav>
 </header>
