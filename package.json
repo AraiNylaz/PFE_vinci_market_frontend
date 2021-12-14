@@ -27,6 +27,7 @@
     "@azure/storage-blob": "^12.8.0",
     "bootstrap": "^3.4.1",
     "class-transformer": "^0.5.1",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "jquery": "^3.6.0",
     "leaflet": "^1.7.1",
