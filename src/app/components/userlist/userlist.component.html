@@ -1,20 +1,27 @@
-<div class="row">
-  <div class="col-sm-12">
-    <h3>List de tous les membres :</h3>
+ <div class="userlistBody">
+  <h3>List de tous les membres :</h3>
+  <br>
   </div>
-</div>
-
-<div class="row">
-  <div class="col-sm-12">
-    <ul *ngIf="users.length > 0">
-      <div *ngFor="let user of users">
-        <li>{{ user.display }}</li>
-        <form>
-          <button *ngIf="!user.ban" (click)="ban(user)">Banir</button>
-          <button *ngIf="user.ban" (click)="ban(user)">Rétablir</button>
-        </form>
-      </div>
-    </ul>
-    <p *ngIf="users.length == 0">Pas de membres</p>
-  </div>
-</div>
+  <table class="container">
+    <thead>
+      <tr>
+        <th>Nom et Prenom</th>
+        <th>Email</th>
+        <th>Inscription</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="users.length > 0">
+      <tr *ngFor="let user of users">
+        <td>{{ user.display }}</td>
+        <td>{{ user.mail }}</td>
+        <td>
+          <form>
+            <button *ngIf="!user.ban" (click)="ban(user)">Banir</button>
+            <button *ngIf="user.ban" (click)="ban(user)">Rétablir</button>
+          </form>
+        </td>
+      </tr>
+      <p *ngIf="users.length == 0">Pas de membres</p>
+    </tbody>
+    
+  </table>

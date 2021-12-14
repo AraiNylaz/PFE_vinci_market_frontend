@@ -1,19 +1,20 @@
-<div class="row">
+<div class="container">
   <div class="col-sm-12">
     <h3>List de tous les annonces pas validées :</h3>
   </div>
-</div>
-
-<div class="row">
-  <div class="col-sm-12">
     <ul *ngIf="annonces.length > 0">
       <div *ngFor="let annonce of annonces">
-        <li>{{ annonce.display }}</li>
+        <ul>
+        <li>{{annonce.display}}</li>
+        <li>{{annonce.price}}</li>
+        <li>{{annonce.subcategory}}</li>
+        <li>{{annonce.seller}}</li>
+        <li>{{annonce.creationDate}}</li>
         <form>
-          <button (click)="validate(annonce)">valider</button>
+          <button class="persoColorBlue" (click)="validate(annonce)">valider</button>
         </form>
+      </ul>
       </div>
     </ul>
     <p *ngIf="annonces.length == 0">Aucune annonce</p>
-  </div>
 </div>

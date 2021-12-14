@@ -4,6 +4,7 @@ import { Annonce } from '../models/annonce';
 
 @Component({
   templateUrl: './validerAnnonces.component.html',
+  styleUrls: ['validerAnnonces.component.css'],
 })
 export class ValiderAnnoncesComponent {
   annonces: Annonce[] = [];

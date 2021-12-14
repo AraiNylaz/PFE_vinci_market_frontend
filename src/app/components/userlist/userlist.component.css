@@ -1,0 +1,58 @@
+
+
+.userlistBody {
+    top: 50%;
+    background-color: #006f91;
+}
+
+.container {
+    position: absolute;
+    position: center;
+    background-color:#d7edf3;
+    top: 50%;
+    left: 50%;
+    width: 60%;
+    transform: translate(-50%, -50%);
+}
+h3{
+    top: 50%;
+    color: #006f91;
+}
+
+table {
+    width: 800px;
+    border-collapse: collapse;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    border-radius: 10px;
+}
+
+th,
+td {
+    padding: 15px;
+    background-color: rgba(255,255,255,0.2);
+    color: #006f91;
+}
+
+th {
+    text-align: left;
+    color: #006f91;
+}
+
+thead, th {
+    background-color: #006f91;
+    color: #fff;
+}
+
+tr:hover {
+    background-color: #006f9170;
+}
+
+button{
+    background-color: #006f91ee;
+    color: #fff;
+    border-radius: 35px;
+    width: 125px;
+    height: 35px;
+    text-align:center;
+}

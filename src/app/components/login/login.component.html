@@ -1,3 +1,4 @@
+<div class="container">
 <mat-card fxFlexAlign="stretch">
   <mat-card-content fxFlexAlign="stretch">
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
@@ -19,7 +20,8 @@
         />
         <mat-error> Entrez un mot de passe valide </mat-error>
       </mat-form-field>
-      <button mat-raised-button color="primary">Login</button>
+      <button class="persoColorBlue">Login</button>
     </form>
   </mat-card-content>
 </mat-card>
+</div>

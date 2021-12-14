@@ -1,14 +1,30 @@
-<div class="row">
+
+<div class="container">
+  <h1>Profil utilisateur</h1>
+  <br>
   <div class="col-sm-12">
-    <h1>Profil</h1>
+    <fieldset>
+      <legend class="legendText">Nom et Prenom : </legend>
+      <h3 class="h3display" >{{currentUser?.lastName}}</h3>
+      <h3 class="h3display" >{{currentUser?.firstName}}</h3>
+    </fieldset>
+    <fieldset>
+      <legend class="legendText">Numero de Telephone : </legend>
+      <h3>{{currentUser?. phone}}</h3>
+    </fieldset>
+    <fieldset>
+      <legend class="legendText">Adresse Email : </legend>
+      <h3>{{currentUser?. mail}}</h3>
+    </fieldset>
+    <fieldset>
+      <legend class="legendText">Campus : </legend>
+      <h3>{{currentUser?. campus}}</h3>
+    </fieldset>
+    <br>
+    <br>
   </div>
-</div>
-<div class="row">
-  <div class="col-sm-12">
-    <h2>{{ currentUser?.lastName }} {{ currentUser?.firstName }}</h2>
-    <h3>{{ currentUser?. phone}}</h3>
-    <h3>{{ currentUser?. mail}}</h3>
-    <h3>{{ currentUser?. campus}}</h3>
-    <button name="modifierProfil" (click)="modifierProfil()" >Modifier mon profil</button>
+  <div>
+    <button class="persoColorBlue" name="modifierProfil" (click)="modifierProfil()" >Modifier mon profil</button>
+    <button class="persoColorRed">Desactiver mon compte</button>
   </div>
 </div>
