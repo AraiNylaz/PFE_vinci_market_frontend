@@ -1,6 +1,6 @@
 <div class="container">
-    <h3>Liste des annonces :</h3>
-    <div *ngIf="annonces.length > 0">
+  <h3>Liste des annonces :</h3>
+  <div *ngIf="annonces.length > 0">
     <ul *ngFor="let annonce of annonces">
       <li>{{annonce.price}}</li>
       <p>add nom user, categorie,...</p>
@@ -14,5 +14,5 @@
       </li>
     </ul>
   </div>
-    <p *ngIf="annonces.length == 0">Pas de annonces</p>
+  <p *ngIf="annonces.length == 0">Pas de annonces</p>
 </div>
