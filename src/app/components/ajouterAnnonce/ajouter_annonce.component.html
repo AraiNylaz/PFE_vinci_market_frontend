@@ -1,3 +1,4 @@
+<div class="container">
 <mat-card fxFlexAlign="stretch">
     <mat-card-content fxFlexAlign="stretch">
       <form [formGroup]="form" (ngSubmit)="onSubmit()">
@@ -13,22 +14,23 @@
         <mat-form-field  class="full-width-input">
           <input matInput type="number" formControlName="price" />
       </mat-form-field>
-        <p style="color:#808080">campus</p>
+        <p>campus*</p>
         <select formControlName="place" required>
           <option value=”ixelles”>ixelles</option>
           <option value=”louvain-la-neuve”>louvain-la-neuve</option>
           <option value=”woluwe”>woluwe</option>
           <mat-error> Entrez un campus </mat-error>
           </select>
-          <p style="color:#808080">image du fichier</p>
+          <p>image du fichier</p>
           <input type="file"  name="filename" formControlName="image" (change)="onFileUpload($event)">
-          <p style="color:#808080">categorie</p>
+          <p>categorie</p>
           <select formControlName="subcategory" class="list-group-item" required>
             <option *ngFor="let subcategor of subCategories" [ngValue]="subcategor">{{subcategor.display}}</option>
           </select>
     
         
-        <button mat-raised-button color="primary">soumetre</button>
+        <button class="persoColorBlue">soumetre</button>
       </form>
     </mat-card-content>
   </mat-card>
+</div>
