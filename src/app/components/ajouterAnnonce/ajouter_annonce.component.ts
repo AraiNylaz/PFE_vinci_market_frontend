@@ -5,13 +5,16 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AnnonceService } from 'src/app/services/annonces.service';
 import { SubCategory } from '../models/subCategory';
 import { AuthenticationService } from '../../services/authentication.service';
+import { Photoservice } from 'src/app/services/photo.service';
 import { Category } from '../models/category';
 import { Annonce } from '../models/annonce';
 import { ThisReceiver } from '@angular/compiler';
+import { BlobServiceClient, ContainerClient } from '@azure/storage-blob';
 @Component({
   templateUrl: 'ajouter_annonce.component.html',
   styleUrls: ['ajouter_annouce.component.css'],
 })
+//https://merlinduvivier.blob.core.windows.net/test?sp=racwdl&st=2021-12-13T14:14:00Z&se=2021-12-13T22:14:00Z&sv=2020-08-04&sr=c&sig=NGP4Z723faLQSftWxTiQJrN%2BSCFTVqSr%2Fb9J5m3ndcw%3D
 export class AjouterAnnonceComponent {
   form!: FormGroup;
   subCategories: SubCategory[] = [];
@@ -21,11 +24,15 @@ export class AjouterAnnonceComponent {
   annouce !: Annonce;
   datePipe: DatePipe = new DatePipe('en-EU');
   selecetdFile !: File;
-  image!:string | ArrayBuffer | null;
+  imagename!:string | ArrayBuffer | null;
+  blobSasUrl !:string;
+  blobServiceClient!:BlobServiceClient;
+  containerName !:string;
+  containerClient !:ContainerClient;
   private returnUrl!: string;
 
   constructor(private fb: FormBuilder , private route: ActivatedRoute,private annonceService: AnnonceService, private router: Router,
-    private authService: AuthenticationService) {
+    private authService: AuthenticationService,private photoService:Photoservice) {
     annonceService.getSubCategories().subscribe((subCategories)=>{
       this.subCategories=subCategories;
 
@@ -34,6 +41,12 @@ export class AjouterAnnonceComponent {
     annonceService.getCategories().subscribe((categories)=>{
       this.categories=categories;
     })
+    const token ='sp=racwdl&st=2021-12-14T09:08:55Z&se=2021-12-18T17:08:55Z&sv=2020-08-04&sr=c&sig=iwxED4BIiSKcrJSxJnHJv7ywxTyKpxUPJlHzvK0NYkY%3D';
+
+    this.blobSasUrl=`https://merlinduvivier.blob.core.windows.net?${token}`;
+    this.blobServiceClient=new BlobServiceClient(this.blobSasUrl);
+    this.containerName="test";
+    this.containerClient=this.blobServiceClient.getContainerClient(this.containerName);
 
   }
   async ngOnInit() {
@@ -64,7 +77,7 @@ export class AjouterAnnonceComponent {
     const reader = new FileReader();
     reader.readAsDataURL(this.selecetdFile);
     reader.onload = () => {
-      this.image=reader.result;
+      this.imagename=reader.result;
     };
     }
 
@@ -77,20 +90,40 @@ export class AjouterAnnonceComponent {
         const description = this.f['description'].value;
         const place= this.f['place'].value;
         let subcategory=this.f['subcategory'].value;
-        console.log(this.image);
         
         const idSubCategory=subcategory.idSubCategory;
         const seller=this.authService.currentUser;
         const idSeller=seller?.idUser;
         let status="SELL";
-       
+        const nomFichier = Math.floor((Math.random()+1)*100)+""+this.selecetdFile.name;
         var price =this.f['price'].value;
         
         if(price==null){
-          status="FREE";
           price=0;
         }
-        await this.annonceService.addAnnonce(title,description,place,idSubCategory,idSeller,price,status);
+        if(price==0){
+          status="FREE";
+        }
+        try {
+          const promises = [];
+         
+
+          
+          const blockBlobClient = this.containerClient.getBlockBlobClient(nomFichier);
+          promises.push(blockBlobClient.uploadBrowserData(this.selecetdFile));
+          await Promise.all(promises);
+          alert('Done.');
+        }
+        catch (error) {
+          alert(error);
+        }
+
+
+        await this.annonceService.addAnnonce(title,description,place,idSubCategory,idSeller,price,status,nomFichier).subscribe(async (ret)=>{
+          console.log(nomFichier);
+          await this.photoService.addPhoto(ret.idProduct,nomFichier);
+    
+        });
         await this.router.navigate([this.returnUrl]);
         
         

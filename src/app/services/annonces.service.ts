@@ -45,9 +45,10 @@ export class AnnonceService {
     idSubCategory: String,
     idSeller: string | undefined,
     price: number,
-    status: string
+    status: string,
+    photo:string,
   ) {
-    this.http
+    return this.http
       .post<Annonce>(`${baseUrl}`, {
         title: title,
         description: description,
@@ -57,7 +58,8 @@ export class AnnonceService {
         price: price,
         status: status,
       })
-      .subscribe(() => console.log('enregistrer terminer'));
+      .pipe(map((res)=>plainToClass(Annonce,res)));
+      
   }
   // addAnnonce(annonce:Annonce):void{
   //   console.log("passe dans add Annonce");

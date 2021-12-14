@@ -11,6 +11,7 @@ import { ValiderAnnoncesComponent } from '../components/validerAnnonces/validerA
 import { AnnoceDetailComponent } from '../components/annonceDetail/annonceDetail.component';
 import { AjouterOffreComponent } from '../components/ajouterOffre/ajouterOffre.component';
 import { OffresComponent } from '../components/offres/offres.component';
+import { AjouterAnnonceComponent } from '../components/ajouterAnnonce/ajouter_annonce.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -53,6 +54,10 @@ const appRoutes: Routes = [
   {
     path: 'ajouterOffre/:id',
     component: AjouterOffreComponent,
+  },
+  {
+    path: 'ajouterAnnonce',
+    component: AjouterAnnonceComponent,
   },
 ];
 

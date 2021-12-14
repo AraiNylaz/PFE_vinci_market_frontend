@@ -1,3 +1,5 @@
+
+  
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import {
@@ -10,7 +12,7 @@ import {
   ValidationErrors,
 } from '@angular/forms';
 import { UserService } from '../../services/user.service';
-import { User } from '../models/user';
+import { Campus, User } from '../models/user';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { throwError } from 'rxjs';
 //import { ConfirmedValidator } from './confirm.validator';
@@ -25,19 +27,21 @@ export class ModifierProfilComponent {
   public signUpInvalide!: boolean;
   private formSubmitAttempt!: boolean;
   private returnUrl!: string;
+  public campusEnum = Campus;
   
   constructor (
     private authenticationService: AuthenticationService, 
     private router: Router, 
     private fb: FormBuilder,
     private route: ActivatedRoute
+    
     ) {}
     
     get currentUser() {
       return this.authenticationService.currentUser;
     }
     
-    backToHomePage(){
+    backToProfilPage(){
       this.router.navigate(['/profil']);
     }
     
@@ -61,19 +65,17 @@ export class ModifierProfilComponent {
     }
     
     password(formGroup: FormGroup) {
-      this.f
-      const password = formGroup.get('password');
-      const passwordVerify = formGroup.get('passwordVerify');
+      const password = formGroup.get('password')?.value;
+      const passwordVerify = formGroup.get('passwordVerify')?.value;
       return password === passwordVerify;
     }
     
     async onUpdate() {
-      console.log("passe ici ! ")
       this.signUpInvalide = false;
       this.formSubmitAttempt = false;
       this.f
-      console.log("password check 2 :  "+ this.password(this.formModifier));
       if(this.password(this.formModifier) && this.formModifier.valid){
+
         try {
           const email = this.f['email'].value;
           const password = this.f['password'].value;
@@ -83,8 +85,11 @@ export class ModifierProfilComponent {
           const phone=this.f['phone'].value;
           const campus=this.f['campus'].value;
           console.log("password check 3 :  "+ this.password(this.formModifier));
-          if(password(this.f)){
+          if(this.password(this.formModifier)){
+            console.log("password est true...")
+            console.log(this.currentUser);
             await this.authenticationService.updateProfil(password,email,firstName,lastName,phone,campus);
+            this.backToProfilPage();
           }else{
           console.log('error is intercept');
           }
@@ -98,4 +103,3 @@ export class ModifierProfilComponent {
     }
     
   }
-  
