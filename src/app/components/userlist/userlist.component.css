@@ -1,26 +1,26 @@
-
-
-.userlistBody {
-    top: 50%;
-    background-color: #006f91;
+div {
+    position: relative;
+    top: 100px;
+    left:0%;
 }
 
+h3{
+    position: relative;
+    top: -350px;
+    left: 12%;
+    color: #006f91;
+}
 .container {
     position: absolute;
-    position: center;
     background-color:#d7edf3;
     top: 50%;
     left: 50%;
-    width: 60%;
     transform: translate(-50%, -50%);
-}
-h3{
-    top: 50%;
-    color: #006f91;
+    width: 80%;
 }
 
 table {
-    width: 800px;
+    width: 100%;
     border-collapse: collapse;
     overflow: hidden;
     box-shadow: 0 0 20px rgba(0,0,0,0.1);
