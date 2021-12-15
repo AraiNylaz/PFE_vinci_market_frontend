@@ -14,8 +14,8 @@
   <h3>{{ annonce.seller?.firstName }}   {{annonce.seller?.lastName}}</h3>
   <h3>{{ annonce.subcategory?.name }}</h3>
   <div class="upload-btn-wrapper">
-    <button class="btn">Upload a file</button>
-    <input *ngIf="annonce.seller?.idUser === currentUser" type="file"  name="filename" formControlName="image" (change)="onFileUpload($event)">
+    <button *ngIf="annonce.seller?.idUser === currentUser" class="btn">Upload a file</button>
+    <input type="file"  name="filename" formControlName="image" (change)="onFileUpload($event)">
   </div>
   <br>
 
