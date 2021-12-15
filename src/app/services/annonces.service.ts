@@ -48,6 +48,7 @@ export class AnnonceService {
     status: string,
     photo:string,
   ) {
+    console.log('ok');
     return this.http
       .post<Annonce>(`${baseUrl}`, {
         title: title,

@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
+import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../components/models/user';
 import { plainToClass } from 'class-transformer';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Picture } from '../components/models/picture';
 
 let baseUrl =environment.api + '/pictures/';
 
@@ -27,4 +29,7 @@ export class Photoservice{
               });
 
         }
+    getPicture(idProduct:string | undefined):Observable<Picture[]>{
+        return this.http.get<Picture[]>(baseUrl+""+idProduct).pipe(map((res) => plainToClass(Picture, res)));
+    }
 }

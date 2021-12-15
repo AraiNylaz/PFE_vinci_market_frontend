@@ -8,12 +8,18 @@
   <div class="col-sm-12">
     <li>{{ annonce.display }}</li>
   </div>
+  <li *ngFor="let picture of pictures">
+    <img src="https://merlinduvivier.blob.core.windows.net/test/{{picture.display}}">
+  </li>
   <button
-    *ngIf="annonce.idSeller == currentUser"
+    *ngIf="annonce.seller?.idUser == currentUser"
     (click)="seeOffers(annonce.idProduct!)"
   >
-    Voir offres
-  </button>
+  Voir offres
+</button>
+  <input *ngIf="annonce.seller?.idUser == currentUser" type="file"  name="filename" formControlName="image" (change)="onFileUpload($event)">
+    
+  
   <button
     *ngIf="currentUser !== undefined"
     (click)="addOffer(annonce.idProduct!)"
