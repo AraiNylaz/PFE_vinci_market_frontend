@@ -24,7 +24,7 @@ export class AnnonceService {
 
   getAll(): Observable<Annonce[]> {
     return this.http
-      .get<Annonce[]>(baseUrl)
+      .get<Annonce[]>(baseUrl + 'all/toSell')
       .pipe(map((res) => plainToClass(Annonce, res)));
   }
 
@@ -44,8 +44,7 @@ export class AnnonceService {
     idSubCategory: String,
     idSeller: string | undefined,
     price: number,
-    status: string,
-    photo: string
+    status: string
   ) {
     console.log('ok');
     return this.http

@@ -1,6 +1,5 @@
 <div>
-  <h3 *ngIf="annonces.length == 0">Pas d'annonce</h3>
-  <table class="container">
+  <table class="container" *ngIf="annonces.length > 0">
     <thead>
       <tr>
         <th>Nom et Description</th>
@@ -13,11 +12,11 @@
     </thead>
     <tbody *ngIf="annonces.length > 0">
       <tr *ngFor="let annonce of annonces">
-        <td>{{ annonce.display }}</td>
-        <td>{{ annonce.price }}</td>
+        <td>{{ annonce.display || "" }}</td>
+        <td>{{ annonce.price || 0 }}</td>
         <td>add nom user, categorie,...</td>
-        <td>{{ annonce.creationDate }}</td>
-        <td>{{ annonce.status }}</td>
+        <td>{{ annonce.creationDate || "" }}</td>
+        <td>{{ annonce.status || "" }}</td>
         <td>
           <form>
             <button
@@ -32,4 +31,5 @@
       </tr>
     </tbody>
   </table>
+  <h1 *ngIf="annonces.length == 0">Pas d'annonce</h1>
 </div>

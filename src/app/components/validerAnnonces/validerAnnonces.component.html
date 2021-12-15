@@ -1,5 +1,5 @@
 <div>
-  <table class="container">
+  <table class="container" *ngIf="annonces.length > 0 && map.size > 0">
     <thead>
       <tr>
         <th>Nom et Description</th>
@@ -10,13 +10,13 @@
         <th></th>
       </tr>
     </thead>
-    <tbody *ngIf="annonces.length > 0">
+    <tbody>
       <tr *ngFor="let annonce of annonces">
-        <td>{{ annonce.display }}</td>
-        <td>{{ annonce.price }}</td>
-        <td>{{ map.get(annonce).display }}</td>
-        <td>{{ annonce.creationDate }}</td>
-        <td>{{ annonce.status }}</td>
+        <td>{{ annonce.display || "" }}</td>
+        <td>{{ annonce.price || 0 }}</td>
+        <td>{{ map.get(annonce)?.display || "" }}</td>
+        <td>{{ annonce.creationDate || "" }}</td>
+        <td>{{ annonce.status || "" }}</td>
         <td>
           <form>
             <button class="persoColorBlue" (click)="validate(annonce)">
