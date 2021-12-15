@@ -34,7 +34,7 @@
 
   <button
     class="persoColorBlue"
-    *ngIf="currentUser !== undefined"
+    *ngIf="currentUser !== undefined && currentUser !== annonce.seller?.idUser"
     (click)="addOffer(annonce.idProduct!)"
   >
     Ajouter une offre
