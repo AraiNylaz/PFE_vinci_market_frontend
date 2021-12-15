@@ -1,7 +1,9 @@
-POST https://pfe-vinci-market.herokuapp.com/pictures HTTP/1.1
-Content-Type: application/json
+# POST https://pfe-vinci-market.herokuapp.com/pictures HTTP/1.1
+# Content-Type: application/json
 
-{
-    "idProduct":"61b883852903b511eec43f48",
-    "namePicture":"machin"
-}
+# {
+#     "idProduct":"61b883852903b511eec43f48",
+#     "namePicture":"machin"
+# }
+
+GET  https://pfe-vinci-market.herokuapp.com/pictures/61b883852903b511eec43f48 HTTP/1.1
