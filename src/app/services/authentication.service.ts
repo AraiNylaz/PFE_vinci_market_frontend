@@ -89,7 +89,6 @@ export class AuthenticationService {
       
       updateProfil(
         password: string,
-        mail: string,
         firstName: string,
         lastName: string,
         phone: string,
@@ -103,7 +102,6 @@ export class AuthenticationService {
             password: password,
             campus: campus,
             phone: phone,
-            mail: mail,
             isAdmin: false,
           })
           .subscribe(
@@ -118,5 +116,25 @@ export class AuthenticationService {
             }
             );
           }
-        }
-        
+          
+          deteleProfil(): void {
+            console.log('ok');
+            this.http.delete<User>(`${baseUrl}` + "delete/" +`${this.currentUser?.idUser}`,{ })
+            .subscribe(
+              (user) => {
+                user = plainToClass(User, user);
+                sessionStorage.setItem('currentUser', JSON.stringify(user));
+                this.currentUser = user;
+                console.log("userUpdate : "+ user)        
+              },
+              (error) => {
+                console.log('Erreur ! : ' + error);
+              }
+              );
+            }
+            
+            
+            
+            
+          }
+          

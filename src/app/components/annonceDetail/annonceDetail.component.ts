@@ -10,6 +10,7 @@ import { User } from '../models/user';
 
 @Component({
   templateUrl: 'annonceDetail.component.html',
+  styleUrls: ['annonceDetail.component.css'],
 })
 export class AnnoceDetailComponent {
   annonce!: Annonce;

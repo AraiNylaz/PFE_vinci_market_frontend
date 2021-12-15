@@ -1,22 +1,18 @@
-<div class="row">
-  <div class="col-sm-12">
-    <h3>List de tous les annonces :</h3>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-sm-12">
-    <ul *ngIf="annonces.length > 0">
-      <li *ngFor="let annonce of annonces">
+<div class="container">
+    <h3>Liste des annonces :</h3>
+    <div *ngIf="annonces.length > 0">
+    <ul *ngFor="let annonce of annonces">
+      <li>{{annonce.price}}</li>
+      <p>add nom user, categorie,...</p>
+      <li>{{annonce.creationDate}}</li>
+      <li>{{annonce.state}}</li>
+      <li>
         {{ annonce.display }}
-        <button
-          *ngIf="currentUser"
-          (click)="annonceDetails(annonce.idProduct!)"
-        >
+        <button class="persoColorBlue" *ngIf="currentUser" (click)="annonceDetails(annonce.idProduct!)">
           Voir en details
         </button>
       </li>
     </ul>
-    <p *ngIf="annonces.length == 0">Pas de annonces</p>
   </div>
+    <p *ngIf="annonces.length == 0">Pas de annonces</p>
 </div>
