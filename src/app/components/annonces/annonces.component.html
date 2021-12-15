@@ -1,18 +1,36 @@
-<div class="container">
+
+<div id="userlistBody">
   <h3>Liste des annonces :</h3>
-  <div *ngIf="annonces.length > 0">
-    <ul *ngFor="let annonce of annonces">
-      <li>{{annonce.price}}</li>
-      <p>add nom user, categorie,...</p>
-      <li>{{annonce.creationDate}}</li>
-      <li>{{annonce.state}}</li>
-      <li>
-        {{ annonce.display }}
-        <button class="persoColorBlue" *ngIf="currentUser" (click)="annonceDetails(annonce.idProduct!)">
-          Voir en details
-        </button>
-      </li>
-    </ul>
+  <br>
   </div>
-  <p *ngIf="annonces.length == 0">Pas de annonces</p>
-</div>
+  <table class="container">
+    <thead>
+      <tr>
+        <th>Nom et Description</th>
+        <th>Prix</th>
+        <th>Categorie</th>
+        <th>Date de publication</th>
+        <th>Etat de l'annonce</th>
+        <th></th>
+        
+      </tr>
+    </thead>
+    <tbody *ngIf="annonces.length > 0">
+      <tr *ngFor="let annonce of annonces">
+        <td>{{annonce.display}}</td>
+        <td>{{annonce.price}}</td>
+        <td>add nom user, categorie,...</td>
+        <td>{{annonce.creationDate}}</td>
+        <td>{{annonce.state}}</td>
+        <td>
+          <form>
+            <button class="persoColorBlue" *ngIf="currentUser" (click)="annonceDetails(annonce.idProduct!)">
+              Voir en details
+            </button>
+          </form>
+        </td>
+      </tr>
+      <p *ngIf="annonces.length == 0">Pas d'annonce</p>
+    </tbody>
+  </table>
+  

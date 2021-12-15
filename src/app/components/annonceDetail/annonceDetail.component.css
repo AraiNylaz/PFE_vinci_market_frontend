@@ -1,12 +1,3 @@
-.container {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-  color: #006f91;
-  margin-bottom: 10px;
-}
-
 li{
     margin-right: 10px;
     display: inline-block;
@@ -14,4 +5,48 @@ li{
 
 p{
     background-color: #006f91ee; 
+}
+
+.container {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+    color: #006f91;
+}
+
+h3{
+    margin-top: 0;
+    padding-top: 0;
+}
+.h3display{
+    display: inline-block;
+    margin-top: 0;
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+
+legend{
+    color:#006f918c;
+    font-size: 1em;
+}
+
+button{
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.persoColorBlue {
+    background-color: #006f91ee;
+    color: #fff;
+    border-radius: 35px;
+    width: 250px;
+    height:50px;
+    text-align:center;
+    line-height:1.1em;
+    font-size:1.1em;
 }
