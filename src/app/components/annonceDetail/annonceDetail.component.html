@@ -7,6 +7,11 @@
   <li *ngFor="let picture of pictures">
     <img src="https://merlinduvivier.blob.core.windows.net/test/{{picture.display}}">
   </li>
+  
+    <video *ngIf="video !=undefined" controls>
+      <source src="https://merlinduvivier.blob.core.windows.net/test/{{video.display}}">
+    </video>
+  
   <button class="persoColorBlue"
     *ngIf="annonce.seller?.idUser == currentUser"
     (click)="seeOffers(annonce.idProduct!)"
