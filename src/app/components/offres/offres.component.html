@@ -1,9 +1,21 @@
-<div class="container">
-  <h3>Liste des offres :</h3>
-  <div *ngIf="offres.length > 0">
-    <ul *ngFor="let offre of offres">
-      <li>{{ offre.display }}</li>
-    </ul>
-  </div>
-  <p *ngIf="offres.length == 0">Pas de offres</p>
+<div>
+  <table class="container">
+    <thead>
+      <tr>
+        <th>Message</th>
+        <th>Prix</th>
+        <th>Nom de l'acheteur</th>
+        <td>Telephone</td>
+      </tr>
+    </thead>
+    <tbody *ngIf="offres.length > 0">
+      <tr *ngFor="let offre of offres">
+        <td>{{ offre.message }}</td>
+        <td>{{ offre.value }}</td>
+        <td>{{ map.get(offre).display }}</td>
+        <td>{{ map.get(offre).phone }}</td>
+      </tr>
+      <p *ngIf="offres.length == 0">Pas d'offre</p>
+    </tbody>
+  </table>
 </div>
