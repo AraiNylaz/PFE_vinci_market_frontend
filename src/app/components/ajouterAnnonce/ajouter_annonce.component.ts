@@ -95,7 +95,26 @@ export class AjouterAnnonceComponent {
         const seller=this.authService.currentUser;
         const idSeller=seller?.idUser;
         let status="SELL";
-        const nomFichier = Math.floor((Math.random()+1)*100)+""+this.selecetdFile.name;
+        let nomFichier: string;
+        if(this.selecetdFile!=undefined){
+          nomFichier = Math.floor((Math.random()+1)*100)+""+this.selecetdFile.name;
+          try {
+            const promises = [];
+           
+  
+            
+            const blockBlobClient = this.containerClient.getBlockBlobClient(nomFichier);
+            promises.push(blockBlobClient.uploadBrowserData(this.selecetdFile));
+            await Promise.all(promises);
+            alert('Done.');
+          }
+          catch (error) {
+            alert(error);
+          }
+        }else{
+          nomFichier="";
+        }
+         
         var price =this.f['price'].value;
         
         if(price==null){
@@ -104,24 +123,15 @@ export class AjouterAnnonceComponent {
         if(price==0){
           status="FREE";
         }
-        try {
-          const promises = [];
-         
-
-          
-          const blockBlobClient = this.containerClient.getBlockBlobClient(nomFichier);
-          promises.push(blockBlobClient.uploadBrowserData(this.selecetdFile));
-          await Promise.all(promises);
-          alert('Done.');
-        }
-        catch (error) {
-          alert(error);
-        }
+        
 
 
         await this.annonceService.addAnnonce(title,description,place,idSubCategory,idSeller,price,status,nomFichier).subscribe(async (ret)=>{
-          console.log(nomFichier);
-          await this.photoService.addPhoto(ret.idProduct,nomFichier);
+          console.log(ret);
+          if (nomFichier!=""){
+            await this.photoService.addPhoto(ret.idProduct,nomFichier);
+
+          }
     
         });
         await this.router.navigate([this.returnUrl]);
