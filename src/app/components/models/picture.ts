@@ -1,4 +1,4 @@
-
+import 'reflect-metadata';
 export class Picture{
     idPicture ?: string;
     idProduct ?:string;
