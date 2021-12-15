@@ -5,20 +5,21 @@
       <img class="imageSize" src="https://merlinduvivier.blob.core.windows.net/test/{{picture.display}}">
     </li>
   </ul>
-  <video class="videoMp3" type="video/mp4" *ngIf="video !== undefined" autoplay controls >
-    <source src="https://merlinduvivier.blob.core.windows.net/test/{{video.display}}"/>
-    <!--https://www.youtube.com/watch?v=ogmz-sAcsMQ-->
-  </video>
+  <div *ngIf="video != null || video != undefined" >
+    <video class="videoMp4" *ngIf="video !== null || video !== undefined" autoplay controls >
+      <source src="https://merlinduvivier.blob.core.windows.net/test/{{video.nameVideo}}"/>
+    </video>
+  </div>
   <h3>{{ annonce.display }}</h3>
-  <h3>{{ annonce.price }}</h3>
-  <h3>{{ annonce.seller?.firstName }}   {{annonce.seller?.lastName}}</h3>
-  <h3>{{ annonce.subcategory?.name }}</h3>
+  <h3>Prix : {{ annonce.price }} €</h3>
+  <h3>Propriétaire : {{ annonce.seller?.firstName }}   {{annonce.seller?.lastName}}</h3>
+  <h3>Categorie : {{ annonce.subcategory?.name }}</h3>
   <div class="upload-btn-wrapper">
     <button *ngIf="annonce.seller?.idUser === currentUser" class="btn">Upload a file</button>
     <input type="file"  name="filename" formControlName="image" (change)="onFileUpload($event)">
   </div>
   <br>
-
+  
   <button class="persoColorBlue"
   *ngIf="annonce.seller?.idUser == currentUser"
   (click)="seeOffers(annonce.idProduct!)">Voir offres</button >
