@@ -5,14 +5,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AnnonceService } from 'src/app/services/annonces.service';
 import { SubCategory } from '../models/subCategory';
 import { AuthenticationService } from '../../services/authentication.service';
-import { Photoservice } from 'src/app/services/photo.service';
+import { Fileservice } from 'src/app/services/file.service';
 import { Category } from '../models/category';
 import { Annonce } from '../models/annonce';
 import { ThisReceiver } from '@angular/compiler';
 import { BlobServiceClient, ContainerClient } from '@azure/storage-blob';
 @Component({
   templateUrl: 'ajouter_annonce.component.html',
-  styleUrls: ['ajouter_annouce.component.css'],
+  styleUrls: ['ajouter_annonce.component.css'],
 })
 //https://merlinduvivier.blob.core.windows.net/test?sp=racwdl&st=2021-12-13T14:14:00Z&se=2021-12-13T22:14:00Z&sv=2020-08-04&sr=c&sig=NGP4Z723faLQSftWxTiQJrN%2BSCFTVqSr%2Fb9J5m3ndcw%3D
 export class AjouterAnnonceComponent {
@@ -32,7 +32,7 @@ export class AjouterAnnonceComponent {
   private returnUrl!: string;
 
   constructor(private fb: FormBuilder , private route: ActivatedRoute,private annonceService: AnnonceService, private router: Router,
-    private authService: AuthenticationService,private photoService:Photoservice) {
+    private authService: AuthenticationService,private photoService:Fileservice) {
     annonceService.getSubCategories().subscribe((subCategories)=>{
       this.subCategories=subCategories;
 
@@ -129,7 +129,7 @@ export class AjouterAnnonceComponent {
         await this.annonceService.addAnnonce(title,description,place,idSubCategory,idSeller,price,status,nomFichier).subscribe(async (ret)=>{
           console.log(ret);
           if (nomFichier!=""){
-            await this.photoService.addPhoto(ret.idProduct,nomFichier);
+            await this.photoService.addFile(ret.idProduct,nomFichier);
 
           }
     
@@ -145,6 +145,8 @@ export class AjouterAnnonceComponent {
       console.log("false");
     } 
   }
+  
+  
   // getformattedDate(){
   //   var date!:number;
   //   date = Date.now();

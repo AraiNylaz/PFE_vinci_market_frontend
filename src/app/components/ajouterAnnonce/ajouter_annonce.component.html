@@ -22,7 +22,7 @@
           <mat-error> Entrez un campus </mat-error>
         </select>
         <p>image du fichier</p>
-        <input type="file"  name="filename" formControlName="image" (change)="onFileUpload($event)">
+        <input type="file"  name="filename" formControlName="image"  accept="image/* video/*"(change)="onFileUpload($event)" >
         <p>categorie</p>
         <select formControlName="subcategory" class="list-group-item" required>
           <option *ngFor="let subcategor of subCategories" [ngValue]="subcategor">{{subcategor.display}}</option>
