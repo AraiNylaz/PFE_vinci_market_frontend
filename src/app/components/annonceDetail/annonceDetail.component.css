@@ -1,17 +1,22 @@
+.imageSize {
+    display: inline-block;
+    max-width: 600px;
+    max-height: 400px;
+    width: auto;
+    height: auto;
+    border: #006f91;
+    border-width: 3px;
+}
 ul, li{
     margin-right: 10px;
     display: inline-block;
 }
 
-p{
-    background-color: #006f91ee; 
-}
-
 .container {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     color: #006f91;
 }
 
@@ -27,12 +32,12 @@ h3{
 }
 
 button{
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  cursor: pointer;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
 }
 
 .persoColorBlue {
@@ -44,8 +49,37 @@ button{
     text-align:center;
     line-height:1.1em;
     font-size:1.1em;
-}
-
-img{
     
 }
+
+.videoMp3{
+    width:600px; 
+    height: 800px;
+}
+
+
+.upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.btn {
+    border: 2px solid #006f91ee;
+    color: #006f91;
+    background-color: #36798d52;
+    border-radius: 30px;
+    font-weight: bold;
+    width: 250px;
+    height:50px;
+}
+
+.upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+
+

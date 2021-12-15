@@ -1,6 +1,7 @@
 
 <div>
   <h3>Liste des utilisateurs</h3>
+  <h3 *ngIf="users.length == 0">Pas de membres</h3>
   <table class="container">
     <thead>
       <tr>
@@ -20,8 +21,6 @@
           </form>
         </td>
       </tr>
-      <p *ngIf="users.length == 0">Pas de membres</p>
     </tbody>
-    
   </table>
 </div>
