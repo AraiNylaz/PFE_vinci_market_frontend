@@ -1,12 +1,12 @@
 <div class="container">
-    <h3>Details de l'annonce</h3>
-    <li>{{ annonce.display }}</li>
+  <h3>Details de l'annonce</h3>
+  <li>{{ annonce.display }}</li>
   <button class="persoColorBlue"
-    *ngIf="annonce.idSeller == currentUser"
-    (click)="seeOffers(annonce.idProduct!)">
-    Voir offres </button>
+  *ngIf="annonce.idSeller == currentUser"
+  (click)="seeOffers(annonce.idProduct!)">
+  Voir offres </button>
   <button class="persoColorBlue"
-    *ngIf="currentUser !== undefined"
-    (click)="addOffer(annonce.idProduct!)">
-    Ajouter une offre</button>
+  *ngIf="currentUser !== undefined"
+  (click)="addOffer(annonce.idProduct!)">
+  Ajouter une offre</button>
 </div>  

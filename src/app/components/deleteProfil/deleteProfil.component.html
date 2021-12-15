@@ -1,0 +1,24 @@
+<div class="container">
+<mat-card fxFlexAlign="stretch">
+  <mat-card-content fxFlexAlign="stretch">
+    <form [formGroup]="formDelete" (ngSubmit)="onDelete()">
+      <h2>Désactiver mon compte</h2>
+      <h3>Vous allez suppriner définitivement votre compte sur Vinci Market.
+        Nous vous demandons de confirmer votre choix en donnant votre mot de passe.
+      </h3>
+      <mat-form-field class="full-width-input">
+        <input
+          matInput
+          type="password"
+          placeholder="mot de passe"
+          formControlName="password"
+          required
+        />
+        <mat-error> Entrez un mot de passe valide </mat-error>
+      </mat-form-field> 
+      <button class="persoColorRed">Désactiver mon compte</button>
+      <button class="persoColorBlue" (click)="backToHomePage()" >Annuler</button>  
+    </form>
+  </mat-card-content>
+</mat-card>
+</div>

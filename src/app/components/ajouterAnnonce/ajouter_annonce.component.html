@@ -1,34 +1,32 @@
 <div class="container">
-<mat-card fxFlexAlign="stretch">
+  <mat-card fxFlexAlign="stretch">
     <mat-card-content fxFlexAlign="stretch">
       <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <h2>ajouter annonce</h2>
         <mat-form-field  class="full-width-input">
-            <input matInput placeholder="titre" formControlName="title" required />
-            <mat-error> Entrez un titre valide </mat-error>
+          <input matInput placeholder="titre" formControlName="title" required />
+          <mat-error> Entrez un titre valide </mat-error>
         </mat-form-field>
         <mat-form-field  class="full-width-input">
-            <input matInput placeholder="description" formControlName="description" required/>
-            <mat-error> Entrez une description </mat-error>
+          <input matInput placeholder="description" formControlName="description" required/>
+          <mat-error> Entrez une description </mat-error>
         </mat-form-field>
         <mat-form-field  class="full-width-input">
           <input matInput type="number" formControlName="price" />
-      </mat-form-field>
+        </mat-form-field>
         <p>campus*</p>
         <select formControlName="place" required>
           <option value=”ixelles”>ixelles</option>
           <option value=”louvain-la-neuve”>louvain-la-neuve</option>
           <option value=”woluwe”>woluwe</option>
           <mat-error> Entrez un campus </mat-error>
-          </select>
-          <p>image du fichier</p>
-          <input type="file"  name="filename" formControlName="image" (change)="onFileUpload($event)">
-          <p>categorie</p>
-          <select formControlName="subcategory" class="list-group-item" required>
-            <option *ngFor="let subcategor of subCategories" [ngValue]="subcategor">{{subcategor.display}}</option>
-          </select>
-    
-        
+        </select>
+        <p>image du fichier</p>
+        <input type="file"  name="filename" formControlName="image" (change)="onFileUpload($event)">
+        <p>categorie</p>
+        <select formControlName="subcategory" class="list-group-item" required>
+          <option *ngFor="let subcategor of subCategories" [ngValue]="subcategor">{{subcategor.display}}</option>
+        </select>
         <button class="persoColorBlue">soumetre</button>
       </form>
     </mat-card-content>
