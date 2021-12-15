@@ -8,6 +8,8 @@ import {
 } from '@angular/forms';
 
 import { AuthenticationService } from '../../services/authentication.service';
+import { plainToClass } from 'class-transformer';
+import { User } from '../models/user';
 
 @Component({
   templateUrl: 'login.component.html',
@@ -49,8 +51,16 @@ export class LoginComponent implements OnInit {
       try {
         const email = this.f['email'].value;
         const password = this.f['password'].value;
-        await this.authService.login(email, password);
-        await this.router.navigate([this.returnUrl]);
+        await this.authService.login(email, password).subscribe((user) => {
+          if (user != null) {
+            user = plainToClass(User, user);
+            sessionStorage.setItem('currentUser', JSON.stringify(user));
+            this.authService.currentUser = user;
+            this.router.navigate([this.returnUrl]);
+          } else {
+            this.loginInvalid = true;
+          }
+        });
       } catch (err) {
         this.loginInvalid = true;
       }

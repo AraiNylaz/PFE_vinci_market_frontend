@@ -1,7 +1,9 @@
 <div class="container">
-    <h3>Liste des offres :</h3>
-    <ul *ngIf="offres.length > 0">
-      <li *ngFor="let offre of offres">{{ offre.display }}</li>
+  <h3>Liste des offres :</h3>
+  <div *ngIf="offres.length > 0">
+    <ul *ngFor="let offre of offres">
+      <li>{{ offre.display }}</li>
     </ul>
-    <p *ngIf="offres.length == 0">Pas de offres</p>
+  </div>
+  <p *ngIf="offres.length == 0">Pas de offres</p>
 </div>
