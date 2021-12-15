@@ -41,19 +41,16 @@ export class AnnonceService {
   addAnnonce(
     title: String,
     description: String,
-    place: String,
     idSubCategory: String,
     idSeller: string | undefined,
     price: number,
     status: string,
-    photo:string,
   ) {
     console.log('ok');
     return this.http
       .post<Annonce>(`${baseUrl}`, {
         title: title,
         description: description,
-        place: place,
         idSubCategory: idSubCategory,
         idSeller: idSeller,
         price: price,

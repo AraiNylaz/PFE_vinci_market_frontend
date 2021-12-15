@@ -13,7 +13,7 @@
   <h3>{{ annonce.display }}</h3>
   <h3>Prix : {{ annonce.price }} €</h3>
   <h3>Propriétaire : {{ annonce.seller?.firstName }}   {{annonce.seller?.lastName}}</h3>
-  <h3>Categorie : {{ annonce.subcategory?.name }}</h3>
+  <h3>Categorie : {{ annonce.subcategory?.subCategoryName }}</h3>
   <div class="upload-btn-wrapper">
     <button *ngIf="annonce.seller?.idUser === currentUser" class="btn">Upload a file</button>
     <input type="file"  name="filename" formControlName="image" (change)="onFileUpload($event)">

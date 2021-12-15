@@ -6,7 +6,8 @@ export class SubCategory {
     idCategory ?: String;
     category ?: Category;
     name ?: String;
+    subCategoryName?: String;
     get display(): string {
-        return `${(this.name)}`;
+        return `${(this.subCategoryName)}`;
       }
 }
