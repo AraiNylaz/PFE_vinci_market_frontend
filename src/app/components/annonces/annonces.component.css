@@ -53,3 +53,7 @@ button{
   height: 35px;
   text-align:center;
 }
+img {
+  max-width: 400px;
+  height: auto;
+  }
