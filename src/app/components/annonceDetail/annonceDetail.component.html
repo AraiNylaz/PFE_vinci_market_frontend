@@ -1,4 +1,5 @@
 <div class="container">
+
     <h3>Details de l'annonce</h3>
     <li>{{ annonce.display }}</li>
 
@@ -15,8 +16,9 @@
   <input *ngIf="annonce.seller?.idUser == currentUser" type="file"  name="filename" formControlName="image" (change)="onFileUpload($event)">
     
   
+
   <button class="persoColorBlue"
-    *ngIf="currentUser !== undefined"
-    (click)="addOffer(annonce.idProduct!)">
-    Ajouter une offre</button>
+  *ngIf="currentUser !== undefined"
+  (click)="addOffer(annonce.idProduct!)">
+  Ajouter une offre</button>
 </div>  

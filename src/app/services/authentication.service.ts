@@ -117,7 +117,7 @@ export class AuthenticationService {
             );
           }
           
-          deteleProfil(): void {
+          deleteProfil(): void {
             console.log('ok');
             this.http.delete<User>(`${baseUrl}` + "delete/" +`${this.currentUser?.idUser}`,{ })
             .subscribe(
@@ -125,7 +125,7 @@ export class AuthenticationService {
                 user = plainToClass(User, user);
                 sessionStorage.setItem('currentUser', JSON.stringify(user));
                 this.currentUser = user;
-                console.log("userUpdate : "+ user)        
+                console.log("userdelete : "+ user)        
               },
               (error) => {
                 console.log('Erreur ! : ' + error);

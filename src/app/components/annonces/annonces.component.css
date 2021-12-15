@@ -1,17 +1,52 @@
+#userlistBody {
+  position: absolute;
+  top: 95%;
+  bottom: 5%;
+  left: 50%;
+  transform: translate(-80%, -100%);
+}
+
 .container {
-	position: absolute;
+  position: absolute;
 	top: 25%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+    color: #006f91;
+}
+
+table {
+  border-collapse: collapse;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  border-radius: 10px;
+}
+
+th,
+td {
+  padding: 15px;
+  background-color: rgba(255,255,255,0.2);
   color: #006f91;
-  margin-bottom: 10px;
 }
 
-li{
-    margin-right: 10px;
-    display: inline-block;
+th {
+  text-align: left;
+  color: #006f91;
 }
 
-p{
-    background-color: #006f91ee; 
+thead, th {
+  background-color: #006f91;
+  color: #fff;
+}
+
+tr:hover {
+  background-color: #006f9170;
+}
+
+button{
+  background-color: #006f91ee;
+  color: #fff;
+  border-radius: 35px;
+  width: 125px;
+  height: 35px;
+  text-align:center;
 }

@@ -22,5 +22,10 @@ export class ProfilComponent {
     this.router.navigate(['/modifierProfil']);
   }
 
+  deleteProfil(){
+    this.router.navigate(['/delete'+ this.currentUser?.idUser]);
+  }
+
+
 
 }
