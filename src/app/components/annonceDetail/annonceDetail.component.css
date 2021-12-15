@@ -1,7 +1,7 @@
 .imageSize {
     display: inline-block;
-    max-width: 600px;
-    max-height: 400px;
+    max-width: 300;
+    max-height: 150px;
     width: auto;
     height: auto;
     border: #006f91;
@@ -14,9 +14,8 @@ ul, li{
 
 .container {
     position: absolute;
-    top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-35%, -25%);
     color: #006f91;
 }
 
@@ -53,8 +52,8 @@ button{
 }
 
 .videoMp3{
-    width:600px; 
-    height: 800px;
+    width:300px; 
+    height: 150px;
 }
 
 
