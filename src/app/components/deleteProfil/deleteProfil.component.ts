@@ -26,7 +26,6 @@ export class DeleteProfilComponent {
   public deleteInvalide!: boolean;
   private formSubmitAttempt!: boolean;
   private returnUrl!: string;
-  public campusEnum = Campus;
   
   constructor (
     private authenticationService: AuthenticationService, 

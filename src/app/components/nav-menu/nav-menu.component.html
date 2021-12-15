@@ -12,7 +12,8 @@
         <li
         class="nav-item"
         [routerLinkActive]="['link-active']"
-        [routerLinkActiveOptions]="{ exact: true }"><a class="navbar-brand" [routerLink]="['/annonces']">Annonces</a>
+        [routerLinkActiveOptions]="{ exact: true }"
+        *ngIf="currentUser"><a  class="navbar-brand" [routerLink]="['/annonces']">Annonces</a>
         </li>
         <li
         class="nav-item"
@@ -28,6 +29,11 @@
         class="nav-item"
         [routerLinkActive]="['link-active']"
         *ngIf="currentUser"><a class="navbar-brand" [routerLink]="['/ajouterAnnonce']">Ajouter une Annonce</a>
+        </li>
+        <li
+        class="nav-item"
+        [routerLinkActive]="['link-active']"
+        *ngIf="currentUser && currentUser.admin"><a class="navbar-brand" [routerLink]="['/users']">Zone Administrateur</a>
         </li>
       </ul> 
     </div>

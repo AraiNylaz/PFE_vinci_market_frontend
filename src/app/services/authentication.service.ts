@@ -119,7 +119,7 @@ export class AuthenticationService {
           
           deleteProfil(): void {
             console.log('ok');
-            this.http.delete<User>(`${baseUrl}` + "delete/" +`${this.currentUser?.idUser}`,{ })
+            this.http.delete<User>(`${baseUrl}` + "/delete/" +`${this.currentUser?.idUser}`,{ })
             .subscribe(
               (user) => {
                 user = plainToClass(User, user);

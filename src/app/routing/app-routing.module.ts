@@ -5,6 +5,7 @@ import { HomeComponent } from '../components/home/home.component';
 import { LoginComponent } from '../components/login/login.component';
 import { ProfilComponent } from '../components/profil/profil.component';
 import { ModifierProfilComponent } from '../components/modifierProfil/modifierProfil.component';
+import { DeleteProfilComponent } from '../components/deleteProfil/deleteProfil.component';
 import { SignUpComponent } from '../components/sign-up/sign-up.component';
 import { UserListComponent } from '../components/userlist/userlist.component';
 import { ValiderAnnoncesComponent } from '../components/validerAnnonces/validerAnnonces.component';
@@ -46,6 +47,10 @@ const appRoutes: Routes = [
   {
     path: 'modifierProfil',
     component: ModifierProfilComponent,
+  },
+  {
+    path: 'deleteProfil',
+    component: DeleteProfilComponent,
   },
   {
     path: 'validerAnnonces',
