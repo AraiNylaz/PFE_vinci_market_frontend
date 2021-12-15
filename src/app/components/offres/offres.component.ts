@@ -13,7 +13,6 @@ import { User } from '../models/user';
 })
 export class OffresComponent {
   offres: Offre[] = [];
-  users: User[] = [];
   map = new Map();
 
   constructor(

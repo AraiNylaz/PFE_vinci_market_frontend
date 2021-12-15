@@ -46,7 +46,7 @@ export class AnnonceService {
     idSeller: string | undefined,
     price: number,
     status: string,
-    photo:string,
+    photo: string
   ) {
     console.log('ok');
     return this.http
@@ -59,8 +59,7 @@ export class AnnonceService {
         price: price,
         status: status,
       })
-      .pipe(map((res)=>plainToClass(Annonce,res)));
-      
+      .pipe(map((res) => plainToClass(Annonce, res)));
   }
   // addAnnonce(annonce:Annonce):void{
   //   console.log("passe dans add Annonce");
@@ -71,13 +70,13 @@ export class AnnonceService {
   // }
   getAllNotValidated(): Observable<Annonce[]> {
     return this.http
-      .get<Annonce[]>(baseUrl + 'notValidated')
+      .get<Annonce[]>(baseUrl + 'all/notValidate/')
       .pipe(map((res) => plainToClass(Annonce, res)));
   }
 
   validate(annonce: Annonce) {
     return this.http
-      .get<void>(baseUrl + 'validate/' + annonce.idProduct)
+      .get<void>(baseUrl + 'valid/' + annonce.idProduct)
       .subscribe();
   }
 
