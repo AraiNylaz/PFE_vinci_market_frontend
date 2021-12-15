@@ -1,28 +1,23 @@
-div {
-    position: relative;
-    top: 100px;
-    left:0%;
-}
-
 h3{
-    position: relative;
-    top: -350px;
-    left: 12%;
+    position: absolute;
+    top: -300px;
+    left: 10%;
     color: #006f91;
 }
 .container {
     position: absolute;
     background-color:#d7edf3;
-    top: 50%;
-    left: 50%;
+    margin: 240px;
+    left: 28%;
     transform: translate(-50%, -50%);
     width: 80%;
 }
 
 table {
+    position: fixed;
     width: 100%;
     border-collapse: collapse;
-    overflow: hidden;
+    overflow: scroll;
     box-shadow: 0 0 20px rgba(0,0,0,0.1);
     border-radius: 10px;
 }
