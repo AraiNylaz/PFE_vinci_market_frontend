@@ -1,23 +1,42 @@
 <div class="container">
-  <h3>Details de l'annonce</h3>
-  <li>{{ annonce.display }}</li>
-
-  <li *ngFor="let picture of pictures">
-    <img
-      src="https://merlinduvivier.blob.core.windows.net/test/{{
-        picture.display
-      }}"
-    />
-  </li>
-
-  <video *ngIf="video != undefined" controls>
-    <source
-      src="https://merlinduvivier.blob.core.windows.net/test/{{
-        video.display
-      }}"
-    />
-  </video>
-
+  <h1>Details de l'annonce</h1>
+  <ul>
+    <li *ngFor="let picture of pictures">
+      <img
+        class="imageSize"
+        src="https://merlinduvivier.blob.core.windows.net/test/{{
+          picture.display
+        }}"
+      />
+    </li>
+  </ul>
+  <div *ngIf="video != null || video != undefined">
+    <video
+      class="videoMp4"
+      *ngIf="video !== null || video !== undefined"
+      autoplay
+      controls
+    >
+      <source
+        src="https://merlinduvivier.blob.core.windows.net/test/{{
+          video.nameVideo
+        }}"
+      />
+    </video>
+  </div>
+  <h3>{{ annonce.display }}</h3>
+  <h3>Prix : {{ annonce.price }} €</h3>
+  <h3>
+    Propriétaire : {{ annonce.seller?.firstName }}
+    {{ annonce.seller?.lastName }}
+  </h3>
+  <h3>Categorie : {{ annonce.subcategory?.subCategoryName }}</h3>
+  <input
+    *ngIf="annonce.seller?.idUser == currentUser"
+    type="file"
+    name="filename"
+    (change)="onFileUpload($event)"
+  />
   <button
     class="persoColorBlue"
     *ngIf="annonce.seller?.idUser == currentUser"
@@ -25,12 +44,6 @@
   >
     Voir offres
   </button>
-  <input
-    *ngIf="annonce.seller?.idUser == currentUser"
-    type="file"
-    name="filename"
-    (change)="onFileUpload($event)"
-  />
 
   <button
     class="persoColorBlue"

@@ -54,7 +54,6 @@ export class AjouterAnnonceComponent {
     this.form = this.fb.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
-      place:['',Validators.required],
       subcategory:['',Validators.required],
       price:[0,!Validators.required],
       image:['',!Validators.required],
@@ -88,9 +87,7 @@ export class AjouterAnnonceComponent {
         this.annouce=new Annonce();
         const title = this.f['title'].value;
         const description = this.f['description'].value;
-        const place= this.f['place'].value;
         let subcategory=this.f['subcategory'].value;
-        
         const idSubCategory=subcategory.idSubCategory;
         const seller=this.authService.currentUser;
         const idSeller=seller?.idUser;
@@ -126,7 +123,7 @@ export class AjouterAnnonceComponent {
         
 
 
-        await this.annonceService.addAnnonce(title,description,place,idSubCategory,idSeller,price,status,nomFichier).subscribe(async (ret)=>{
+        await this.annonceService.addAnnonce(title,description,idSubCategory,idSeller,price,status).subscribe(async (ret)=>{
           console.log(ret);
           if (nomFichier!=""){
             await this.photoService.addFile(ret.idProduct,nomFichier);

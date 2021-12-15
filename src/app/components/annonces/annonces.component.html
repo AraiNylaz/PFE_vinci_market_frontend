@@ -1,4 +1,5 @@
 <div>
+  <h3 *ngIf="annonces.length == 0">Pas d'annonce</h3>
   <table class="container">
     <thead>
       <tr>
@@ -29,7 +30,6 @@
           </form>
         </td>
       </tr>
-      <p *ngIf="annonces.length == 0">Pas d'annonce</p>
     </tbody>
   </table>
 </div>
