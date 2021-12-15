@@ -1,28 +1,28 @@
-
-
-.userlistBody {
-    top: 50%;
-    background-color: #006f91;
-}
-
-.container {
-    position: absolute;
-    position: center;
-    background-color:#d7edf3;
-    top: 50%;
-    left: 50%;
-    width: 60%;
-    transform: translate(-50%, -50%);
-}
+div{
+    margin-top: 50%;
+  }
 h3{
-    top: 50%;
+    position: absolute;
+    top: -300px;
+    left: 10%;
     color: #006f91;
 }
+.container {
+    position: absolute;
+    background-color:#d7edf3;
+    top: 10%;
+    left:50%;
+    bottom:0;
+    transform: translate(-50%, -15%);
+    color: #006f91;
+    width: 80%;
+  }
 
 table {
-    width: 800px;
+    position: fixed;
+    width: 100%;
     border-collapse: collapse;
-    overflow: hidden;
+    overflow: scroll;
     box-shadow: 0 0 20px rgba(0,0,0,0.1);
     border-radius: 10px;
 }

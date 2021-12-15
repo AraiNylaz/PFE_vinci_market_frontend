@@ -3,6 +3,7 @@ header{
   background-color: aliceblue;
   position: top;
   position: fixed;
+  z-index:100;
 }
 #logo{
   object-fit: cover; 

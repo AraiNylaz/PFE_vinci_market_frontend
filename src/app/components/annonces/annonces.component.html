@@ -1,8 +1,6 @@
 
-<div id="userlistBody">
-  <h3>Liste des annonces :</h3>
-  <br>
-  </div>
+<div>
+  
   <table class="container">
     <thead>
       <tr>
@@ -11,8 +9,7 @@
         <th>Categorie</th>
         <th>Date de publication</th>
         <th>Etat de l'annonce</th>
-        <th></th>
-        
+        <th></th>  
       </tr>
     </thead>
     <tbody *ngIf="annonces.length > 0">
@@ -33,4 +30,4 @@
       <p *ngIf="annonces.length == 0">Pas d'annonce</p>
     </tbody>
   </table>
-  
+</div>

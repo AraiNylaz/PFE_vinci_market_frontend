@@ -18,7 +18,7 @@ import { OffresComponent } from '../components/offres/offres.component';
 import { ModifierProfilComponent } from '../components/modifierProfil/modifierProfil.component';
 import { MapComponent } from '../components/map/map.component';
 import { ValiderAnnoncesComponent } from '../components/validerAnnonces/validerAnnonces.component';
-import { AnnoceDetailComponent } from '../components/annonceDetail/annonceDetail.component';
+import { AnnonceDetailComponent } from '../components/annonceDetail/annonceDetail.component';
 import { ModifierAnnonceComponent } from '../components/modifierAnnonce/modifierAnnonce.component';
 import { AjouterOffreComponent } from '../components/ajouterOffre/ajouterOffre.component';
 import { AjouterAnnonceComponent } from '../components/ajouterAnnonce/ajouter_annonce.component';
@@ -37,7 +37,7 @@ import { AjouterAnnonceComponent } from '../components/ajouterAnnonce/ajouter_an
     ModifierProfilComponent,
     MapComponent,
     ValiderAnnoncesComponent,
-    AnnoceDetailComponent,
+    AnnonceDetailComponent,
     ModifierAnnonceComponent,
     AjouterOffreComponent,
     AjouterAnnonceComponent,

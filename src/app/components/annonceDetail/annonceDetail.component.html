@@ -1,29 +1,29 @@
 <div class="container">
-
-    <h3>Details de l'annonce</h3>
-    <li>{{ annonce.display }}</li>
-
+  
+  <h3>Details de l'annonce</h3>
+  <li>{{ annonce.display }}</li>
+  
   
   <li *ngFor="let picture of pictures">
     <img src="https://merlinduvivier.blob.core.windows.net/test/{{picture.display}}">
   </li>
-  
-    <video *ngIf="video !=undefined" controls>
-      <source src="https://merlinduvivier.blob.core.windows.net/test/{{video.display}}">
-    </video>
+
+  <video *ngIf="video !=undefined" controls>
+    <source src="https://merlinduvivier.blob.core.windows.net/test/{{video.display}}">
+  </video>
   
   <button class="persoColorBlue"
-    *ngIf="annonce.seller?.idUser == currentUser"
-    (click)="seeOffers(annonce.idProduct!)"
+  *ngIf="annonce.seller?.idUser == currentUser"
+  (click)="seeOffers(annonce.idProduct!)"
   >
   Voir offres
 </button >
-  <input *ngIf="annonce.seller?.idUser == currentUser" type="file"  name="filename" formControlName="image" (change)="onFileUpload($event)">
-    
-  
+<input *ngIf="annonce.seller?.idUser == currentUser" type="file"  name="filename" formControlName="image" (change)="onFileUpload($event)">
 
-  <button class="persoColorBlue"
-  *ngIf="currentUser !== undefined"
-  (click)="addOffer(annonce.idProduct!)">
-  Ajouter une offre</button>
+
+
+<button class="persoColorBlue"
+*ngIf="currentUser !== undefined"
+(click)="addOffer(annonce.idProduct!)">
+Ajouter une offre</button>
 </div>  

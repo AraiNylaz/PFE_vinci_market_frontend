@@ -13,7 +13,7 @@ import { Video } from '../models/video';
   templateUrl: 'annonceDetail.component.html',
   styleUrls: ['annonceDetail.component.css'],
 })
-export class AnnoceDetailComponent {
+export class AnnonceDetailComponent {
   annonce!: Annonce;
   pictures:Picture[]=[];
   video!:Video;

@@ -12,7 +12,7 @@ import { ThisReceiver } from '@angular/compiler';
 import { BlobServiceClient, ContainerClient } from '@azure/storage-blob';
 @Component({
   templateUrl: 'ajouter_annonce.component.html',
-  styleUrls: ['ajouter_annouce.component.css'],
+  styleUrls: ['ajouter_annonce.component.css'],
 })
 //https://merlinduvivier.blob.core.windows.net/test?sp=racwdl&st=2021-12-13T14:14:00Z&se=2021-12-13T22:14:00Z&sv=2020-08-04&sr=c&sig=NGP4Z723faLQSftWxTiQJrN%2BSCFTVqSr%2Fb9J5m3ndcw%3D
 export class AjouterAnnonceComponent {
