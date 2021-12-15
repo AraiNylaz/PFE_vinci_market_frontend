@@ -1,20 +1,21 @@
 <div class="container"> 
   <h1>Details de l'annonce</h1>  
+  <h2>NIQUE TA MZREEsxnjvkjkgvet</h2>
   <ul>
     <li *ngFor="let picture of pictures">
       <img class="imageSize" src="https://merlinduvivier.blob.core.windows.net/test/{{picture.display}}">
     </li>
   </ul>
-  <video class="videoMp3" *ngIf="video !=undefined" height="600"
-  width="800" controls >
-    <source src="https://merlinduvivier.blob.core.windows.net/test/{{video.display}}" type="video/mp4"/>
-    <p>here</p>
+  <video class="videoMp3"  type="video/mp4" *ngIf="video !=undefined" controls >
+    <source src="https://www.youtube.com/watch?v=ogmz-sAcsMQ"/>
+    <!--https://merlinduvivier.blob.core.windows.net/test/dZUEdDaRnxtRsJQu.mp4
+    https://merlinduvivier.blob.core.windows.net/test/{{video.display}} -->
   </video>
-  
   <h3>{{ annonce.display }}</h3>
   <h3>{{ annonce.price }}</h3>
   <h3>{{ annonce.seller?.firstName }}  {{annonce.seller?.lastName}}</h3>
   <h3>{{ annonce.subcategory?.name }}</h3>
+  <h3>{{video.display}}</h3>
   <div class="upload-btn-wrapper">
     <button class="btn">Upload a file</button>
     <input *ngIf="annonce.seller?.idUser === currentUser" type="file"  name="filename" formControlName="image" (change)="onFileUpload($event)">
