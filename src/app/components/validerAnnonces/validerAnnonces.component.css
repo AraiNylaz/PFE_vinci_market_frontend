@@ -1,30 +1,30 @@
 .container {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
   color: #006f91;
-  margin-bottom: 10px;
+  margin-top: 20%;
 }
 
 .persoColorBlue {
-    background-color: #006f91ee;
-    color: #fff;
-    border-radius: 35px;
-    width: 250px;
-    height:50px;
-    text-align:center;
-    line-height:1.1em;
-    font-size:1.1em;
-    position: center;
-    margin-left: auto;
-    margin-right: auto;
+  background-color: #006f91ee;
+  color: #fff;
+  border-radius: 35px;
+  width: 250px;
+  height: 50px;
+  text-align: center;
+  line-height: 1.1em;
+  font-size: 1.1em;
+  position: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-ul, li {
-    display: inline-block;
+ul,
+li {
+  display: inline-block;
 }
 
-p{
-    background-color: #006f91ee; 
+p {
+  background-color: #006f91ee;
 }

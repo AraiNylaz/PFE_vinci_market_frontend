@@ -3,7 +3,7 @@ import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { plainToClass } from 'class-transformer';
 import { Inject, Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
 let baseUrl = environment.api + '/users/';
@@ -14,6 +14,13 @@ export class UserService {
   getAll(): Observable<User[]> {
     return this.http
       .get<User[]>(baseUrl)
+      .pipe(map((res) => plainToClass(User, res)));
+  }
+
+  getUser(mail: string): Observable<User> {
+    let params = new HttpParams().set('mail', mail);
+    return this.http
+      .get<User>(baseUrl + 'mail/', { params: params })
       .pipe(map((res) => plainToClass(User, res)));
   }
 

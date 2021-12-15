@@ -1,29 +1,55 @@
-<div class="container"> 
-  <h1>Details de l'annonce</h1>  
+<div class="container">
+  <h1>Details de l'annonce</h1>
   <ul>
     <li *ngFor="let picture of pictures">
-      <img class="imageSize" src="https://merlinduvivier.blob.core.windows.net/test/{{picture.display}}">
+      <img
+        class="imageSize"
+        src="https://merlinduvivier.blob.core.windows.net/test/{{
+          picture.display
+        }}"
+      />
     </li>
   </ul>
-  <div *ngIf="video != null || video != undefined" >
-    <video class="videoMp4" *ngIf="video !== null || video !== undefined" autoplay controls >
-      <source src="https://merlinduvivier.blob.core.windows.net/test/{{video.nameVideo}}"/>
+  <div *ngIf="video != null || video != undefined">
+    <video
+      class="videoMp4"
+      *ngIf="video !== null || video !== undefined"
+      autoplay
+      controls
+    >
+      <source
+        src="https://merlinduvivier.blob.core.windows.net/test/{{
+          video.nameVideo
+        }}"
+      />
     </video>
   </div>
   <h3>{{ annonce.display }}</h3>
   <h3>Prix : {{ annonce.price }} €</h3>
-  <h3>Propriétaire : {{ annonce.seller?.firstName }}   {{annonce.seller?.lastName}}</h3>
+  <h3>
+    Propriétaire : {{ annonce.seller?.firstName }}
+    {{ annonce.seller?.lastName }}
+  </h3>
   <h3>Categorie : {{ annonce.subcategory?.subCategoryName }}</h3>
-  <div class="upload-btn-wrapper">
-    <button *ngIf="annonce.seller?.idUser === currentUser" class="btn">Upload a file</button>
-    <input type="file"  name="filename" formControlName="image" (change)="onFileUpload($event)">
-  </div>
-  <br>
-  
-  <button class="persoColorBlue"
-  *ngIf="annonce.seller?.idUser == currentUser"
-  (click)="seeOffers(annonce.idProduct!)">Voir offres</button >
-  <button class="persoColorBlue"
-  *ngIf="currentUser !== undefined && annonce.seller?.idUser !== currentUser"
-  (click)="addOffer(annonce.idProduct!)">Ajouter une offre</button>
-</div>  
+  <input
+    *ngIf="annonce.seller?.idUser == currentUser"
+    type="file"
+    name="filename"
+    (change)="onFileUpload($event)"
+  />
+  <button
+    class="persoColorBlue"
+    *ngIf="annonce.seller?.idUser == currentUser"
+    (click)="seeOffers(annonce.idProduct!)"
+  >
+    Voir offres
+  </button>
+
+  <button
+    class="persoColorBlue"
+    *ngIf="currentUser !== undefined && currentUser !== annonce.seller?.idUser"
+    (click)="addOffer(annonce.idProduct!)"
+  >
+    Ajouter une offre
+  </button>
+</div>

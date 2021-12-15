@@ -1,20 +1,31 @@
-<div class="container">
-  <div class="col-sm-12">
-    <h3>List de tous les annonces pas validées :</h3>
-  </div>
-    <ul *ngIf="annonces.length > 0">
-      <div *ngFor="let annonce of annonces">
-        <ul>
-        <li>{{annonce.display}}</li>
-        <li>{{annonce.price}}</li>
-        <li>{{annonce.subcategory}}</li>
-        <li>{{annonce.seller}}</li>
-        <li>{{annonce.creationDate}}</li>
-        <form>
-          <button class="persoColorBlue" (click)="validate(annonce)">valider</button>
-        </form>
-      </ul>
-      </div>
-    </ul>
-    <p *ngIf="annonces.length == 0">Aucune annonce</p>
+<div>
+  <table class="container" *ngIf="annonces.length > 0 && map.size > 0">
+    <thead>
+      <tr>
+        <th>Nom et Description</th>
+        <th>Prix</th>
+        <th>Vendeur</th>
+        <th>Date de publication</th>
+        <th>Etat de l'annonce</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let annonce of annonces">
+        <td>{{ annonce.display || "" }}</td>
+        <td>{{ annonce.price || 0 }}</td>
+        <td>{{ map.get(annonce)?.display || "" }}</td>
+        <td>{{ annonce.creationDate || "" }}</td>
+        <td>{{ annonce.status || "" }}</td>
+        <td>
+          <form>
+            <button class="persoColorBlue" (click)="validate(annonce)">
+              valider
+            </button>
+          </form>
+        </td>
+      </tr>
+      <p *ngIf="annonces.length == 0">Pas d'annonce</p>
+    </tbody>
+  </table>
 </div>
