@@ -24,18 +24,9 @@
             class="nav-item"
             [routerLinkActive]="['link-active']"
             [routerLinkActiveOptions]="{ exact: true }"
-          >
-            <a class="navbar-brand" [routerLink]="['/annonces']">Annonces</a>
-          </li>
-          <li
-            class="nav-item"
-            [routerLinkActive]="['link-active']"
-            [routerLinkActiveOptions]="{ exact: true }"
             *ngIf="currentUser"
           >
-            <a class="navbar-brand" [routerLink]="['/mesAnnonces']"
-              >Mes Annonces</a
-            >
+            <a class="navbar-brand" [routerLink]="['/annonces']">Annonces</a>
           </li>
           <li
             class="nav-item"
@@ -43,15 +34,6 @@
             *ngIf="currentUser && isAdmin"
           >
             <a class="navbar-brand" [routerLink]="['/users']">Users</a>
-          </li>
-          <li
-            class="nav-item"
-            [routerLinkActive]="['link-active']"
-            *ngIf="currentUser && isAdmin"
-          >
-            <a class="navbar-brand" [routerLink]="['/validerAnnonces']"
-              >Valider Annonces</a
-            >
           </li>
           <li
             class="nav-item"
@@ -67,6 +49,15 @@
           >
             <a class="navbar-brand" [routerLink]="['/ajouterAnnonce']"
               >Ajouter une Annonce</a
+            >
+          </li>
+          <li
+            class="nav-item"
+            [routerLinkActive]="['link-active']"
+            *ngIf="currentUser && currentUser.admin"
+          >
+            <a class="navbar-brand" [routerLink]="['/users']"
+              >Zone Administrateur</a
             >
           </li>
         </ul>

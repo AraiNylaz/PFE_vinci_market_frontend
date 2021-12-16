@@ -1,20 +1,25 @@
 
+ <br>
+ <br>
+ <br>
+ <br>
 <div>
-  <h3>Liste des utilisateurs</h3>
-  <h3 *ngIf="users.length == 0">Pas de membres</h3>
-  <table class="container">
+ 
+  <table class="container" >
+    <h3>Liste des utilisateurs</h3>
+    <h3 *ngIf="users.length == 0">Pas de membres</h3>
     <thead>
       <tr>
-        <th>Nom et Prenom</th>
-        <th>Email</th>
-        <th>Inscription</th>
+        <th  scope="col">Nom et Prenom</th>
+        <th  scope="col">Email</th>
+        <th  scope="col">Inscription</th>
       </tr>
     </thead>
     <tbody *ngIf="users.length > 0">
       <tr *ngFor="let user of users">
-        <td>{{ user.display }}</td>
-        <td>{{ user.mail }}</td>
-        <td>
+        <td  scope="row">{{ user.display }}</td>
+        <td  scope="row">{{ user.mail }}</td>
+        <td  scope="row">
           <form>
             <button *ngIf="!user.ban" (click)="ban(user)">Banir</button>
             <button *ngIf="user.ban" (click)="ban(user)">Rétablir</button>
