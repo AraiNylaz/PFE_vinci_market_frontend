@@ -2,7 +2,7 @@ import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { plainToClass } from 'class-transformer';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Annonce } from '../components/models/annonce';
 import { environment } from 'src/environments/environment';
 import { SubCategory } from '../components/models/subCategory';
@@ -20,6 +20,22 @@ export class AnnonceService {
     return this.http
       .get<Annonce>(baseUrl + id)
       .pipe(map((res) => plainToClass(Annonce, res)));
+  }
+  getFilterToSell(
+    prixMin:number,
+    prixMax:number,
+    subCategory:string,
+
+  ):Observable<Annonce[]>{
+   
+    
+    return this.http.get<Annonce[]>(baseUrl+"all/toSell",{
+     params:{
+       idSubCategory:subCategory,
+       priceMin:prixMin,
+       priceMax:prixMax,
+     }, 
+    }).pipe(map((res) => plainToClass(Annonce, res)));
   }
 
   getAllToSell(): Observable<Annonce[]> {
