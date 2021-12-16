@@ -33,6 +33,13 @@
             [routerLinkActive]="['link-active']"
             *ngIf="currentUser"
           >
+            <a class="navbar-brand" [routerLink]="['/mesAnnonces']">Mes Annonces</a>
+          </li>
+          <li
+            class="nav-item"
+            [routerLinkActive]="['link-active']"
+            *ngIf="currentUser"
+          >
             <a class="navbar-brand" [routerLink]="['/profil']">Profil</a>
           </li>
           <li

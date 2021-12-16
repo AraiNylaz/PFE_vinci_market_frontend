@@ -1,5 +1,7 @@
 <div>
   <table class="container" *ngIf="annonces.length > 0">
+    <h3>Mes annonces</h3>
+    <h3 *ngIf="annonces.length == 0">Vous n'avez pas encore d'annonces</h3>
     <thead>
       <tr>
         <th>Nom et Description</th>
