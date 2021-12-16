@@ -1,5 +1,7 @@
-<div class="container">
-  <table *ngIf="annonces.length > 0 && map.size > 0">
+ <div >
+  <table class="container" *ngIf="map.size > 0">
+    <h3>La liste des Annonces à valider</h3>
+    <h3 *ngIf="annonces.length == 0" > Il n'y a pas d'annonces</h3>
     <thead>
       <tr>
         <th>Nom et Description</th>
@@ -28,3 +30,4 @@
     </tbody>
   </table>
 </div>
+
