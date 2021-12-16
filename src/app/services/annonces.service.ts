@@ -22,9 +22,14 @@ export class AnnonceService {
       .pipe(map((res) => plainToClass(Annonce, res)));
   }
 
+  getAllToSell(): Observable<Annonce[]> {
+    return this.http
+      .get<Annonce[]>(baseUrl+"all/toSell")
+      .pipe(map((res) => plainToClass(Annonce, res)));
+  }
   getAll(): Observable<Annonce[]> {
     return this.http
-      .get<Annonce[]>(baseUrl + 'all/toSell')
+      .get<Annonce[]>(baseUrl )
       .pipe(map((res) => plainToClass(Annonce, res)));
   }
 
@@ -39,15 +44,14 @@ export class AnnonceService {
       .pipe(map((res) => plainToClass(Category, res)));
   }
   addAnnonce(
-    title: String,
-    description: String,
-    idSubCategory: String,
+    title: string,
+    description: string,
+    idSubCategory: string,
     idSeller: string | undefined,
     price: number,
-    status: string
-  ) {
-    console.log('ok');
-    return this.http
+    status: string,
+  ):Observable<Annonce> {
+     return this.http
       .post<Annonce>(`${baseUrl}`, {
         title: title,
         description: description,
@@ -56,7 +60,9 @@ export class AnnonceService {
         price: price,
         status: status,
       })
-      .pipe(map((res) => plainToClass(Annonce, res)));
+      .pipe(map((res)=>plainToClass(Annonce,res)));
+
+      
   }
   // addAnnonce(annonce:Annonce):void{
   //   console.log("passe dans add Annonce");
@@ -67,13 +73,13 @@ export class AnnonceService {
   // }
   getAllNotValidated(): Observable<Annonce[]> {
     return this.http
-      .get<Annonce[]>(baseUrl + 'all/notValidate/')
+      .get<Annonce[]>(baseUrl + 'notValidated')
       .pipe(map((res) => plainToClass(Annonce, res)));
   }
 
   validate(annonce: Annonce) {
     return this.http
-      .get<void>(baseUrl + 'valid/' + annonce.idProduct)
+      .get<void>(baseUrl + 'validate/' + annonce.idProduct)
       .subscribe();
   }
 
