@@ -13,6 +13,7 @@ import { AjouterOffreComponent } from '../components/ajouterOffre/ajouterOffre.c
 import { OffresComponent } from '../components/offres/offres.component';
 import { AjouterAnnonceComponent } from '../components/ajouterAnnonce/ajouter_annonce.component';
 import { AuthGuard } from '../services/auth.guard';
+import { MesAnnoncesComponent } from '../components/listMesAnnonces/mesAnnonces.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -75,6 +76,12 @@ const appRoutes: Routes = [
   {
     path: 'ajouterAnnonce',
     component: AjouterAnnonceComponent,
+    canActivate: [AuthGuard],
+    data: { role: ['user'] },
+  },
+  {
+    path: 'mesAnnonces',
+    component: MesAnnoncesComponent,
     canActivate: [AuthGuard],
     data: { role: ['user'] },
   },

@@ -20,7 +20,7 @@ export class ValiderAnnoncesComponent {
 
   validate(annonce: Annonce) {
     this.annonceService.validate(annonce);
-    this.chargement();
+    window.location.reload();
   }
 
   chargement() {

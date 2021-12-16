@@ -19,33 +19,31 @@ export class AnnoncesComponent implements OnInit {
   annonces: Annonce[] = [];
 
   map = new Map();
-  categories:Category[]=[];
-  subCategories:SubCategory[] = [];
+  categories: Category[] = [];
+  subCategories: SubCategory[] = [];
 
   constructor(
     private fb : FormBuilder,
     private annonceService: AnnonceService,
     private router: Router,
     private authService: AuthenticationService,
-    private userService:UserService,
+    private userService: UserService
   ) {
-    if(this.currentUser?.admin==true){
+    if (this.currentUser?.admin == true) {
       annonceService.getAll().subscribe((annonces) => {
         this.annonces = annonces;
       });
-    }else{
-       annonceService.getAllToSell().subscribe((annonces) => {
-      this.annonces = annonces;
-    });
+    } else {
+      annonceService.getAllToSell().subscribe((annonces) => {
+        this.annonces = annonces;
+      });
     }
-    this.annonceService.getCategories().subscribe((categories)=>{
-      this.categories=categories;
-    })
-    this.annonceService.getSubCategories().subscribe((subcategories)=>{
-      this.subCategories=subcategories;
-    })
-    
-   
+    this.annonceService.getCategories().subscribe((categories) => {
+      this.categories = categories;
+    });
+    this.annonceService.getSubCategories().subscribe((subcategories) => {
+      this.subCategories = subcategories;
+    });
   }
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -99,7 +97,6 @@ export class AnnoncesComponent implements OnInit {
     this.router.navigate([`/annonceDetail/${id}`]);
   }
 
-
   chargement() {
     this.annonceService.getAllToSell().subscribe((annonce) => {
       this.annonces = annonce;
@@ -110,5 +107,4 @@ export class AnnoncesComponent implements OnInit {
       });
     });
   }
-
 }

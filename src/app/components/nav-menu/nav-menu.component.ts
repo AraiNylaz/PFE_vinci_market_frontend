@@ -6,7 +6,6 @@ import { Router } from '@angular/router';
   selector: 'app-nav-menu',
   templateUrl: './nav-menu.component.html',
   styleUrls: ['./nav-menu.component.css'],
-  
 })
 export class NavMenuComponent {
   isExpanded = false;
@@ -48,12 +47,20 @@ export class NavMenuComponent {
     this.router.navigate(['/annonces']);
   }
 
+  mesAnnonces() {
+    this.router.navigate(['/mesAnnonces']);
+  }
+
   ajouterAnnonce() {
     this.router.navigate(['/ajouterAnnonce']);
   }
 
   login() {
     this.router.navigate(['/login']);
+  }
+
+  validerAnnonces() {
+    this.router.navigate(['/validerAnnonces']);
   }
 
   logout() {
