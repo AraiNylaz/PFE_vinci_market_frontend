@@ -29,15 +29,9 @@ export class AnnoncesComponent implements OnInit {
     private authService: AuthenticationService,
     private userService: UserService
   ) {
-    if (this.currentUser?.admin == true) {
-      annonceService.getAll().subscribe((annonces) => {
-        this.annonces = annonces;
-      });
-    } else {
-      annonceService.getAllToSell().subscribe((annonces) => {
-        this.annonces = annonces;
-      });
-    }
+    annonceService.getAllToSell().subscribe((annonces) => {
+      this.annonces = annonces;
+    });
     this.annonceService.getCategories().subscribe((categories) => {
       this.categories = categories;
     });
