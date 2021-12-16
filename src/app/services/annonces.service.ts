@@ -22,20 +22,19 @@ export class AnnonceService {
       .pipe(map((res) => plainToClass(Annonce, res)));
   }
   getFilterToSell(
-    prixMin:number,
-    prixMax:number,
-    subCategory:string,
-
-  ):Observable<Annonce[]>{
-   
-    
-    return this.http.get<Annonce[]>(baseUrl+"all/toSell",{
-     params:{
-       idSubCategory:subCategory,
-       priceMin:prixMin,
-       priceMax:prixMax,
-     }, 
-    }).pipe(map((res) => plainToClass(Annonce, res)));
+    prixMin: number,
+    prixMax: number,
+    subCategory: string
+  ): Observable<Annonce[]> {
+    return this.http
+      .get<Annonce[]>(baseUrl + 'all/toSell', {
+        params: {
+          idSubCategory: subCategory,
+          priceMin: prixMin,
+          priceMax: prixMax,
+        },
+      })
+      .pipe(map((res) => plainToClass(Annonce, res)));
   }
 
   getAllToSell(): Observable<Annonce[]> {
@@ -65,6 +64,13 @@ export class AnnonceService {
       .get<Category[]>(urlCategory)
       .pipe(map((res) => plainToClass(Category, res)));
   }
+
+  ajouterCategorie(name: string) {
+    return this.http
+      .post<Category>(urlCategory, { category: name })
+      .pipe(map((res) => plainToClass(Category, res)));
+  }
+
   addAnnonce(
     title: string,
     description: string,
@@ -99,7 +105,7 @@ export class AnnonceService {
 
   validate(annonce: Annonce) {
     return this.http
-      .get<void>(baseUrl + 'validate/' + annonce.idProduct)
+      .get<void>(baseUrl + 'valid/' + annonce.idProduct)
       .subscribe();
   }
 
