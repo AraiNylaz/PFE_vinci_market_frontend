@@ -6,12 +6,12 @@
 #     "namePicture":"machin"
 # }
 
-GET  https://pfe-vinci-market.herokuapp.com/videos/61b9cda2234234528fbaea0f HTTP/1.1
+GET  https://pfe-vinci-market.herokuapp.com/pictures/61bb7ad4dfc8ff3d86f5893b HTTP/1.1
 
-POST https://pfe-vinci-market.herokuapp.com/videos HTTP/1.1
+POST https://pfe-vinci-market.herokuapp.com/pictures HTTP/1.1
 Content-Type: application/json
 
 {
-    "idProduct":"61b9cda2234234528fbaea0f",
+    "idProduct":"61bb7ad4dfc8ff3d86f5893b",
     "nameVideo":"machin.mp4"
 }

@@ -29,8 +29,8 @@
       <tr>
         <th>Nom et Description</th>
         <th>Prix</th>
-        <th>Categorie</th>
-        <th>sous categorie</th>
+        <th>Categorie et sous categorie</th>
+        
         <th>Date de publication</th>
         <th>Etat de l'annonce</th>
         <th></th>
@@ -40,8 +40,7 @@
       <tr *ngFor="let annonce of annonces">
         <td>{{ annonce.display || "" }}</td>
         <td>{{ annonce.price || 0 }}</td>
-        <td>{{ annonce?.subcategory?.category?.category || "" }}</td>
-        <td>{{ annonce?.subcategory?.subCategoryName || "" }}</td>
+        <td>{{ annonce?.subcategory?.category?.category || "" }} | {{ annonce?.subcategory?.subCategoryName || "" }}</td>
         <td>{{ annonce.creationDate || "" }}</td>
         <td>{{ annonce.status || "" }}</td>
         

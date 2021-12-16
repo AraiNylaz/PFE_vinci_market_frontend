@@ -16,7 +16,7 @@
       <tr *ngFor="let annonce of annonces">
         <td>{{ annonce.display || "" }}</td>
         <td>{{ annonce.price || 0 }}</td>
-        <td></td>
+        <td>{{annonce?.subcategory?.category?.category || ""}}</td>
         <td>{{ annonce.creationDate || "" }}</td>
         <td>{{ annonce.status || "" }}</td>
         <td>

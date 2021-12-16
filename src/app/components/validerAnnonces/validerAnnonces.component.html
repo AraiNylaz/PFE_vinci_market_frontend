@@ -17,7 +17,7 @@
         <td>{{ annonce.display || "" }}</td>
         <td>{{ annonce.price }}</td>
         <td>{{ map.get(annonce).display || "" }}</td>
-        <td>{{ annonce.subcategory?.display || "" }}</td>
+        <td>{{annonce?.subcategory?.category?.category || ""}}</td>
         <td>{{ annonce.creationDate }}</td>
         <td>
           <form>
