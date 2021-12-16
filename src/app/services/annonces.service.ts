@@ -129,7 +129,15 @@ export class AnnonceService {
         return this.http.get(baseUrl+"setToDelete/"+id).subscribe((res)=>console.log(res));
         
       }
+  
+       vendre(id: string | undefined) {
+        return this.http
+          .get(baseUrl + 'sell/' + id)
+          .subscribe((res) => console.log(res));
+      }
     }
+
+
     // signup(
     //     password: string,
     //     mail: string,
