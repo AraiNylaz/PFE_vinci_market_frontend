@@ -1,19 +1,11 @@
 
-h3{
-  position: absolute;
-  top: -300px;
-  left: 10%;
-  color: #006f91;
-}
-
 .container {
   position: absolute;
   background-color:#d7edf3;
   top: 10%;
   left:50%;
-	transform: translate(-50%, -15%);
+  transform: translate(-50%);
   color: #006f91;
-  width: 80%;
 }
 
 table {
@@ -21,7 +13,10 @@ table {
   border-collapse: collapse;
   overflow: scroll;
   box-shadow: 0 0 20px rgba(0,0,0,0.1);
-  border-radius: 10px;
+  border-radius: 10px;   
+  height:100%;
+  display: block;
+  
 }
 
 th,
@@ -29,14 +24,29 @@ td {
   padding: 15px;
   background-color: rgba(255,255,255,0.2);
   color: #006f91;
+  text-align: left;
+
 }
 
 th {
+  
+
   text-align: left;
   color: #006f91;
 }
 
+tbody{
+  display: table;
+  overflow-y: scroll;      
+  height: 100%;
+  width: 100%;
+}
+
 thead, th {
+ 
+  border-collapse: collapse;
+  width: 100%;
+  z-index: 1;
   background-color: #006f91;
   color: #fff;
 }
@@ -52,8 +62,8 @@ button{
   width: 125px;
   height: 35px;
   text-align:center;
+  
 }
-img {
-  max-width: 400px;
-  height: auto;
-  }
+
+tr th { width: 10%; }
+tr td { width: 10%; }
