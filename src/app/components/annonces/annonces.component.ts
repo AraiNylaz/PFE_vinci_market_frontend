@@ -15,7 +15,7 @@ import { User } from '../models/user';
   styleUrls: ['annonces.component.css'],
 })
 export class AnnoncesComponent implements OnInit {
-  form!:FormGroup;
+  form!: FormGroup;
   annonces: Annonce[] = [];
 
   map = new Map();
@@ -23,7 +23,7 @@ export class AnnoncesComponent implements OnInit {
   subCategories: SubCategory[] = [];
 
   constructor(
-    private fb : FormBuilder,
+    private fb: FormBuilder,
     private annonceService: AnnonceService,
     private router: Router,
     private authService: AuthenticationService,
@@ -41,48 +41,40 @@ export class AnnoncesComponent implements OnInit {
   }
   ngOnInit(): void {
     this.form = this.fb.group({
-      prixMin:[0,!Validators.required],
-      prixMax:[0,!Validators.required],
+      prixMin: [0, !Validators.required],
+      prixMax: [0, !Validators.required],
       //etat:["visible",!Validators.required],
-      subCategory:["",!Validators.required],
-    })
+      subCategory: ['', !Validators.required],
+    });
   }
-  get f(){
+  get f() {
     return this.form.controls;
   }
-  onSubmit(){
-    
-      try{
-        let prixMin=this.f["prixMin"].value;
-        if(prixMin==0){
-          prixMin=-1;
-        }
-        let prixMax=this.f["prixMax"].value;
-        if(prixMax==0){
-          prixMax=-1;
-        }
-        let subCategory=this.f["subCategory"].value;
-        
-        if(subCategory==""){
-          subCategory=" ";
-          console.log("ok");
-        }
-        
-        console.log(subCategory);
-        this.annonceService.getFilterToSell(prixMin,prixMax,subCategory).subscribe((annonce)=>{
-          this.annonces=annonce;
-        });
-
-
-
-
-      }catch (err){
-
-
+  onSubmit() {
+    try {
+      let prixMin = this.f['prixMin'].value;
+      if (prixMin == 0) {
+        prixMin = -1;
       }
-    
+      let prixMax = this.f['prixMax'].value;
+      if (prixMax == 0) {
+        prixMax = -1;
+      }
+      let subCategory = this.f['subCategory'].value;
+
+      if (subCategory == '') {
+        subCategory = ' ';
+        console.log('ok');
+      }
+
+      console.log(subCategory);
+      this.annonceService
+        .getFilterToSell(prixMin, prixMax, subCategory)
+        .subscribe((annonce) => {
+          this.annonces = annonce;
+        });
+    } catch (err) {}
   }
-  
 
   get currentUser() {
     return this.authService.currentUser;
