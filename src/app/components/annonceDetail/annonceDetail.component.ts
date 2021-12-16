@@ -80,7 +80,12 @@ export class AnnonceDetailComponent {
     get currentUser() {
       return this.authService.currentUser?.idUser;
     }
-    
+
+     async vendre(id: string | undefined) {
+      await this.annonceService.vendre(id);
+      this.router.navigate(['/']);
+    }
+
     seeOffers(id: string) {
       this.router.navigate(['/offres/' + id]);
     }
