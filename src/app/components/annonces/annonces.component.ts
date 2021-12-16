@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AnnonceService } from 'src/app/services/annonces.service';
 import { UserService } from 'src/app/services/user.service';
@@ -13,7 +14,8 @@ import { User } from '../models/user';
   templateUrl: 'annonces.component.html',
   styleUrls: ['annonces.component.css'],
 })
-export class AnnoncesComponent {
+export class AnnoncesComponent implements OnInit {
+  form!:FormGroup;
   annonces: Annonce[] = [];
 
   map = new Map();
@@ -21,6 +23,7 @@ export class AnnoncesComponent {
   subCategories:SubCategory[] = [];
 
   constructor(
+    private fb : FormBuilder,
     private annonceService: AnnonceService,
     private router: Router,
     private authService: AuthenticationService,
@@ -44,6 +47,37 @@ export class AnnoncesComponent {
     
    
   }
+  ngOnInit(): void {
+    this.form = this.fb.group({
+      prixMin:[-1,!Validators.required],
+      prixMax:[-1,!Validators.required],
+      //etat:["visible",!Validators.required],
+      subCategory:["",!Validators.required],
+    })
+  }
+  get f(){
+    return this.form.controls;
+  }
+  onSubmit(){
+    if(this.form.valid){
+      try{
+        const prixMin=this.f["prixMin"].value;
+        const prixMax=this.f["prixMax"].value;
+        const subCategory=this.f["subCategory"].value;
+        this.annonceService.getFilterToSell(prixMin,prixMax,subCategory).subscribe((annonce)=>{
+          this.annonces=annonce;
+        });
+
+
+
+
+      }catch (err){
+
+
+      }
+    }
+  }
+  
 
   get currentUser() {
     return this.authService.currentUser;

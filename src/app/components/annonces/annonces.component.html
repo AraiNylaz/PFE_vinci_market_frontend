@@ -3,6 +3,23 @@
   <h3>Liste des annonces :</h3>
   <br>
   </div>
+  <p></p>
+  <div>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <select formControlName="subCategory" class="list-group-item" required>
+        <option *ngFor="let subCategory of subCategories" [ngValue]="subCategory?.idSubCategory">{{subCategory.display}}</option>
+      </select>
+      <p>Prix min *</p>
+        <mat-form-field  class="full-width-input">
+          <input matInput type="number" formControlName="prixMin" />
+        </mat-form-field>
+        <p>Prix max *</p>
+        <mat-form-field  class="full-width-input">
+          <input matInput type="number" formControlName="prixMax" />
+        </mat-form-field>
+        <p></p>
+        <button class="persoColorBlue">trier</button>
+    </form>
   <table class="container">
     <thead>
       <tr>
@@ -37,4 +54,5 @@
       <p *ngIf="annonces.length == 0">Pas d'annonce</p>
     </tbody>
   </table>
+</div>
   
