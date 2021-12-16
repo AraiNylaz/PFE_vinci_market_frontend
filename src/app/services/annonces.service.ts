@@ -23,7 +23,7 @@ export class AnnonceService {
   }
   deleteById(id:string | undefined){
     
-    return this.http.delete(baseUrl+"setToDelete/"+id).subscribe((res)=>console.log(res));
+    return this.http.get(baseUrl+"setToDelete/"+id).subscribe((res)=>console.log(res));
 
   }
   getFilterToSell(
