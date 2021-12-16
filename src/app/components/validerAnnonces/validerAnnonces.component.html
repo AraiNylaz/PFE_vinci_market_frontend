@@ -12,10 +12,10 @@
     </thead>
     <tbody *ngIf="annonces.length > 0">
       <tr *ngFor="let annonce of annonces">
-        <td>{{ annonce.display }}</td>
+        <td>{{ annonce.display || "" }}</td>
         <td>{{ annonce.price }}</td>
-        <td>{{ annonce.seller }}</td>
-        <td>{{ annonce.subcategory }}</td>
+        <td>{{ map.get(annonce).display || "" }}</td>
+        <td>{{ annonce.subcategory?.display || "" }}</td>
         <td>{{ annonce.creationDate }}</td>
         <td>
           <form>

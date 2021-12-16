@@ -16,6 +16,7 @@ import { AjouterAnnonceComponent } from '../components/ajouterAnnonce/ajouter_an
 import { AuthGuard } from '../services/auth.guard';
 import { MesAnnoncesComponent } from '../components/listMesAnnonces/mesAnnonces.component';
 import { DeleteProfilComponent } from '../components/deleteProfil/deleteProfil.component';
+import { AjouterCategorieComponent } from '../components/ajouterCategories/ajouterCatergorie.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -90,6 +91,12 @@ const appRoutes: Routes = [
     component: MesAnnoncesComponent,
     canActivate: [AuthGuard],
     data: { role: ['user'] },
+  },
+  {
+    path: 'ajouterCategorie',
+    component: AjouterCategorieComponent,
+    canActivate: [AuthGuard],
+    data: { role: ['admin'] },
   },
 ];
 
