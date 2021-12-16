@@ -17,6 +17,11 @@ ul, li{
     display: inline-block;
 }
 
+.inlineDisplay{
+    display: inline-block;
+
+}
+
 .container {
     min-width: 800px;
     position: absolute;
@@ -49,6 +54,7 @@ button{
     height:50px;
     text-align:center;
     line-height:1.1em;
+    margin-bottom: 20px;
     font-size:1.1em;
     
 }
@@ -89,8 +95,5 @@ button{
 .upload-btn-wrapper input[type=file] {
     font-size: 100px;
     position: absolute;
-    left: 0;
-    top: 0;
-    opacity: 0;
 }
 
