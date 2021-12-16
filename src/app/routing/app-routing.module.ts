@@ -13,6 +13,7 @@ import { AnnonceDetailComponent } from '../components/annonceDetail/annonceDetai
 import { AjouterOffreComponent } from '../components/ajouterOffre/ajouterOffre.component';
 import { OffresComponent } from '../components/offres/offres.component';
 import { AjouterAnnonceComponent } from '../components/ajouterAnnonce/ajouter_annonce.component';
+import { DeleteProfilComponent } from '../components/deleteProfil/deleteProfil.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -48,10 +49,10 @@ const appRoutes: Routes = [
     path: 'modifierProfil',
     component: ModifierProfilComponent,
   },
-  /*{
-    path: 'deleteProfil',
+  {
+    path: 'deleteProfil/:id',
     component: DeleteProfilComponent,
-  },*/
+  },
   {
     path: 'validerAnnonces',
     component: ValiderAnnoncesComponent,

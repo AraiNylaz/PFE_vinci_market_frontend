@@ -22,6 +22,7 @@ import { AnnonceDetailComponent } from '../components/annonceDetail/annonceDetai
 import { ModifierAnnonceComponent } from '../components/modifierAnnonce/modifierAnnonce.component';
 import { AjouterOffreComponent } from '../components/ajouterOffre/ajouterOffre.component';
 import { AjouterAnnonceComponent } from '../components/ajouterAnnonce/ajouter_annonce.component';
+import { DeleteProfilComponent } from '../components/deleteProfil/deleteProfil.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { AjouterAnnonceComponent } from '../components/ajouterAnnonce/ajouter_an
     AnnonceDetailComponent,
     ModifierAnnonceComponent,
     AjouterOffreComponent,
+    DeleteProfilComponent,
     AjouterAnnonceComponent,
   ],
   imports: [
