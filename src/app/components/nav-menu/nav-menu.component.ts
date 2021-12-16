@@ -6,7 +6,6 @@ import { Router } from '@angular/router';
   selector: 'app-nav-menu',
   templateUrl: './nav-menu.component.html',
   styleUrls: ['./nav-menu.component.css'],
-  
 })
 export class NavMenuComponent {
   isExpanded = false;
@@ -54,6 +53,10 @@ export class NavMenuComponent {
 
   login() {
     this.router.navigate(['/login']);
+  }
+
+  validerAnnonces() {
+    this.router.navigate(['/validerAnnonces']);
   }
 
   logout() {
