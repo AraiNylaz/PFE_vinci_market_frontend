@@ -22,6 +22,7 @@ import { AnnonceDetailComponent } from '../components/annonceDetail/annonceDetai
 import { ModifierAnnonceComponent } from '../components/modifierAnnonce/modifierAnnonce.component';
 import { AjouterOffreComponent } from '../components/ajouterOffre/ajouterOffre.component';
 import { AjouterAnnonceComponent } from '../components/ajouterAnnonce/ajouter_annonce.component';
+import { AuthGuard } from '../services/auth.guard';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,7 @@ import { AjouterAnnonceComponent } from '../components/ajouterAnnonce/ajouter_an
     ReactiveFormsModule,
     SharedModule,
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
