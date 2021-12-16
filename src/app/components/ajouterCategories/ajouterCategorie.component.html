@@ -18,3 +18,29 @@
     </mat-card-content>
   </mat-card>
 </div>
+
+<div class="container">
+  <mat-card fxFlexAlign="stretch">
+    <mat-card-content fxFlexAlign="stretch">
+      <form [formGroup]="formSub" (ngSubmit)="onSubmitSubCat()">
+        <h2>Ajouter une subcategorie</h2>
+        <mat-form-field class="full-width-input">
+          <input
+            matInput
+            placeholder="nom"
+            formControlName="name"
+            type="text"
+            required
+          />
+          <mat-error> Entrez une valeur </mat-error>
+        </mat-form-field>
+        <select formControlName="category" class="list-group-item" required>
+          <option *ngFor="let cat of categories" [ngValue]="cat">
+            {{ cat.display }}
+          </option>
+        </select>
+        <button class="persoColorBlue">Ajouter</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
