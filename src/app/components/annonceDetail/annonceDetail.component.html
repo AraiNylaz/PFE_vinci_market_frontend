@@ -1,91 +1,48 @@
+
+
 <div>
-  <h1>Details de l'annonce</h1>
+  <h1>Details de l'annonce</h1>  
   <div class="imageVideo">
     <ul>
       <li *ngFor="let picture of pictures">
-        <img
-          class="imageSize"
-          src="https://merlinduvivier.blob.core.windows.net/test/{{
-            picture.display
-          }}"
-        />
+        <img class="imageSize" src="https://merlinduvivier.blob.core.windows.net/test/{{picture.display}}">
       </li>
     </ul>
-    <div *ngIf="video != null || video != undefined">
-      <video
-        class="videoMp4"
-        *ngIf="video !== null || video !== undefined"
-        controls
-      >
-        <source
-          src="https://merlinduvivier.blob.core.windows.net/test/{{
-            video.nameVideo
-          }}"
-        />
+    <div *ngIf="video != null || video != undefined" >
+      <video class="videoMp4" *ngIf="video !== null || video !== undefined" controls >
+        <source src="https://merlinduvivier.blob.core.windows.net/test/{{video.nameVideo}}"/>
       </video>
-      <app-map [address]="address"></app-map>
     </div>
+    <app-map [address]="address"></app-map>   
   </div>
-
-  <div class="container">
+  
+  
+  <div class="container"> 
     <h3 class="inlineDisplay">Description : {{ annonce.display }}</h3>
-    <h3 class="inlineDisplay">, Prix : {{ annonce.price }} €</h3>
-    <h3 class="inlineDisplay">
-      , Categorie : {{ annonce.subcategory?.subCategoryName }}
-    </h3>
-    <h3>
-      Propriétaire : {{ annonce.seller?.firstName }}
-      {{ annonce.seller?.lastName }}, email : {{ annonce.seller?.mail }},
-      téléphone : {{ annonce.seller?.phone }}
-    </h3>
-
-    <input
-      class="upload-btn-wrapper"
-      *ngIf="annonce.seller?.idUser === currentUser"
-      type="file"
-      name="filename"
-      formControlName="image"
-      (change)="onFileUpload($event)"
-    />
-
-    <div class="upload-btn-wrapper">
+    <h3 class="inlineDisplay">, Prix : {{ annonce.price }} €  </h3>
+    <h3 class="inlineDisplay">, Categorie : {{ annonce.subcategory?.subCategoryName }}</h3>
+    <h3>Propriétaire : {{ annonce.seller?.firstName }} {{annonce.seller?.lastName}}, email :  {{annonce.seller?.mail}}, téléphone : {{annonce.seller?.phone}}</h3>
+    
+    <div class="upload-btn-wrapper ">
+      <button *ngIf="annonce.seller?.idUser === currentUser" class="btn">Poster un fichier</button>
+      <input type="file"  name="filename" formControlName="image" (change)="onFileUpload($event)">
+    </div>
+    <div class="upload-btn-wrapper ">
       <button
-        class="persoColorBlue"
-        *ngIf="annonce.seller?.idUser == currentUser"
-        (click)="seeOffers(annonce.idProduct!)"
-      >
-        Voir offres
-      </button>
+      class="persoColorBlue"
+      *ngIf="annonce.seller?.idUser == currentUser"
+      (click)="seeOffers(annonce.idProduct!)">Voir offres</button>
       <button
-        class="persoColorBlue"
-        *ngIf="
-          currentUser !== undefined && currentUser !== annonce.seller?.idUser
-        "
-        (click)="addOffer(annonce.idProduct!)"
-      >
-        Ajouter une offre
-      </button>
+      class="persoColorBlue"
+      *ngIf="currentUser !== undefined && currentUser !== annonce.seller?.idUser"
+      (click)="addOffer(annonce.idProduct!)">Ajouter une offre</button>
       <button
-        class="persoColorBlue"
-        *ngIf="user?.admin == true && annonce?.state == 'Debut'"
-        (click)="valider(annonce)"
-      >
-        valider
-      </button>
-      <button
-        class="persoColorRed"
-        *ngIf="currentUser == annonce.seller?.idUser"
-        (click)="delete(annonce.idProduct)"
-      >
-        delete
-      </button>
-      <button
-        class="persoColorBlue"
-        *ngIf="currentUser == annonce.seller?.idUser"
-        (click)="vendre(annonce.idProduct)"
-      >
-        Vendre
-      </button>
+      class="persoColorBlue"
+      *ngIf="user?.admin == true && annonce?.state == 'Debut'"
+      (click)="valider(annonce)">valider</button>
+      <button class="persoColorRed"
+      *ngIf="currentUser==annonce.seller?.idUser"
+      (click)="delete(annonce.idProduct)"> delete</button>
     </div>
   </div>
-</div>
+  
