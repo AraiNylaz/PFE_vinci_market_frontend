@@ -9,6 +9,7 @@ import { Offre } from '../models/offres';
 
 @Component({
   templateUrl: 'ajouterCategorie.component.html',
+  styleUrls: ['ajouterCategorie.component.css'],
 })
 export class AjouterCategorieComponent implements OnInit {
   form!: FormGroup;
