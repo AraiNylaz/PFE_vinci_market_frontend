@@ -17,32 +17,30 @@ export class AnnoncesComponent {
   annonces: Annonce[] = [];
 
   map = new Map();
-  categories:Category[]=[];
-  subCategories:SubCategory[] = [];
+  categories: Category[] = [];
+  subCategories: SubCategory[] = [];
 
   constructor(
     private annonceService: AnnonceService,
     private router: Router,
     private authService: AuthenticationService,
-    private userService:UserService,
+    private userService: UserService
   ) {
-    if(this.currentUser?.admin==true){
+    if (this.currentUser?.admin == true) {
       annonceService.getAll().subscribe((annonces) => {
         this.annonces = annonces;
       });
-    }else{
-       annonceService.getAllToSell().subscribe((annonces) => {
-      this.annonces = annonces;
-    });
+    } else {
+      annonceService.getAllToSell().subscribe((annonces) => {
+        this.annonces = annonces;
+      });
     }
-    this.annonceService.getCategories().subscribe((categories)=>{
-      this.categories=categories;
-    })
-    this.annonceService.getSubCategories().subscribe((subcategories)=>{
-      this.subCategories=subcategories;
-    })
-    
-   
+    this.annonceService.getCategories().subscribe((categories) => {
+      this.categories = categories;
+    });
+    this.annonceService.getSubCategories().subscribe((subcategories) => {
+      this.subCategories = subcategories;
+    });
   }
 
   get currentUser() {
@@ -51,7 +49,6 @@ export class AnnoncesComponent {
   annonceDetails(id: string) {
     this.router.navigate([`/annonceDetail/${id}`]);
   }
-
 
   chargement() {
     this.annonceService.getAllToSell().subscribe((annonce) => {
@@ -63,5 +60,4 @@ export class AnnoncesComponent {
       });
     });
   }
-
 }

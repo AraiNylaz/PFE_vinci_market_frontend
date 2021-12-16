@@ -1,9 +1,6 @@
 <div class="container">
-
   <h1>Details de l'annonce</h1>
-    
 
-  
   <div *ngIf="video != null || video != undefined">
     <video
       class="videoMp4"
@@ -18,7 +15,7 @@
       />
     </video>
   </div>
-  <h3>{{ annonce.display }}</h3>
+  <h3>{{ annonce.display || " " }}</h3>
   <h3>Prix : {{ annonce.price }} €</h3>
   <h3>
     Propriétaire : {{ annonce.seller?.firstName }}
@@ -46,8 +43,11 @@
   >
     Ajouter une offre
   </button>
-  <button class="persoColorBlue"
-  *ngIf="user?.admin==true && annonce?.state=='Debut'" 
-  (click)="valider(annonce)"> valider</button>
+  <button
+    class="persoColorBlue"
+    *ngIf="user?.admin == true && annonce?.state == 'Debut'"
+    (click)="valider(annonce)"
+  >
+    valider
+  </button>
 </div>
-

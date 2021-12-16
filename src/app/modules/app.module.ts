@@ -23,6 +23,7 @@ import { ModifierAnnonceComponent } from '../components/modifierAnnonce/modifier
 import { AjouterOffreComponent } from '../components/ajouterOffre/ajouterOffre.component';
 import { AjouterAnnonceComponent } from '../components/ajouterAnnonce/ajouter_annonce.component';
 import { AuthGuard } from '../services/auth.guard';
+import { MesAnnoncesComponent } from '../components/listMesAnnonces/mesAnnonces.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { AuthGuard } from '../services/auth.guard';
     ModifierAnnonceComponent,
     AjouterOffreComponent,
     AjouterAnnonceComponent,
+    MesAnnoncesComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

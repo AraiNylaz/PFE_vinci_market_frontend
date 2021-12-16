@@ -24,12 +24,18 @@ export class AnnonceService {
 
   getAllToSell(): Observable<Annonce[]> {
     return this.http
-      .get<Annonce[]>(baseUrl+"all/toSell")
+      .get<Annonce[]>(baseUrl + 'all/toSell')
       .pipe(map((res) => plainToClass(Annonce, res)));
   }
   getAll(): Observable<Annonce[]> {
     return this.http
-      .get<Annonce[]>(baseUrl )
+      .get<Annonce[]>(baseUrl)
+      .pipe(map((res) => plainToClass(Annonce, res)));
+  }
+
+  getMesAnnonces(id: string): Observable<Annonce[]> {
+    return this.http
+      .get<Annonce[]>(baseUrl + 'user/' + id)
       .pipe(map((res) => plainToClass(Annonce, res)));
   }
 
@@ -49,9 +55,9 @@ export class AnnonceService {
     idSubCategory: string,
     idSeller: string | undefined,
     price: number,
-    status: string,
-  ):Observable<Annonce> {
-     return this.http
+    status: string
+  ): Observable<Annonce> {
+    return this.http
       .post<Annonce>(`${baseUrl}`, {
         title: title,
         description: description,
@@ -60,9 +66,7 @@ export class AnnonceService {
         price: price,
         status: status,
       })
-      .pipe(map((res)=>plainToClass(Annonce,res)));
-
-      
+      .pipe(map((res) => plainToClass(Annonce, res)));
   }
   // addAnnonce(annonce:Annonce):void{
   //   console.log("passe dans add Annonce");
@@ -73,7 +77,7 @@ export class AnnonceService {
   // }
   getAllNotValidated(): Observable<Annonce[]> {
     return this.http
-      .get<Annonce[]>(baseUrl + 'notValidated')
+      .get<Annonce[]>(baseUrl + 'all/notValidate')
       .pipe(map((res) => plainToClass(Annonce, res)));
   }
 
