@@ -1,11 +1,16 @@
+
 .imageSize {
     display: inline-block;
-    max-width: 300;
+    max-width: 300px;
     max-height: 150px;
     width: auto;
     height: auto;
     border: #006f91;
     border-width: 3px;
+}
+.imageVideo{
+    display: inline-block;
+    width: 100%;
 }
 ul, li{
     margin-right: 10px;
@@ -13,18 +18,15 @@ ul, li{
 }
 
 .container {
+    min-width: 800px;
     position: absolute;
     left: 50%;
-    transform: translate(-35%, -25%);
+    transform: translate(-25%);
     color: #006f91;
 }
 
 h3{
-    margin-top: 0;
-    padding-top: 0;
-}
-.h3display{
-    display: inline-block;
+    display: block;
     margin-top: 0;
     margin-bottom: 10px;
     margin-right: 10px;
@@ -51,7 +53,7 @@ button{
     
 }
 
-.videoMp3{
+.videoMp4{
     width:300px; 
     height: 150px;
 }
@@ -80,5 +82,3 @@ button{
     top: 0;
     opacity: 0;
 }
-
-
