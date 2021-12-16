@@ -25,6 +25,7 @@ import { AjouterAnnonceComponent } from '../components/ajouterAnnonce/ajouter_an
 import { AuthGuard } from '../services/auth.guard';
 import { MesAnnoncesComponent } from '../components/listMesAnnonces/mesAnnonces.component';
 import { DeleteProfilComponent } from '../components/deleteProfil/deleteProfil.component';
+import { AjouterCategorieComponent } from '../components/ajouterCategories/ajouterCatergorie.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { DeleteProfilComponent } from '../components/deleteProfil/deleteProfil.c
     DeleteProfilComponent,
     AjouterAnnonceComponent,
     MesAnnoncesComponent,
+    AjouterCategorieComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
