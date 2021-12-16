@@ -72,8 +72,8 @@ export class AnnonceDetailComponent {
       this.annonceService.validate(annonce);
       this.router.navigate(["/annonces"]);
     }
-    delete(id:string | undefined){
-      this.annonceService.deleteById(id);
+    async delete(id:string | undefined){
+      await this.annonceService.deleteById(id);
       this.router.navigate(["/annonces"]);
     }
 
