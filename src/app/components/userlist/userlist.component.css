@@ -32,6 +32,8 @@ td {
     padding: 15px;
     background-color: rgba(255,255,255,0.2);
     color: #006f91;
+    text-align: left;
+
 }
 
 th {
@@ -49,7 +51,7 @@ tbody{
 }
 
 thead, th {
-    display: inline-block;
+   
     border-collapse: collapse;
     width: 100%;
     z-index: 1;
@@ -68,4 +70,8 @@ button{
     width: 125px;
     height: 35px;
     text-align:center;
+    
 }
+
+tr th { width: 10%; }
+tr td { width: 10%; }
