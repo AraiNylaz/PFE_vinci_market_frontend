@@ -23,6 +23,7 @@ export class AnnonceDetailComponent {
   containerClient !:ContainerClient;
   selecetdFile !: File;
   imagename!:string | ArrayBuffer | null;
+  user!:User |undefined;
   
   
   constructor(
@@ -42,7 +43,6 @@ export class AnnonceDetailComponent {
           await this.fileservice.getVideo(this.annonce.idProduct).subscribe((videos=>{
             this.video=videos;
           }))
-          console.log(this.fileservice.getVideo(this.annonce.idProduct));
           
         });
       });
@@ -52,6 +52,7 @@ export class AnnonceDetailComponent {
       this.blobServiceClient=new BlobServiceClient(this.blobSasUrl);
       this.containerName="test";
       this.containerClient=this.blobServiceClient.getContainerClient(this.containerName);
+      this.user=this.authService.currentUser;
       
     }
     
@@ -66,6 +67,12 @@ export class AnnonceDetailComponent {
     addOffer(id: string) {
       this.router.navigate(['/ajouterOffre/' + id]);
     }
+
+    valider(annonce:Annonce){
+      this.annonceService.validate(annonce);
+      this.router.navigate(["/annonces"]);
+    }
+
     async onFileUpload(event: any){
       this.selecetdFile=event.target.files[0];
       const reader = new FileReader();
