@@ -43,6 +43,13 @@
       <button class="persoColorRed"
       *ngIf="currentUser==annonce.seller?.idUser"
       (click)="delete(annonce.idProduct)"> delete</button>
+        <button
+      class="persoColorBlue"
+      *ngIf="currentUser == annonce.seller?.idUser"
+      (click)="vendre(annonce.idProduct)"
+    >
+      Vendre
+    </button>
     </div>
   </div>
   
