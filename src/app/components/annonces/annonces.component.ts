@@ -5,6 +5,8 @@ import { UserService } from 'src/app/services/user.service';
 
 import { AuthenticationService } from '../../services/authentication.service';
 import { Annonce } from '../models/annonce';
+import { Category } from '../models/category';
+import { SubCategory } from '../models/subCategory';
 import { User } from '../models/user';
 
 @Component({
@@ -13,7 +15,10 @@ import { User } from '../models/user';
 })
 export class AnnoncesComponent {
   annonces: Annonce[] = [];
+
   map = new Map();
+  categories: Category[] = [];
+  subCategories: SubCategory[] = [];
 
   constructor(
     private annonceService: AnnonceService,
@@ -21,7 +26,21 @@ export class AnnoncesComponent {
     private authService: AuthenticationService,
     private userService: UserService
   ) {
-    this.chargement();
+    if (this.currentUser?.admin == true) {
+      annonceService.getAll().subscribe((annonces) => {
+        this.annonces = annonces;
+      });
+    } else {
+      annonceService.getAllToSell().subscribe((annonces) => {
+        this.annonces = annonces;
+      });
+    }
+    this.annonceService.getCategories().subscribe((categories) => {
+      this.categories = categories;
+    });
+    this.annonceService.getSubCategories().subscribe((subcategories) => {
+      this.subCategories = subcategories;
+    });
   }
 
   get currentUser() {
@@ -32,7 +51,7 @@ export class AnnoncesComponent {
   }
 
   chargement() {
-    this.annonceService.getAll().subscribe((annonce) => {
+    this.annonceService.getAllToSell().subscribe((annonce) => {
       this.annonces = annonce;
       this.annonces.forEach((annonce) => {
         this.userService.getUser(annonce.seller?.mail!).subscribe((user) => {

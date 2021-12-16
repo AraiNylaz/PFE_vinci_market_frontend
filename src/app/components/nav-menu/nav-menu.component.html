@@ -31,8 +31,9 @@
             class="nav-item"
             [routerLinkActive]="['link-active']"
             [routerLinkActiveOptions]="{ exact: true }"
+            *ngIf="currentUser"
           >
-            <a class="navbar-brand" [routerLink]="['/annonces']"
+            <a class="navbar-brand" [routerLink]="['/mesAnnonces']"
               >Mes Annonces</a
             >
           </li>

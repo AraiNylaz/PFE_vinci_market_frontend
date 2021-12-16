@@ -13,13 +13,10 @@ import { User } from '../models/user';
 })
 export class MesAnnoncesComponent {
   annonces: Annonce[] = [];
-  map = new Map();
-
   constructor(
     private annonceService: AnnonceService,
     private router: Router,
-    private authService: AuthenticationService,
-    private userService: UserService
+    private authService: AuthenticationService
   ) {
     this.chargement();
   }
@@ -32,13 +29,10 @@ export class MesAnnoncesComponent {
   }
 
   chargement() {
-    this.annonceService.getMesAnnonces().subscribe((annonce) => {
-      this.annonces = annonce;
-      this.annonces.forEach((annonce) => {
-        this.userService.getUser(annonce.seller?.mail!).subscribe((user) => {
-          this.map.set(annonce, user);
-        });
+    this.annonceService
+      .getMesAnnonces(this.currentUser?.idUser!)
+      .subscribe((annonce) => {
+        this.annonces = annonce;
       });
-    });
   }
 }
