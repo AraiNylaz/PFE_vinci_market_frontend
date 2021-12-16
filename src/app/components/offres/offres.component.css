@@ -1,16 +1,99 @@
-.container {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+div {
+  min-height: 500px;
+}
+
+.persoColorBlue {
+    background-color: #006f91ee;
+    margin-left: 20px;
+    color: #fff;
+    border-radius: 35px;
+    width: 250px;
+    height:50px;
+    text-align:center;
+    line-height:1.1em;
+    font-size:1.1em;
+    position: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+.containerTop{
+  position: absolute;
+  transform: translate(-50%);
+  width:100%;  left:50%;
   color: #006f91;
-  margin-bottom: 10px;
+  display: inline-block;
 }
 
-ul, li {
-    display: inline-block;
+.container {
+  position: absolute;
+  background-color:aliceblue;
+  top:25%;
+  left:50%;
+  transform: translate(-50%);
+  color: #006f91;
 }
 
-p{
-    background-color: #006f91ee; 
+.inlineBloc, label, select{
+  margin-right: 20px;
+  margin-left: 20px;
+  display: inline-block;
 }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: scroll;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  border-radius: 10px;   
+  height:100%;
+  display: block;
+  
+}
+
+th,
+td {
+  padding: 15px;
+  background-color: rgba(255,255,255,0.2);
+  color: #006f91;
+  text-align: left;
+
+}
+
+th {
+  text-align: left;
+  color: #006f91;
+}
+
+tbody{
+  display: table;
+  overflow-y: scroll;      
+  height: 100%;
+  width: 100%;
+}
+
+thead, th {
+ 
+  border-collapse: collapse;
+  width: 100%;
+  z-index: 1;
+  background-color: #006f91;
+  color: #fff;
+}
+
+tr:hover {
+  background-color: #006f9170;
+}
+
+button{
+  background-color: #006f91ee;
+  color: #fff;
+  border-radius: 35px;
+  width: 125px;
+  height: 35px;
+  text-align:center;
+  margin-left: 20px;
+  
+}
+
+tr th { width: 10%; }
+tr td { width: 10%; }

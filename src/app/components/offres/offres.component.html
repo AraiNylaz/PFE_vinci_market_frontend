@@ -1,11 +1,13 @@
 <div>
   <table class="container">
+    <h3>Liste des utilisateurs</h3>
+    <h3 *ngIf="offres.length == 0">Vous n'avez aucune offre</h3>
     <thead>
       <tr>
         <th>Message</th>
         <th>Prix</th>
         <th>Nom de l'acheteur</th>
-        <td>Telephone</td>
+        <th>Telephone</th>
       </tr>
     </thead>
     <tbody *ngIf="offres.length > 0">
@@ -15,7 +17,6 @@
         <td>{{ map.get(offre).display }}</td>
         <td>{{ map.get(offre).phone }}</td>
       </tr>
-      <p *ngIf="offres.length == 0">Pas d'offre</p>
     </tbody>
   </table>
 </div>
