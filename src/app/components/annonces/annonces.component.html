@@ -1,31 +1,29 @@
-<div id="userlistBody">
-  <h3>Liste des annonces :</h3>
-  <br />
-</div>
-<p></p>
 <div>
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <select formControlName="subCategory" class="list-group-item" required>
-      <option
+  <div class="containerTop" >
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <label>Categorie *  </label>
+      <select formControlName="subCategory" class="list-group-item" required>
+        <option
         *ngFor="let subCategory of subCategories"
         [ngValue]="subCategory?.idSubCategory"
-      >
+        >
         {{ subCategory.display }}
       </option>
     </select>
-    <p>Prix min *</p>
+    <label>Prix min *  </label>
     <mat-form-field class="full-width-input">
       <input matInput type="number" formControlName="prixMin" />
     </mat-form-field>
-    <p>Prix max *</p>
+    <label>Prix max *  </label>
     <mat-form-field class="full-width-input">
       <input matInput type="number" formControlName="prixMax" />
     </mat-form-field>
-    <p></p>
-    <button class="persoColorBlue">trier</button>
+    <button class="persoColorBlue">Faire une recherche</button>
   </form>
+</div> 
+<div>
   <table class="container">
-    <h3>Liste des annonces</h3>
+    <h3>Liste des annonces :</h3>
     <h3 *ngIf="annonces.length == 0">Pas d'annonce</h3>
     <thead>
       <tr>
@@ -46,20 +44,21 @@
         <td>{{ annonce?.subcategory?.subCategoryName || "" }}</td>
         <td>{{ annonce.creationDate || "" }}</td>
         <td>{{ annonce.status || "" }}</td>
-
+        
         <td>
           <form>
             <button
-              class="persoColorBlue"
-              *ngIf="currentUser"
-              (click)="annonceDetails(annonce.idProduct!)"
+            class="persoColorBlue"
+            *ngIf="currentUser"
+            (click)="annonceDetails(annonce.idProduct!)"
             >
-              Voir en details
-            </button>
-          </form>
-        </td>
-      </tr>
-      <p *ngIf="annonces.length == 0">Pas d'annonce</p>
-    </tbody>
-  </table>
+            Voir en details
+          </button>
+        </form>
+      </td>
+    </tr>
+    <p *ngIf="annonces.length == 0">Pas d'annonce</p>
+  </tbody>
+</table>
+</div>
 </div>

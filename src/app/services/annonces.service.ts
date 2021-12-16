@@ -76,6 +76,15 @@ export class AnnonceService {
       .pipe(map((res) => plainToClass(Category, res)));
   }
 
+  ajouterSubCategorie(name: string, category: string) {
+    return this.http
+      .post<Category>(urlSubCategory, {
+        subCategoryName: name,
+        cateIdentification: category,
+      })
+      .pipe(map((res) => plainToClass(Category, res)));
+  }
+
   addAnnonce(
     title: string,
     description: string,
