@@ -21,6 +21,11 @@ export class AnnonceService {
       .get<Annonce>(baseUrl + id)
       .pipe(map((res) => plainToClass(Annonce, res)));
   }
+  deleteById(id:string | undefined){
+    
+    return this.http.delete(baseUrl+"setToDelete/"+id).subscribe((res)=>console.log(res));
+
+  }
   getFilterToSell(
     prixMin:number,
     prixMax:number,
