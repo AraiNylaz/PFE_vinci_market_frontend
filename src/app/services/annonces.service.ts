@@ -27,12 +27,14 @@ export class AnnonceService {
     subCategory:string,
 
   ):Observable<Annonce[]>{
-    let params = new HttpParams().set('prixMin', prixMin);
-    params.set("prixMax",prixMax);
+   
     
-    params.set("idSubCategory",subCategory);
     return this.http.get<Annonce[]>(baseUrl+"all/toSell",{
-     params:params, 
+     params:{
+       idSubCategory:subCategory,
+       priceMin:prixMin,
+       priceMax:prixMax,
+     }, 
     }).pipe(map((res) => plainToClass(Annonce, res)));
   }
 

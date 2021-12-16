@@ -49,8 +49,8 @@ export class AnnoncesComponent implements OnInit {
   }
   ngOnInit(): void {
     this.form = this.fb.group({
-      prixMin:[-1,!Validators.required],
-      prixMax:[-1,!Validators.required],
+      prixMin:[0,!Validators.required],
+      prixMax:[0,!Validators.required],
       //etat:["visible",!Validators.required],
       subCategory:["",!Validators.required],
     })
@@ -59,11 +59,24 @@ export class AnnoncesComponent implements OnInit {
     return this.form.controls;
   }
   onSubmit(){
-    if(this.form.valid){
+    
       try{
-        const prixMin=this.f["prixMin"].value;
-        const prixMax=this.f["prixMax"].value;
-        const subCategory=this.f["subCategory"].value;
+        let prixMin=this.f["prixMin"].value;
+        if(prixMin==0){
+          prixMin=-1;
+        }
+        let prixMax=this.f["prixMax"].value;
+        if(prixMax==0){
+          prixMax=-1;
+        }
+        let subCategory=this.f["subCategory"].value;
+        
+        if(subCategory==""){
+          subCategory=" ";
+          console.log("ok");
+        }
+        
+        console.log(subCategory);
         this.annonceService.getFilterToSell(prixMin,prixMax,subCategory).subscribe((annonce)=>{
           this.annonces=annonce;
         });
@@ -75,7 +88,7 @@ export class AnnoncesComponent implements OnInit {
 
 
       }
-    }
+    
   }
   
 
