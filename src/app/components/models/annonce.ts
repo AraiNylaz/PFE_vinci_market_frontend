@@ -4,6 +4,7 @@ import { Moment } from 'moment';
 import * as moment from 'moment';
 import { User } from './user';
 import { SubCategory } from './subCategory';
+import { DatePipe } from '@angular/common';
 
 export class Annonce {
   idProduct?: string;
@@ -20,6 +21,14 @@ export class Annonce {
   valid?: boolean;
 
   get display(): string {
-    return `${(this.title, ' ', this.description)}`;
+    return `${(this.title)}`;
+  }
+  get dateCreation():string | null {
+    
+    const datePipe=new DatePipe('en-EU');
+
+    var transformDate = datePipe.transform(this.creationDate, 'dd-MM-yyyy ');
+    return transformDate;
+
   }
 }

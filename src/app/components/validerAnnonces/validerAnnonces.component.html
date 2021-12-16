@@ -4,12 +4,11 @@
     <h3 *ngIf="annonces.length == 0" > Il n'y a pas d'annonces</h3>
     <thead>
       <tr>
-        <th>Nom et Description</th>
+        <th>Titre</th>
         <th>Prix</th>
         <th>Vendeur</th>
         <th>Categorie</th>
-        <th>Date de publication</th>
-        <th></th>
+        <th>Valider</th>
       </tr>
     </thead>
     <tbody *ngIf="annonces.length > 0">
@@ -18,7 +17,6 @@
         <td>{{ annonce.price }}</td>
         <td>{{ map.get(annonce).display || "" }}</td>
         <td>{{annonce?.subcategory?.category?.category || ""}}</td>
-        <td>{{ annonce.creationDate }}</td>
         <td>
           <form>
             <button class="persoColorBlue" (click)="validate(annonce)">
