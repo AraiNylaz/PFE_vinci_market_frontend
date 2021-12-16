@@ -1,58 +1,60 @@
-div{
-    margin-top: 50%;
-  }
-h3{
-    position: absolute;
-    top: -300px;
-    left: 10%;
-    color: #006f91;
+div {
+  margin-top: 50%;
+}
+h3 {
+  position: absolute;
+  top: -300px;
+  left: 10%;
+  color: #006f91;
 }
 .container {
-    position: absolute;
-    background-color:#d7edf3;
-    top: 10%;
-    left:50%;
-    bottom:0;
-    transform: translate(-50%, -15%);
-    color: #006f91;
-    width: 80%;
-  }
+  position: absolute;
+  background-color: #d7edf3;
+  top: 20%;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, -15%);
+  color: #006f91;
+  width: 80%;
+}
 
 table {
-    position: fixed;
-    width: 100%;
-    border-collapse: collapse;
-    overflow: scroll;
-    box-shadow: 0 0 20px rgba(0,0,0,0.1);
-    border-radius: 10px;
+  position: fixed;
+  margin-top: 5%;
+  width: 100%;
+  border-collapse: collapse;
+  overflow: scroll;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
 }
 
 th,
 td {
-    padding: 15px;
-    background-color: rgba(255,255,255,0.2);
-    color: #006f91;
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #006f91;
 }
 
 th {
-    text-align: left;
-    color: #006f91;
+  text-align: left;
+  color: #006f91;
 }
 
-thead, th {
-    background-color: #006f91;
-    color: #fff;
+thead,
+th {
+  background-color: #006f91;
+  color: #fff;
 }
 
 tr:hover {
-    background-color: #006f9170;
+  background-color: #006f9170;
 }
 
-button{
-    background-color: #006f91ee;
-    color: #fff;
-    border-radius: 35px;
-    width: 125px;
-    height: 35px;
-    text-align:center;
+button {
+  background-color: #006f91ee;
+  color: #fff;
+  border-radius: 35px;
+  width: 125px;
+  height: 35px;
+  text-align: center;
 }
