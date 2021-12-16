@@ -74,7 +74,8 @@ export class AnnonceDetailComponent {
     }
     async delete(id:string | undefined){
       await this.annonceService.deleteById(id);
-      this.router.navigate(["/annonces"]);
+      this.router.navigate(["/"]);
+      
     }
 
     async onFileUpload(event: any){
