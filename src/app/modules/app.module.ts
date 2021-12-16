@@ -24,6 +24,7 @@ import { AjouterOffreComponent } from '../components/ajouterOffre/ajouterOffre.c
 import { AjouterAnnonceComponent } from '../components/ajouterAnnonce/ajouter_annonce.component';
 import { AuthGuard } from '../services/auth.guard';
 import { MesAnnoncesComponent } from '../components/listMesAnnonces/mesAnnonces.component';
+import { DeleteProfilComponent } from '../components/deleteProfil/deleteProfil.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { MesAnnoncesComponent } from '../components/listMesAnnonces/mesAnnonces.
     AnnonceDetailComponent,
     ModifierAnnonceComponent,
     AjouterOffreComponent,
+    DeleteProfilComponent,
     AjouterAnnonceComponent,
     MesAnnoncesComponent,
   ],

@@ -5,18 +5,18 @@
         <th>Nom et Description</th>
         <th>Prix</th>
         <th>Vendeur</th>
+        <th>Categorie</th>
         <th>Date de publication</th>
-        <th>Etat de l'annonce</th>
         <th></th>
       </tr>
     </thead>
-    <tbody>
+    <tbody *ngIf="annonces.length > 0">
       <tr *ngFor="let annonce of annonces">
-        <td>{{ annonce.display || "" }}</td>
-        <td>{{ annonce.price || 0 }}</td>
-        <td>{{ map.get(annonce)?.display || "" }}</td>
-        <td>{{ annonce.creationDate || "" }}</td>
-        <td>{{ annonce.status || "" }}</td>
+        <td>{{ annonce.display }}</td>
+        <td>{{ annonce.price }}</td>
+        <td>{{ annonce.seller }}</td>
+        <td>{{ annonce.subcategory }}</td>
+        <td>{{ annonce.creationDate }}</td>
         <td>
           <form>
             <button class="persoColorBlue" (click)="validate(annonce)">
@@ -25,7 +25,6 @@
           </form>
         </td>
       </tr>
-      <p *ngIf="annonces.length == 0">Pas d'annonce</p>
     </tbody>
   </table>
 </div>

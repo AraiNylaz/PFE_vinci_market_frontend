@@ -5,6 +5,7 @@ import { HomeComponent } from '../components/home/home.component';
 import { LoginComponent } from '../components/login/login.component';
 import { ProfilComponent } from '../components/profil/profil.component';
 import { ModifierProfilComponent } from '../components/modifierProfil/modifierProfil.component';
+//import { DeleteProfilComponent } from '../components/deleteProfil/deleteProfil.component';
 import { SignUpComponent } from '../components/sign-up/sign-up.component';
 import { UserListComponent } from '../components/userlist/userlist.component';
 import { ValiderAnnoncesComponent } from '../components/validerAnnonces/validerAnnonces.component';
@@ -14,6 +15,7 @@ import { OffresComponent } from '../components/offres/offres.component';
 import { AjouterAnnonceComponent } from '../components/ajouterAnnonce/ajouter_annonce.component';
 import { AuthGuard } from '../services/auth.guard';
 import { MesAnnoncesComponent } from '../components/listMesAnnonces/mesAnnonces.component';
+import { DeleteProfilComponent } from '../components/deleteProfil/deleteProfil.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -60,6 +62,10 @@ const appRoutes: Routes = [
     component: ModifierProfilComponent,
     canActivate: [AuthGuard],
     data: { role: ['user'] },
+  },
+  {
+    path: 'deleteProfil/:id',
+    component: DeleteProfilComponent,
   },
   {
     path: 'validerAnnonces',

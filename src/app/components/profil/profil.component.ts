@@ -11,21 +11,20 @@ import { User } from '../models/user';
   styleUrls: ['profil.component.css'],
 })
 export class ProfilComponent {
-  constructor(private authenticationService: AuthenticationService, private router: Router) {}
+  constructor(
+    private authenticationService: AuthenticationService,
+    private router: Router
+  ) {}
 
   get currentUser() {
     return this.authenticationService.currentUser;
   }
 
-
-  modifierProfil(){
+  modifierProfil() {
     this.router.navigate(['/modifierProfil']);
   }
 
-  deleteProfil(){
-    this.router.navigate(['/delete'+ this.currentUser?.idUser]);
+  deleteProfil() {
+    this.router.navigate(['/deleteProfil/' + this.currentUser?.idUser]);
   }
-
-
-
 }

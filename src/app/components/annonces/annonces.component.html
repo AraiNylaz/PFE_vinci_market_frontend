@@ -1,26 +1,32 @@
-
 <div id="userlistBody">
   <h3>Liste des annonces :</h3>
-  <br>
-  </div>
-  <p></p>
-  <div>
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
-      <select formControlName="subCategory" class="list-group-item" required>
-        <option *ngFor="let subCategory of subCategories" [ngValue]="subCategory?.idSubCategory">{{subCategory.display}}</option>
-      </select>
-      <p>Prix min *</p>
-        <mat-form-field  class="full-width-input">
-          <input matInput type="number" formControlName="prixMin" />
-        </mat-form-field>
-        <p>Prix max *</p>
-        <mat-form-field  class="full-width-input">
-          <input matInput type="number" formControlName="prixMax" />
-        </mat-form-field>
-        <p></p>
-        <button class="persoColorBlue">trier</button>
-    </form>
+  <br />
+</div>
+<p></p>
+<div>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <select formControlName="subCategory" class="list-group-item" required>
+      <option
+        *ngFor="let subCategory of subCategories"
+        [ngValue]="subCategory?.idSubCategory"
+      >
+        {{ subCategory.display }}
+      </option>
+    </select>
+    <p>Prix min *</p>
+    <mat-form-field class="full-width-input">
+      <input matInput type="number" formControlName="prixMin" />
+    </mat-form-field>
+    <p>Prix max *</p>
+    <mat-form-field class="full-width-input">
+      <input matInput type="number" formControlName="prixMax" />
+    </mat-form-field>
+    <p></p>
+    <button class="persoColorBlue">trier</button>
+  </form>
   <table class="container">
+    <h3>Liste des annonces</h3>
+    <h3 *ngIf="annonces.length == 0">Pas d'annonce</h3>
     <thead>
       <tr>
         <th>Nom et Description</th>
@@ -30,22 +36,24 @@
         <th>Date de publication</th>
         <th>Etat de l'annonce</th>
         <th></th>
-        
       </tr>
     </thead>
     <tbody *ngIf="annonces.length > 0">
       <tr *ngFor="let annonce of annonces">
-
         <td>{{ annonce.display || "" }}</td>
         <td>{{ annonce.price || 0 }}</td>
-        <td>{{annonce?.subcategory?.category?.category || ""}}</td>
-        <td>{{annonce?.subcategory?.subCategoryName ||""}}</td>
+        <td>{{ annonce?.subcategory?.category?.category || "" }}</td>
+        <td>{{ annonce?.subcategory?.subCategoryName || "" }}</td>
         <td>{{ annonce.creationDate || "" }}</td>
         <td>{{ annonce.status || "" }}</td>
 
         <td>
           <form>
-            <button class="persoColorBlue" *ngIf="currentUser" (click)="annonceDetails(annonce.idProduct!)">
+            <button
+              class="persoColorBlue"
+              *ngIf="currentUser"
+              (click)="annonceDetails(annonce.idProduct!)"
+            >
               Voir en details
             </button>
           </form>
@@ -55,4 +63,3 @@
     </tbody>
   </table>
 </div>
-  
