@@ -15,18 +15,18 @@ let urlCategory = environment.api + '/category/';
 @Injectable({ providedIn: 'root' })
 export class AnnonceService {
   constructor(private http: HttpClient) {}
-
+  
   getById(id: string) {
     return this.http
-      .get<Annonce>(baseUrl + id)
-      .pipe(map((res) => plainToClass(Annonce, res)));
+    .get<Annonce>(baseUrl + id)
+    .pipe(map((res) => plainToClass(Annonce, res)));
   }
   getFilterToSell(
     prixMin: number,
     prixMax: number,
     subCategory: string
-  ): Observable<Annonce[]> {
-    return this.http
+    ): Observable<Annonce[]> {
+      return this.http
       .get<Annonce[]>(baseUrl + 'all/toSell', {
         params: {
           idSubCategory: subCategory,
@@ -35,116 +35,123 @@ export class AnnonceService {
         },
       })
       .pipe(map((res) => plainToClass(Annonce, res)));
-  }
-
-  getAllToSell(): Observable<Annonce[]> {
-    return this.http
+    }
+    
+    getAllToSell(): Observable<Annonce[]> {
+      return this.http
       .get<Annonce[]>(baseUrl + 'all/toSell')
       .pipe(map((res) => plainToClass(Annonce, res)));
-  }
-  getAll(): Observable<Annonce[]> {
-    return this.http
+    }
+    getAll(): Observable<Annonce[]> {
+      return this.http
       .get<Annonce[]>(baseUrl)
       .pipe(map((res) => plainToClass(Annonce, res)));
-  }
-
-  getMesAnnonces(id: string): Observable<Annonce[]> {
-    return this.http
+    }
+    
+    getMesAnnonces(id: string): Observable<Annonce[]> {
+      return this.http
       .get<Annonce[]>(baseUrl + 'user/' + id)
       .pipe(map((res) => plainToClass(Annonce, res)));
-  }
-
-  getSubCategories(): Observable<SubCategory[]> {
-    return this.http
+    }
+    
+    getSubCategories(): Observable<SubCategory[]> {
+      return this.http
       .get<SubCategory[]>(urlSubCategory)
       .pipe(map((res) => plainToClass(SubCategory, res)));
-  }
-  getCategories(): Observable<Category[]> {
-    return this.http
+    }
+    getCategories(): Observable<Category[]> {
+      return this.http
       .get<Category[]>(urlCategory)
       .pipe(map((res) => plainToClass(Category, res)));
-  }
-
-  ajouterCategorie(name: string) {
-    return this.http
+    }
+    
+    ajouterCategorie(name: string) {
+      return this.http
       .post<Category>(urlCategory, { category: name })
       .pipe(map((res) => plainToClass(Category, res)));
-  }
-
-  ajouterSubCategorie(name: string, category: string) {
-    return this.http
+    }
+    
+    ajouterSubCategorie(name: string, category: string) {
+      return this.http
       .post<Category>(urlSubCategory, {
         subCategoryName: name,
         cateIdentification: category,
       })
       .pipe(map((res) => plainToClass(Category, res)));
-  }
-
-  addAnnonce(
-    title: string,
-    description: string,
-    idSubCategory: string,
-    idSeller: string | undefined,
-    price: number,
-    status: string
-  ): Observable<Annonce> {
-    return this.http
-      .post<Annonce>(`${baseUrl}`, {
-        title: title,
-        description: description,
-        idSubCategory: idSubCategory,
-        idSeller: idSeller,
-        price: price,
-        status: status,
-      })
-      .pipe(map((res) => plainToClass(Annonce, res)));
-  }
-  // addAnnonce(annonce:Annonce):void{
-  //   console.log("passe dans add Annonce");
-  //   this.http.post<Annonce>(`${baseUrl}`,{
-  //     "product":annonce
-  //   }).subscribe(()=>console.log("enregistrement terminer"),(err)=>console.log(err));
-
-  // }
-  getAllNotValidated(): Observable<Annonce[]> {
-    return this.http
-      .get<Annonce[]>(baseUrl + 'all/notValidate')
-      .pipe(map((res) => plainToClass(Annonce, res)));
-  }
-
-  validate(annonce: Annonce) {
-    return this.http
-      .get<void>(baseUrl + 'valid/' + annonce.idProduct)
-      .subscribe();
-  }
-
-  createAnnonce(annonce: Annonce) {
-    return this.http
-      .post<Annonce>(baseUrl, annonce)
-      .pipe(map((res) => plainToClass(Annonce, res)));
-  }
-}
-// signup(
-//     password: string,
-//     mail: string,
-//     firstName: string,
-//     lastName: string,
-//     phone:string,
-//     campus:String,
-//   ): void {
-//     console.log("ok");
-//     this.http
-//       .post<User>(`${this.baseUrl}`, {
-//         "lastName": lastName,
-//         "firstName": firstName,
-//         "password": password,
-//         "campus":campus,
-//         "phone":phone,
-//         "mail": mail,
-//         "isAdmin":false,
-//       }).subscribe(()=>{
-//         console.log('Enregistrement terminé !');
-//       },(error) => {
-//         console.log('Erreur ! : ' + error);
-//       });
-//   }
+    }
+    
+    addAnnonce(
+      title: string,
+      description: string,
+      idSubCategory: string,
+      idSeller: string | undefined,
+      price: number,
+      status: string
+      ): Observable<Annonce> {
+        return this.http
+        .post<Annonce>(`${baseUrl}`, {
+          title: title,
+          description: description,
+          idSubCategory: idSubCategory,
+          idSeller: idSeller,
+          price: price,
+          status: status,
+        })
+        .pipe(map((res) => plainToClass(Annonce, res)));
+      }
+      // addAnnonce(annonce:Annonce):void{
+      //   console.log("passe dans add Annonce");
+      //   this.http.post<Annonce>(`${baseUrl}`,{
+      //     "product":annonce
+      //   }).subscribe(()=>console.log("enregistrement terminer"),(err)=>console.log(err));
+      
+      // }
+      getAllNotValidated(): Observable<Annonce[]> {
+        return this.http
+        .get<Annonce[]>(baseUrl + 'all/notValidate')
+        .pipe(map((res) => plainToClass(Annonce, res)));
+      }
+      
+      validate(annonce: Annonce) {
+        return this.http
+        .get<void>(baseUrl + 'valid/' + annonce.idProduct)
+        .subscribe();
+      }
+      
+      createAnnonce(annonce: Annonce) {
+        return this.http
+        .post<Annonce>(baseUrl, annonce)
+        .pipe(map((res) => plainToClass(Annonce, res)));
+      }
+      
+      deleteById(id:string | undefined){
+        
+        return this.http.get(baseUrl+"setToDelete/"+id).subscribe((res)=>console.log(res));
+        
+      }
+    }
+    // signup(
+    //     password: string,
+    //     mail: string,
+    //     firstName: string,
+    //     lastName: string,
+    //     phone:string,
+    //     campus:String,
+    //   ): void {
+    //     console.log("ok");
+    //     this.http
+    //       .post<User>(`${this.baseUrl}`, {
+    //         "lastName": lastName,
+    //         "firstName": firstName,
+    //         "password": password,
+    //         "campus":campus,
+    //         "phone":phone,
+    //         "mail": mail,
+    //         "isAdmin":false,
+    //       }).subscribe(()=>{
+    //         console.log('Enregistrement terminé !');
+    //       },(error) => {
+    //         console.log('Erreur ! : ' + error);
+    //       });
+    //   }
+    

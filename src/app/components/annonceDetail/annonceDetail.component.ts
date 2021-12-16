@@ -6,7 +6,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Fileservice } from 'src/app/services/file.service';
 import { Annonce } from '../models/annonce';
 import { Picture } from '../models/picture';
-import { User } from '../models/user';
+import { Campus, User } from '../models/user';
 import { Video } from '../models/video';
 
 @Component({
@@ -24,6 +24,7 @@ export class AnnonceDetailComponent {
   selecetdFile !: File;
   imagename!:string | ArrayBuffer | null;
   user!:User |undefined;
+  address!: string;
   
   
   constructor(
@@ -34,19 +35,39 @@ export class AnnonceDetailComponent {
     private authService: AuthenticationService
     ) {
       this.route.params.subscribe(async (params) => {
-        await this.annonceService.getById(params['id']).subscribe(async (annonce) => {
+        console.log(params);
+        this.annonceService.getById(params['id']).subscribe(async (annonce) => {
           this.annonce = annonce;
-          this.fileservice.getPicture(this.annonce.idProduct).subscribe((picture)=>{
-            this.pictures=picture;
-          })
+          console.log(annonce);
           
-          await this.fileservice.getVideo(this.annonce.idProduct).subscribe((videos=>{
-            this.video=videos;
-          }))
+          if(this.annonce.seller?.campus ==  Campus.WOLUWE.toLocaleUpperCase()){
+            this.address =  "avenue de la semoy 5 1200 belgique";
+          }
+          if(this.annonce.seller?.campus == Campus.LOUVAINLANEUVE.toLocaleUpperCase()){
+            this.address =  "Chem. de la Bardane 17, 1348 Ottignies-Louvain-la-Neuve belgique";
+          }
+          if(this.annonce.seller?.campus == Campus.IXELLES.toLocaleUpperCase()){
+            this.address =  "Rue d'Arlon 11, 1050 Ixelles";
+          }
           
         });
+
+        this.fileservice.getPicture(params['id']).subscribe((picture)=>{
+          this.pictures=picture;
+          console.log(picture);
+          console.log("herrrrrre");
+          
+        });
+        
+        this.fileservice.getVideo(params['id']).subscribe((videos)=>{
+          this.video=videos;
+        });
       });
-      const token ='sp=racwdl&st=2021-12-14T09:08:55Z&se=2021-12-18T17:08:55Z&sv=2020-08-04&sr=c&sig=iwxED4BIiSKcrJSxJnHJv7ywxTyKpxUPJlHzvK0NYkY%3D';
+        
+        
+        
+      
+      const token ='sp=racwdli&st=2021-12-16T17:54:57Z&se=2021-12-18T01:54:57Z&sv=2020-08-04&sr=c&sig=WqHP8UGA00Ei8tM09HQwmLUsTOCOwTaad4uYwfQWQ%2Fc%3D';
       
       this.blobSasUrl=`https://merlinduvivier.blob.core.windows.net?${token}`;
       this.blobServiceClient=new BlobServiceClient(this.blobSasUrl);
@@ -67,12 +88,12 @@ export class AnnonceDetailComponent {
     addOffer(id: string) {
       this.router.navigate(['/ajouterOffre/' + id]);
     }
-
+    
     valider(annonce:Annonce){
       this.annonceService.validate(annonce);
       this.router.navigate(["/annonces"]);
     }
-
+    
     async onFileUpload(event: any){
       this.selecetdFile=event.target.files[0];
       const reader = new FileReader();
@@ -98,6 +119,12 @@ export class AnnonceDetailComponent {
       }
       window.location.reload();
       
+    }
+
+    async delete(id:string | undefined){
+      await this.annonceService.deleteById(id);
+      this.router.navigate(["/"]);
+
     }
   }
   

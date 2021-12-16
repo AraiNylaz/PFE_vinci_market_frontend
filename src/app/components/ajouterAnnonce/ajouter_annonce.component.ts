@@ -41,7 +41,7 @@ export class AjouterAnnonceComponent {
     annonceService.getCategories().subscribe((categories)=>{
       this.categories=categories;
     })
-    const token ='sp=racwdl&st=2021-12-14T09:08:55Z&se=2021-12-18T17:08:55Z&sv=2020-08-04&sr=c&sig=iwxED4BIiSKcrJSxJnHJv7ywxTyKpxUPJlHzvK0NYkY%3D';
+    const token ='sp=racwdli&st=2021-12-16T17:54:57Z&se=2021-12-18T01:54:57Z&sv=2020-08-04&sr=c&sig=WqHP8UGA00Ei8tM09HQwmLUsTOCOwTaad4uYwfQWQ%2Fc%3D';
 
     this.blobSasUrl=`https://merlinduvivier.blob.core.windows.net?${token}`;
     this.blobServiceClient=new BlobServiceClient(this.blobSasUrl);

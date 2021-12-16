@@ -18,6 +18,8 @@ export class Fileservice{
     
     addFile(idProduct:string | undefined,
         nameFile:string){
+            console.log("here");
+            
             if(this.isImage(nameFile)){
                     this.http.post<String>(`${pictureUrl}`,{
                     idProduct:idProduct,
@@ -45,6 +47,8 @@ export class Fileservice{
 
         }
     getPicture(idProduct:string | undefined):Observable<Picture[]>{
+        console.log("here !!!! 2 ");
+        
         return this.http.get<Picture[]>(pictureUrl+""+idProduct).pipe(map((res) => plainToClass(Picture, res)));
     }
     getVideo(idProduct:string|undefined):Observable<Video>{
