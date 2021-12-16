@@ -72,6 +72,11 @@ export class AnnonceDetailComponent {
       this.annonceService.validate(annonce);
       this.router.navigate(["/annonces"]);
     }
+    async delete(id:string | undefined){
+      await this.annonceService.deleteById(id);
+      this.router.navigate(["/"]);
+      
+    }
 
     async onFileUpload(event: any){
       this.selecetdFile=event.target.files[0];

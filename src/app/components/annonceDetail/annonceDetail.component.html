@@ -45,6 +45,9 @@
   >
     Ajouter une offre
   </button>
+  <button class="persoColorBlue"
+  *ngIf="currentUser==annonce.seller?.idUser"
+  (click)="delete(annonce.idProduct)"> delete</button>
   <button
     class="persoColorBlue"
     *ngIf="user?.admin == true && annonce?.state == 'Debut'"
