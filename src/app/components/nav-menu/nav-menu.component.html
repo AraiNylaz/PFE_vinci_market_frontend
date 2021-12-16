@@ -31,13 +31,6 @@
           <li
             class="nav-item"
             [routerLinkActive]="['link-active']"
-            *ngIf="currentUser && isAdmin"
-          >
-            <a class="navbar-brand" [routerLink]="['/users']">Users</a>
-          </li>
-          <li
-            class="nav-item"
-            [routerLinkActive]="['link-active']"
             *ngIf="currentUser"
           >
             <a class="navbar-brand" [routerLink]="['/profil']">Profil</a>
@@ -56,8 +49,15 @@
             [routerLinkActive]="['link-active']"
             *ngIf="currentUser && currentUser.admin"
           >
-            <a class="navbar-brand" [routerLink]="['/users']"
-              >Zone Administrateur</a
+            <a class="navbar-brand" [routerLink]="['/users']">Zone Admin</a>
+          </li>
+          <li
+            class="nav-item"
+            [routerLinkActive]="['link-active']"
+            *ngIf="currentUser && currentUser.admin"
+          >
+            <a class="navbar-brand" [routerLink]="['/validerAnnonces']"
+              >Valider Annonces</a
             >
           </li>
         </ul>

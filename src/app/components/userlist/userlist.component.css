@@ -1,65 +1,32 @@
-<<<<<<< HEAD
 div {
   margin-top: 50%;
 }
-h3 {
-  position: absolute;
-  top: -300px;
-  left: 10%;
-  color: #006f91;
-=======
-div{
-    margin-top: 50%;
->>>>>>> 559bee91ecdb230958fea4fb810cc7854558dc70
-}
 
 .container {
-<<<<<<< HEAD
   position: absolute;
   background-color: #d7edf3;
-  top: 20%;
+  top: 10%;
   left: 50%;
-  bottom: 0;
-  transform: translate(-50%, -15%);
+  transform: translate(-50%);
   color: #006f91;
-  width: 80%;
 }
 
 table {
-  position: fixed;
-  margin-top: 5%;
   width: 100%;
   border-collapse: collapse;
   overflow: scroll;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-=======
-    position: absolute;
-    background-color:#d7edf3;
-    top: 10%;
-    left:50%;
-    transform: translate(-50%);
-    color: #006f91;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    overflow: scroll;
-    box-shadow: 0 0 20px rgba(0,0,0,0.1);
-    border-radius: 10px;   
-    height:100%;
-    display: block;
-    
->>>>>>> 559bee91ecdb230958fea4fb810cc7854558dc70
+  height: 100%;
+  display: block;
 }
 
 th,
 td {
-<<<<<<< HEAD
   padding: 15px;
   background-color: rgba(255, 255, 255, 0.2);
   color: #006f91;
+  text-align: left;
 }
 
 th {
@@ -67,47 +34,26 @@ th {
   color: #006f91;
 }
 
+tbody {
+  display: table;
+  overflow-y: scroll;
+  height: 100%;
+  width: 100%;
+}
+
 thead,
 th {
+  border-collapse: collapse;
+  width: 100%;
+  z-index: 1;
   background-color: #006f91;
   color: #fff;
-=======
-    padding: 15px;
-    background-color: rgba(255,255,255,0.2);
-    color: #006f91;
-    text-align: left;
-
-}
-
-th {
-    
-
-    text-align: left;
-    color: #006f91;
-}
-
-tbody{
-    display: table;
-    overflow-y: scroll;      
-    height: 100%;
-    width: 100%;
-}
-
-thead, th {
-   
-    border-collapse: collapse;
-    width: 100%;
-    z-index: 1;
-    background-color: #006f91;
-    color: #fff;
->>>>>>> 559bee91ecdb230958fea4fb810cc7854558dc70
 }
 
 tr:hover {
   background-color: #006f9170;
 }
 
-<<<<<<< HEAD
 button {
   background-color: #006f91ee;
   color: #fff;
@@ -115,17 +61,11 @@ button {
   width: 125px;
   height: 35px;
   text-align: center;
-=======
-button{
-    background-color: #006f91ee;
-    color: #fff;
-    border-radius: 35px;
-    width: 125px;
-    height: 35px;
-    text-align:center;
-    
->>>>>>> 559bee91ecdb230958fea4fb810cc7854558dc70
 }
 
-tr th { width: 10%; }
-tr td { width: 10%; }
+tr th {
+  width: 10%;
+}
+tr td {
+  width: 10%;
+}
