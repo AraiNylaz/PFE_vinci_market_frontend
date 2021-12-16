@@ -60,6 +60,7 @@ td {
 }
 
 th {
+  width: 100%;
   text-align: left;
   color: #006f91;
 }
@@ -95,5 +96,5 @@ button{
   
 }
 
-tr th { width: 10%; }
-tr td { width: 10%; }
+tr th { width: 5%; }
+tr td { width: 5%; }

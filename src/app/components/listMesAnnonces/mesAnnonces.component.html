@@ -4,12 +4,11 @@
     <h3 *ngIf="annonces.length == 0">Vous n'avez pas encore d'annonces</h3>
     <thead>
       <tr>
-        <th>Nom et Description</th>
+        <th>Titre</th>
         <th>Prix</th>
         <th>Categorie</th>
-        <th>Date de publication</th>
         <th>Etat de l'annonce</th>
-        <th></th>
+        <th>Detail</th>
       </tr>
     </thead>
     <tbody *ngIf="annonces.length > 0">
@@ -17,7 +16,6 @@
         <td>{{ annonce.display || "" }}</td>
         <td>{{ annonce.price || 0 }}</td>
         <td>{{annonce?.subcategory?.category?.category || ""}}</td>
-        <td>{{ annonce.creationDate || "" }}</td>
         <td>{{ annonce.status || "" }}</td>
         <td>
           <form>
