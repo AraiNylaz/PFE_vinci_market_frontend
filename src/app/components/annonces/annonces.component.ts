@@ -21,9 +21,7 @@ export class AnnoncesComponent {
     private authService: AuthenticationService,
     private userService: UserService
   ) {
-    annonceService.getAll().subscribe((annonces) => {
-      this.annonces = annonces;
-    });
+    this.chargement();
   }
 
   get currentUser() {

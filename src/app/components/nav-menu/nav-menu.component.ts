@@ -47,6 +47,10 @@ export class NavMenuComponent {
     this.router.navigate(['/annonces']);
   }
 
+  mesAnnonces() {
+    this.router.navigate(['/mesAnnonces']);
+  }
+
   ajouterAnnonce() {
     this.router.navigate(['/ajouterAnnonce']);
   }

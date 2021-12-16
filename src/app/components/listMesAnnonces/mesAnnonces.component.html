@@ -14,7 +14,7 @@
       <tr *ngFor="let annonce of annonces">
         <td>{{ annonce.display || "" }}</td>
         <td>{{ annonce.price || 0 }}</td>
-        <td>add nom user, categorie,...</td>
+        <td>{{ map.get(annonce).display || "" }}</td>
         <td>{{ annonce.creationDate || "" }}</td>
         <td>{{ annonce.status || "" }}</td>
         <td>
@@ -31,5 +31,4 @@
       </tr>
     </tbody>
   </table>
-  <h1 *ngIf="annonces.length == 0">Pas d'annonce</h1>
 </div>

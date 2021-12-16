@@ -28,6 +28,12 @@ export class AnnonceService {
       .pipe(map((res) => plainToClass(Annonce, res)));
   }
 
+  getMesAnnonces(): Observable<Annonce[]> {
+    return this.http
+      .get<Annonce[]>(baseUrl + '')
+      .pipe(map((res) => plainToClass(Annonce, res)));
+  }
+
   getSubCategories(): Observable<SubCategory[]> {
     return this.http
       .get<SubCategory[]>(urlSubCategory)
