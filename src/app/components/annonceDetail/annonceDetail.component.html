@@ -24,8 +24,7 @@
     <h3>Propriétaire : {{ annonce.seller?.firstName }} {{annonce.seller?.lastName}}, email :  {{annonce.seller?.mail}}, téléphone : {{annonce.seller?.phone}}</h3>
     
     <div class="upload-btn-wrapper ">
-      <button *ngIf="annonce.seller?.idUser === currentUser" class="btn">Poster un fichier</button>
-      <input type="file"  name="filename" formControlName="image" (change)="onFileUpload($event)">
+      <input *ngIf="annonce.seller?.idUser === currentUser" type="file"  name="filename" formControlName="image" (change)="onFileUpload($event)">
     </div>
     <div class="upload-btn-wrapper ">
       <button
