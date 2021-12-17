@@ -1,61 +1,71 @@
 <div>
-  <div class="containerTop" >
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+
+  <div class="containerTop">
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
-      <label>Categorie *  </label>
+      <label>Categorie * </label>
       <select formControlName="subCategory" class="list-group-item" required>
         <option
-        *ngFor="let subCategory of subCategories"
-        [ngValue]="subCategory?.idSubCategory"
+          *ngFor="let subCategory of subCategories"
+          [ngValue]="subCategory?.idSubCategory"
         >
-        {{ subCategory.display }}
-      </option>
-    </select>
-    <label>Prix min *  </label>
-    <mat-form-field class="full-width-input">
-      <input matInput type="number" formControlName="prixMin" />
-    </mat-form-field>
-    <label>Prix max *  </label>
-    <mat-form-field class="full-width-input">
-      <input matInput type="number" formControlName="prixMax" />
-    </mat-form-field>
-    <button class="persoColorBlue">Faire une recherche</button>
-  </form>
-</div> 
-<div>
-  <table class="container">
-    <h3>Liste des annonces :</h3>
-    <h3 *ngIf="annonces.length == 0">Pas d'annonce</h3>
-    <thead>
-      <tr>
-        <th>Titre</th>
-        <th>Prix</th>
-        <th>Categories</th>
-        
-        <th>Etat de l'annonce</th>
-        <th>Validation </th>
-      </tr>
-    </thead>
-    <tbody *ngIf="annonces.length > 0">
-      <tr *ngFor="let annonce of annonces">
-        <td>{{ annonce.display || "" }}</td>
-        <td>{{ annonce.price || 0 }}</td>
-        <td>{{ annonce?.subcategory?.category?.category || "" }} | {{ annonce?.subcategory?.subCategoryName || "" }}</td>
-        <td>{{ annonce.status || "" }}</td>
-        
-        <td>
-          <form>
-            <button
-            class="persoColorBlue"
-            *ngIf="currentUser"
-            (click)="annonceDetails(annonce.idProduct!)"
-            >
-            Voir en details
-          </button>
-        </form>
-      </td>
-    </tr>
-    <p *ngIf="annonces.length == 0">Pas d'annonce</p>
-  </tbody>
-</table>
-</div>
+          {{ subCategory.display }}
+        </option>
+      </select>
+      <label>Prix min * </label>
+      <mat-form-field class="full-width-input">
+        <input matInput type="number" formControlName="prixMin" />
+      </mat-form-field>
+      <label>Prix max * </label>
+      <mat-form-field class="full-width-input">
+        <input matInput type="number" formControlName="prixMax" />
+      </mat-form-field>
+      <button class="persoColorBlue">Faire une recherche</button>
+    </form>
+  </div>
+  <div>
+    <table class="container">
+      <h3>Liste des annonces :</h3>
+      <h3 *ngIf="annonces.length == 0">Pas d'annonce</h3>
+      <thead>
+        <tr>
+          <th>Titre</th>
+          <th>Prix</th>
+          <th>Categories</th>
+
+          <th>Etat de l'annonce</th>
+          <th>Validation</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="annonces.length > 0">
+        <tr *ngFor="let annonce of annonces">
+          <td>{{ annonce.display || "" }}</td>
+          <td>{{ annonce.price || 0 }}</td>
+          <td>
+            {{ annonce?.subcategory?.category?.category || "" }} |
+            {{ annonce?.subcategory?.subCategoryName || "" }}
+          </td>
+          <td>{{ annonce.status || "" }}</td>
+
+          <td>
+            <form>
+              <button
+                class="persoColorBlue"
+                *ngIf="currentUser"
+                (click)="annonceDetails(annonce.idProduct!)"
+              >
+                Voir en details
+              </button>
+            </form>
+          </td>
+        </tr>
+        <p *ngIf="annonces.length == 0">Pas d'annonce</p>
+      </tbody>
+    </table>
+  </div>
 </div>
