@@ -17,8 +17,8 @@
         <td>{{ user.mail }}</td>
         <td>
           <form>
-            <button *ngIf="!user.ban" (click)="ban(user)">Banir</button>
-            <button *ngIf="user.ban" (click)="ban(user)">Rétablir</button>
+            <button *ngIf="!user.ban" (click)="ban(user)">Invalider</button>
+            <button *ngIf="user.ban" (click)="ban(user)">Valider</button>
           </form>
         </td>
       </tr>
